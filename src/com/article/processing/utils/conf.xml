@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<conf>
+    <driverClass>com.mysql.jdbc.Driver</driverClass>
+    <url>jdbc:mysql://localhost:3306/storage</url>
+    <username>root</username>
+    <password>ly1511</password>
+</conf>

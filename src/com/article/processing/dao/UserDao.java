@@ -7,4 +7,10 @@ import com.article.processing.model.User;
  * Created by Soloist on 2017/12/4 19:49
  */
 public interface UserDao extends BaseDao<User> {
+    
+    User getUserByPhoneAndPass(String phone, String password);
+    
+    User getUSerByEmailAndPass(String email, String password);
+    
+    Boolean isExist(String email, String phone);
 }

@@ -4,6 +4,26 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
     
+    <filter>
+        <filter-name>encodeFilter</filter-name>
+        <filter-class>com.article.processing.filter.EncodeFilter</filter-class>
+    </filter>
+    
+    <filter-mapping>
+        <filter-name>encodeFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    
+    <filter>
+        <filter-name>loginFilter</filter-name>
+        <filter-class>com.article.processing.filter.LoginFilter</filter-class>
+    </filter>
+    
+    <filter-mapping>
+        <filter-name>loginFilter</filter-name>
+        <url-pattern>*.do</url-pattern>
+    </filter-mapping>
+    
     <servlet>
         <servlet-name>baseServlet</servlet-name>
         <servlet-class>com.article.processing.servlet.BaseServlet</servlet-class>
@@ -11,7 +31,27 @@
     
     <servlet-mapping>
         <servlet-name>baseServlet</servlet-name>
-        <url-pattern>/test</url-pattern>
+        <url-pattern>/test.do</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>registerServlet</servlet-name>
+        <servlet-class>com.article.processing.servlet.RegisterServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>registerServlet</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>loginServlet</servlet-name>
+        <servlet-class>com.article.processing.servlet.LoginServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>loginServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
     </servlet-mapping>
     
 </web-app>

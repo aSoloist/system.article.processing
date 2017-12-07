@@ -20,7 +20,8 @@ class XMLReader {
 
     static List<String> XMLRead(){
         List<String> info = new ArrayList<>();
-        File f = new File(System.getProperty("user.dir") + "\\src\\com\\article\\processing\\utils\\conf.xml");
+        String path = XMLReader.class.getResource("/").getPath();
+        File f = new File(path + "com\\article\\processing\\utils\\conf.xml");
         DocumentBuilder db;
         DocumentBuilderFactory dbf;
         Document document = null;

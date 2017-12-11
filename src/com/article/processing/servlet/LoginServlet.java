@@ -1,7 +1,6 @@
 package com.article.processing.servlet;
 
 import com.article.processing.dao.UserDao;
-import com.article.processing.dao.impl.UserDaoImpl;
 import com.article.processing.model.User;
 
 import javax.servlet.ServletException;
@@ -14,7 +13,15 @@ import java.io.IOException;
  * Created by Soloist on 2017/12/7 21:20
  */
 public class LoginServlet extends HttpServlet {
-    private UserDao userDao = new UserDaoImpl();
+    private UserDao userDao;
+    {
+        try {
+            Class clazz = Class.forName("com.article.processing.dao.impl.UserDaoImpl");
+            userDao = (UserDao) clazz.newInstance();
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

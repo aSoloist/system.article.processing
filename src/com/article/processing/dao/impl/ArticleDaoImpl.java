@@ -39,4 +39,14 @@ public class ArticleDaoImpl implements ArticleDao {
     public int updateStatus(String id, int status) {
         return 0;
     }
+
+    @Override
+    public Article getByTitleOrComment(String message) {
+        return null;
+    }
+
+    @Override
+    public List<Article> getByUser(String userId) {
+        return null;
+    }
 }

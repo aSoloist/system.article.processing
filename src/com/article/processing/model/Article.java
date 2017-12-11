@@ -1,6 +1,6 @@
 package com.article.processing.model;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.UUID;
 
 /**
@@ -17,7 +17,7 @@ public class Article {
     //作者
     String userId;
     //创建时间
-    Date createTime = new Date(new java.util.Date().getTime());
+    Timestamp createTime = new Timestamp(new java.util.Date().getTime());
     //组
     String group = UUID.randomUUID().toString();
     //状态
@@ -55,11 +55,11 @@ public class Article {
         this.userId = userId;
     }
 
-    public Date getCreateTime() {
+    public Timestamp getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(Timestamp createTime) {
         this.createTime = createTime;
     }
 

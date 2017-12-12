@@ -41,7 +41,7 @@ public class ArticleDaoImpl implements ArticleDao {
     }
 
     @Override
-    public Article getByTitleOrComment(String message) {
+    public List<Article> getByTitleOrComment(String message) {
         return null;
     }
 

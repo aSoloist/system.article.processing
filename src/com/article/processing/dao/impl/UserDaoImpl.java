@@ -229,7 +229,7 @@ public class UserDaoImpl implements UserDao {
     public Boolean isExist(String email, String phone) {
         String sql = "select * from user where email = ? or phone = ?";
         PreparedStatement preparedStatement = DBUtil.getPatmt(sql);
-        ResultSet resultSet = null;
+        ResultSet resultSet;
         Boolean isExist = false;
         try {
             preparedStatement.setString(1, email);

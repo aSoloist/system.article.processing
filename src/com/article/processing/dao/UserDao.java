@@ -10,7 +10,9 @@ public interface UserDao extends BaseDao<User> {
     
     User getUserByPhoneAndPass(String phone, String password);
     
-    User getUSerByEmailAndPass(String email, String password);
+    User getUserByEmailAndPass(String email, String password);
     
     Boolean isExist(String email, String phone);
+    
+    User getUserByEmail(String email);
 }

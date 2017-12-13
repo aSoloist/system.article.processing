@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Created by Soloist on 2017/12/12 23:30
  */
-public class SearchArticle extends BaseServlet<ArticleDaoImpl> {
+public class SearchArticleServlet extends BaseServlet<ArticleDaoImpl> {
 
     /**
      * 条件获取稿件

@@ -62,6 +62,7 @@ CREATE TABLE `user` (
   `phone` varchar(11) NOT NULL,
   `email` varchar(36) NOT NULL,
   `status` int(11) NOT NULL,
+  `create_time` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;

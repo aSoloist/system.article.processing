@@ -27,6 +27,7 @@ public class UserDaoImpl implements UserDao {
             user.setPhone(resultSet.getString("phone"));
             user.setEmail(resultSet.getString("email"));
             user.setStatus(resultSet.getInt("status"));
+            user.setCreateTime(resultSet.getTimestamp("create_time"));
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -88,7 +89,7 @@ public class UserDaoImpl implements UserDao {
      * @return
      */
     public int insert(User model) {
-        String sql = "insert into user (id, nickname, password, username, unit, address, phone, email, status) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "insert into user (id, nickname, password, username, unit, address, phone, email, status, create_time) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement preparedStatement = DBUtil.getPatmt(sql);
         int result = 0;
         try {
@@ -101,6 +102,7 @@ public class UserDaoImpl implements UserDao {
             preparedStatement.setString(7, model.getPhone());
             preparedStatement.setString(8, model.getEmail());
             preparedStatement.setInt(9, model.getStatus());
+            preparedStatement.setTimestamp(10, model.getCreateTime());
             result = preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -169,6 +171,28 @@ public class UserDaoImpl implements UserDao {
     }
 
     /**
+     * 判断id是否重复
+     * @param id
+     * @return
+     */
+    public boolean isIdExist(String id) {
+        String sql = "select * from user where id = ?";
+        PreparedStatement preparedStatement = DBUtil.getPatmt(sql);
+        ResultSet resultSet = null;
+        boolean isIdExist = true;
+        try {
+            preparedStatement.setString(1, id);
+            resultSet = preparedStatement.executeQuery();
+            isIdExist =  resultSet.next();
+        } catch (SQLException e) {
+            System.out.println("数据库异常");
+        } finally {
+            DBUtil.closeQueryRes(resultSet);
+        }
+        return isIdExist;
+    }
+
+    /**
      * 通过手机号和密码获取用户
      * @param phone
      * @param password
@@ -200,7 +224,7 @@ public class UserDaoImpl implements UserDao {
      * @param password
      * @return
      */
-    public User getUSerByEmailAndPass(String email, String password) {
+    public User getUserByEmailAndPass(String email, String password) {
         String sql = "select * from user where email = ? and password = ? and status <> -1";
         PreparedStatement preparedStatement = DBUtil.getPatmt(sql);
         User user = new User();
@@ -229,17 +253,44 @@ public class UserDaoImpl implements UserDao {
     public Boolean isExist(String email, String phone) {
         String sql = "select * from user where email = ? or phone = ?";
         PreparedStatement preparedStatement = DBUtil.getPatmt(sql);
-        ResultSet resultSet;
-        Boolean isExist = false;
+        ResultSet resultSet = null;
+        Boolean isExist = true;
         try {
             preparedStatement.setString(1, email);
             preparedStatement.setString(2, phone);
             resultSet = preparedStatement.executeQuery();
             isExist = resultSet.next();
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("数据库异常");
+        } finally {
+            DBUtil.closeQueryRes(resultSet);
         }
         
         return isExist;
+    }
+
+    /**
+     * 通过邮箱获取用户
+     * @param email
+     * @return
+     */
+    public User getUserByEmail(String email) {
+        String sql = "select * from user where email = ?";
+        PreparedStatement preparedStatement = DBUtil.getPatmt(sql);
+        ResultSet resultSet = null;
+        User user = null;
+        try {
+            preparedStatement.setString(1, email);
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                user = new User();
+                createUser(user, resultSet);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBUtil.closeQueryRes(resultSet);
+        }
+        return user;
     }
 }

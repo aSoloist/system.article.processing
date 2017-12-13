@@ -13,7 +13,19 @@ import java.io.IOException;
  */
 public class RegisterServlet extends BaseServlet<UserDaoImpl> {
 
-    @Override
+    /**
+     * 用户注册
+     * param username
+     * param nickname
+     * param password
+     * param phone
+     * param email
+     * param address
+     * param unit
+     * method POST
+     * @throws ServletException
+     * @throws IOException
+     */
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user = new User();
         String email = req.getParameter("email");

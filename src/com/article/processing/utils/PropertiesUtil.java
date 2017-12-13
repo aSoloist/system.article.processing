@@ -9,10 +9,9 @@ import java.util.Properties;
  */
 public class PropertiesUtil {
     private Properties properties;
-    private FileInputStream inputStream;
 
     PropertiesUtil(String path) throws IOException {
-        inputStream = new FileInputStream(path);
+        FileInputStream inputStream = new FileInputStream(path);
         properties = new Properties();
         if (path.endsWith("xml")) {
             properties.loadFromXML(inputStream);

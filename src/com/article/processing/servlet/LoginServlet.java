@@ -13,7 +13,14 @@ import java.io.IOException;
  */
 public class LoginServlet extends BaseServlet<UserDaoImpl> {
 
-    @Override
+    /**
+     * 用户登陆
+     * param phoneOrEmail
+     * param password
+     * method POST
+     * @throws ServletException
+     * @throws IOException
+     */
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String phoneOrEmail = req.getParameter("phoneOrEmail");
         String password = req.getParameter("password");

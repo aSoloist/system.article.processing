@@ -1,6 +1,5 @@
 package com.article.processing.utils;
 
-import java.io.IOException;
 import java.sql.*;
 
 /**
@@ -10,17 +9,6 @@ public class DBUtil {
 
     private static Connection conn = null;
     private static PreparedStatement ps = null;
-    
-    private static PropertiesUtil propertiesUtil;
-
-    static {
-        try {
-            propertiesUtil = new PropertiesUtil(DBUtil.class.getResource("/").getPath() + 
-                    DBUtil.class.getPackage().getName().replaceAll("\\.", "/") + "/conf.xml");
-        } catch (IOException e) {
-            System.out.println("配置文件加载失败");
-        }
-    }
 
     public static void main(String[] args) {
         getConn();
@@ -28,9 +16,9 @@ public class DBUtil {
 
     private static Connection getConn() {
         try {
-            
-            Class.forName(propertiesUtil.get("className"));
-            conn = DriverManager.getConnection(propertiesUtil.get("url"), propertiesUtil.get("username"), propertiesUtil.get("password"));
+            PropertiesUtil.load("conf.xml");
+            Class.forName(PropertiesUtil.get("className"));
+            conn = DriverManager.getConnection(PropertiesUtil.get("url"), PropertiesUtil.get("username"), PropertiesUtil.get("password"));
         } catch (ClassNotFoundException e) {
             System.out.println("数据库驱动加载失败");
             e.printStackTrace();

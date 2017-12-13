@@ -19,4 +19,6 @@ interface BaseDao<T> {
     int delete(String id);
     
     int updateStatus(String id, int status);
+    
+    boolean isIdExist(String id);
 }

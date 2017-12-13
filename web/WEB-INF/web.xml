@@ -25,16 +25,6 @@
     </filter-mapping>
     
     <servlet>
-        <servlet-name>baseServlet</servlet-name>
-        <servlet-class>com.article.processing.servlet.BaseServlet</servlet-class>
-    </servlet>
-    
-    <servlet-mapping>
-        <servlet-name>baseServlet</servlet-name>
-        <url-pattern>/test.do</url-pattern>
-    </servlet-mapping>
-    
-    <servlet>
         <servlet-name>registerServlet</servlet-name>
         <servlet-class>com.article.processing.servlet.RegisterServlet</servlet-class>
     </servlet>
@@ -42,6 +32,26 @@
     <servlet-mapping>
         <servlet-name>registerServlet</servlet-name>
         <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>userVerificationServlet</servlet-name>
+        <servlet-class>com.article.processing.servlet.UserVerificationServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>userVerificationServlet</servlet-name>
+        <url-pattern>/userVerification</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>resendServlet</servlet-name>
+        <servlet-class>com.article.processing.servlet.ResendServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>resendServlet</servlet-name>
+        <url-pattern>/resend</url-pattern>
     </servlet-mapping>
     
     <servlet>

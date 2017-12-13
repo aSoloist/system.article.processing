@@ -41,6 +41,11 @@ public class ArticleDaoImpl implements ArticleDao {
     }
 
     @Override
+    public boolean isIdExist(String id) {
+        return false;
+    }
+
+    @Override
     public List<Article> getByTitleOrComment(String message) {
         return null;
     }
@@ -48,5 +53,10 @@ public class ArticleDaoImpl implements ArticleDao {
     @Override
     public List<Article> getByUser(String userId) {
         return null;
+    }
+
+    @Override
+    public boolean isIdExist(String id, String group) {
+        return false;
     }
 }

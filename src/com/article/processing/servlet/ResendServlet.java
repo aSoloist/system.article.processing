@@ -20,7 +20,7 @@ public class ResendServlet extends HttpServlet {
         String v = MD5Util.eccrypt(email);
         String username = req.getParameter("username");
         String message = "点击下面链接激活账号，2小时生效，否则重新注册账号，链接只能使用一次，请尽快激活！<br/>"
-                + "<a href=\"http://localhost:8080/userVerification?email=" +
+                + "<a href=\"" + req.getRequestURL() + "/userVerification?email=" +
                 email + "&v=" + v + "\">点击验证</a>";
         try {
             MailUtil.sendMail(email, username, "用户验证", message);

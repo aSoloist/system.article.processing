@@ -24,9 +24,7 @@ public class UserVerificationServlet extends BaseServlet<UserDaoImpl> {
             if (user.getStatus() == 0) {
                 //是否过期
                 long now = new Date().getTime();
-                System.out.println(now);
                 long before = user.getCreateTime().getTime();
-                System.out.println(before);
                 if ((now - before) < 60  * 60 * 2 * 1000) {
                     String eccrypt = MD5Util.eccrypt(email);
                     //验证激活码

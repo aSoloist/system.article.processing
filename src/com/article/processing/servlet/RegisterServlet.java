@@ -45,12 +45,12 @@ public class RegisterServlet extends BaseServlet<UserDaoImpl> {
             user.setUnit(req.getParameter("unit"));
             String v = MD5Util.eccrypt(email);
             String message = "点击下面链接激活账号，2小时生效，否则重新注册账号，链接只能使用一次，请尽快激活！<br/>" 
-                    + "<a href=\"http://localhost:8080/userVerification?email=" +
+                    + "<a href=\"" + req.getRequestURL() + "/userVerification?email=" +
                     email + "&v=" + v + "\">点击验证</a>";
             try {
                 MailUtil.sendMail(email, user.getUsername(), "用户验证", message);
                 resp.getWriter().write("已发送验证邮件，请注意查收<br/>" +
-                        "未收到邮件，<a href=\"http://localhost:8080/resend?email=" +
+                        "未收到邮件，<a href=\"" + req.getRequestURL() + "/resend?email=" +
                         email + "&username=" + user.getUsername() + "\">重新发送</a>");
                 int result = baseDao.insert(user);
                 if (result != 1) {

@@ -41,7 +41,7 @@
     
     <servlet-mapping>
         <servlet-name>userVerificationServlet</servlet-name>
-        <url-pattern>/userVerification</url-pattern>
+        <url-pattern>/register/userVerification</url-pattern>
     </servlet-mapping>
     
     <servlet>
@@ -51,7 +51,7 @@
     
     <servlet-mapping>
         <servlet-name>resendServlet</servlet-name>
-        <url-pattern>/resend</url-pattern>
+        <url-pattern>/register/resend</url-pattern>
     </servlet-mapping>
     
     <servlet>

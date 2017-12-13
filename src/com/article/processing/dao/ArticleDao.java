@@ -14,4 +14,5 @@ public interface ArticleDao extends BaseDao<Article> {
     
     List<Article> getByUser(String userId);
     
+    boolean isIdExist(String id, String group);
 }

@@ -1,5 +1,7 @@
 package com.article.processing.model;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -23,8 +25,10 @@ public class User {
     String phone;
     //邮箱
     String email;
-
+    //状态
     int status = 0;
+    //创建时间
+    Timestamp createTime = new Timestamp(new Date().getTime());
     
     public void setId(String id) {
         this.id = id;
@@ -96,5 +100,13 @@ public class User {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public Timestamp getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Timestamp createTime) {
+        this.createTime = createTime;
     }
 }

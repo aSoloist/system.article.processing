@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface ArticleDao extends BaseDao<Article> {
     
-    List<Article> getByTitleOrComment(String message);
+    List<Article> getByTitle(String userId, String title);
     
     List<Article> getByUser(String userId);
     

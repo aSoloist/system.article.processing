@@ -74,18 +74,7 @@ public class MailUtil {
     }
     
     /*public static void main(String[] args) throws UnsupportedEncodingException, MessagingException {
-        *//*properties.setProperty("mail.smtp.host", HOST);
-        properties.setProperty("mail.smtp.port", PORT);
-        properties.setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-        properties.setProperty("mail.smtp.socketFactory.fallback", "false");
-        properties.setProperty("mail.smtp.socketFactory.port", PORT);*//*
-
-        session.setDebug(true);
-        MimeMessage message = createMessage("Soloist1511@gmail.com", "测试用户", "测试", "这是一封测试邮件");
-        Transport transport = session.getTransport();
-        transport.connect(FROM, PASSWORD);
-        transport.sendMessage(message, message.getAllRecipients());
-        transport.close();
+        sendMail("947721002@qq.com", "测试", "测试", "<a href=\"http://www.baidu.com\">点击</a>");
     }*/
 }
 

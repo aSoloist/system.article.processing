@@ -12,10 +12,10 @@ import java.io.IOException;
 /**
  * Created by Soloist on 2017/12/13 17:38
  */
-public class SaveArticleServleet extends BaseServlet<ArticleDaoImpl> {
+public class SaveArticleServlet extends BaseServlet<ArticleDaoImpl> {
 
     /**
-     * 上传稿件
+     * 保存稿件
      * param title
      * param content
      * method POST
@@ -26,7 +26,11 @@ public class SaveArticleServleet extends BaseServlet<ArticleDaoImpl> {
         Article article = new Article();
         User user = (User) req.getSession().getAttribute("user");
         if (baseDao.isIdExist(article.getId(), article.getGroup())) {
-            resp.getWriter().write("系统繁忙，请重新提交");
+            try {
+                req.getRequestDispatcher("/saveArticle").forward(req, resp);
+            } catch (ServletException e) {
+                e.printStackTrace();
+            }
         } else if (user != null) {
             String title = req.getParameter("title");
             String content = req.getParameter("content");

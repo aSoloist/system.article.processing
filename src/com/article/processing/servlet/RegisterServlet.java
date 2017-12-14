@@ -6,6 +6,7 @@ import com.article.processing.utils.MD5Util;
 import com.article.processing.utils.MailUtil;
 
 import javax.mail.MessagingException;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -32,7 +33,11 @@ public class RegisterServlet extends BaseServlet<UserDaoImpl> {
         String email = req.getParameter("email");
         String phone = req.getParameter("phone");
         if (baseDao.isIdExist(user.getId())) {
-            resp.getWriter().write("系统繁忙，请重新注册");
+            try {
+                req.getRequestDispatcher("/register").forward(req, resp);
+            } catch (ServletException e) {
+                e.printStackTrace();
+            }
         } else if (baseDao.isExist(email, phone)) {
             resp.getWriter().write("用户已存在");
         } else {

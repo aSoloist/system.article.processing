@@ -55,6 +55,26 @@
     </servlet-mapping>
     
     <servlet>
+        <servlet-name>saveArticleServlet</servlet-name>
+        <servlet-class>com.article.processing.servlet.SaveArticleServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>saveArticleServlet</servlet-name>
+        <url-pattern>/saveArticle.do</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>searchArticleServlet</servlet-name>
+        <servlet-class>com.article.processing.servlet.SearchArticleServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>searchArticleServlet</servlet-name>
+        <url-pattern>/searchArticle.do</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
         <servlet-name>loginServlet</servlet-name>
         <servlet-class>com.article.processing.servlet.LoginServlet</servlet-class>
     </servlet>

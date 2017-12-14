@@ -2,6 +2,7 @@ package com.article.processing.servlet;
 
 import com.article.processing.dao.impl.ArticleDaoImpl;
 import com.article.processing.model.Article;
+import com.article.processing.model.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -16,13 +17,14 @@ public class SearchArticleServlet extends BaseServlet<ArticleDaoImpl> {
 
     /**
      * 条件获取稿件
-     * param message
+     * param title
      * method GET
      */
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String message = req.getParameter("message");
-        List<Article> list = baseDao.getByTitleOrComment(message);
+        User user = (User) req.getSession().getAttribute("user");
+        String title = req.getParameter("title");
+        List<Article> list = baseDao.getByTitle(user.getId(), title);
         req.setAttribute("articles", list);
-        req.getRequestDispatcher("ArticleShow.jsp").forward(req, resp);
+        req.getRequestDispatcher("articleshow.jsp").forward(req, resp);
     }
 }

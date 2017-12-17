@@ -28,7 +28,7 @@ CREATE TABLE `article` (
   `content` text NOT NULL,
   `user_id` varchar(36) NOT NULL,
   `create_time` datetime NOT NULL,
-  `group` varchar(36) NOT NULL,
+  `article_group` varchar(36) NOT NULL,
   `status` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `Article_user_id_fk` (`user_id`),

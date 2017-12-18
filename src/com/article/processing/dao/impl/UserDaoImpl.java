@@ -38,7 +38,7 @@ public class UserDaoImpl implements UserDao {
      * @return
      */
     public List<User> getAll() {
-        String sql = "select * from user";
+        String sql = "select * from user where status <> -1";
         PreparedStatement preparedStatement = DBUtil.getPatmt(sql);
         ResultSet resultSet = null;
         List<User> list = new ArrayList<>();
@@ -176,20 +176,7 @@ public class UserDaoImpl implements UserDao {
      * @return
      */
     public boolean isIdExist(String id) {
-        String sql = "select * from user where id = ?";
-        PreparedStatement preparedStatement = DBUtil.getPatmt(sql);
-        ResultSet resultSet = null;
-        boolean isIdExist = true;
-        try {
-            preparedStatement.setString(1, id);
-            resultSet = preparedStatement.executeQuery();
-            isIdExist =  resultSet.next();
-        } catch (SQLException e) {
-            System.out.println("数据库异常");
-        } finally {
-            DBUtil.closeQueryRes(resultSet);
-        }
-        return isIdExist;
+        return getById(id) != null;
     }
 
     /**
@@ -251,7 +238,7 @@ public class UserDaoImpl implements UserDao {
      * @return
      */
     public Boolean isExist(String email, String phone) {
-        String sql = "select * from user where email = ? or phone = ?";
+        String sql = "select * from user where status <> -1 and email = ? or phone = ?";
         PreparedStatement preparedStatement = DBUtil.getPatmt(sql);
         ResultSet resultSet = null;
         Boolean isExist = true;
@@ -275,7 +262,7 @@ public class UserDaoImpl implements UserDao {
      * @return
      */
     public User getUserByEmail(String email) {
-        String sql = "select * from user where email = ?";
+        String sql = "select * from user where email = ? and status <> -1";
         PreparedStatement preparedStatement = DBUtil.getPatmt(sql);
         ResultSet resultSet = null;
         User user = null;

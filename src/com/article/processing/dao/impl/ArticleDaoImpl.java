@@ -35,7 +35,7 @@ public class ArticleDaoImpl implements ArticleDao {
      * @return
      */
     public List<Article> getAll() {
-        String sql = "SELECT * FROM article a where id = " +
+        String sql = "SELECT * FROM article a where status <> -1 and id = " +
                 "(select id from article where a.article_group = article_group order by create_time desc limit 1)";
         PreparedStatement preparedStatement = DBUtil.getPatmt(sql);
         List<Article> list = new ArrayList<>();
@@ -62,7 +62,7 @@ public class ArticleDaoImpl implements ArticleDao {
      * @return 稿件
      */
     public Article getById(String id) {
-        String sql = "select * from article where id = ? order by create_time desc limit 1";
+        String sql = "select * from article where status <> -1 and id = ? order by create_time desc limit 1";
         PreparedStatement preparedStatement = DBUtil.getPatmt(sql);
         ResultSet resultSet = null;
         Article article = null;
@@ -153,8 +153,7 @@ public class ArticleDaoImpl implements ArticleDao {
      * @return true 存在; false 不存在
      */
     public boolean isIdExist(String id) {
-        Article article = getById(id);
-        return article != null;
+        return getById(id) != null;
     }
 
     /**
@@ -164,7 +163,7 @@ public class ArticleDaoImpl implements ArticleDao {
      * @return 稿件的集合
      */
     public List<Article> getByTitle(String userId, String title) {
-        String sql = "select * from article a where user_id = ? and title like ? and id = " +
+        String sql = "select * from article a where status <> -1 and user_id = ? and title like ? and id = " +
                 "(select id from article where a.article_group = article_group order by create_time desc limit 1)";
         PreparedStatement preparedStatement = DBUtil.getPatmt(sql);
         ResultSet resultSet = null;
@@ -193,7 +192,7 @@ public class ArticleDaoImpl implements ArticleDao {
      * @return 稿件集合
      */
     public List<Article> getByUser(String userId) {
-        String sql = "select * from article a where user_id = ? and id = " +
+        String sql = "select * from article a where status <> -1 and user_id = ? and id = " +
                 "(select id from article where a.article_group = article_group order by create_time desc limit 1)";
         PreparedStatement preparedStatement = DBUtil.getPatmt(sql);
         ResultSet resultSet = null;
@@ -221,7 +220,7 @@ public class ArticleDaoImpl implements ArticleDao {
      * @return true 存在; false 不存在
      */
     public boolean isIdExist(String id, String group) {
-        String sql = "select * from article where id = ? and article_group = ?";
+        String sql = "select * from article where status <> -1 and id = ? and article_group = ?";
         PreparedStatement preparedStatement = DBUtil.getPatmt(sql);
         boolean isExist = true;
         ResultSet resultSet = null;

@@ -88,7 +88,7 @@
                         <tr>
                             <td>手机号：</td>
                             <td>
-                                <input class="span12" name="phone" placeholder="请输入11位手机号" type="text" />
+                                <input class="span12" name="email" placeholder="请输入11位手机号" type="text" />
                             </td>
                         </tr>
                         <tr>

@@ -46,55 +46,55 @@
                     <i class="icon-lightbulb"></i>
                     可用作提示错误信息
                 </div>
-                <form id="loginForm" method="post" action="${pageContext.request.contextPath}/login">
+                <form id="registerForm" method="post" action="${pageContext.request.contextPath}/register">
                     <table id="TABLE">
                         <tbody>
                         <tr>
                             <td>姓名：</td>
                             <td>
-                                <input class="span12" name="nickname" placeholder="2 - 4个汉字" type="text" />
+                                <input class="span12" name="username" placeholder="2 - 4个汉字" type="text" pattern="[\u4e00-\u9fa5]{2-4}" />
                             </td>
                         </tr>
                         <tr>
                             <td>密码：</td>
                             <td>
-                                <input class="span12" name="password" placeholder="密码" type="password" />
+                                <input class="span12" name="password" placeholder="密码(最短为6位，只能有字母数字下划线)" type="password" pattern="[A-Za-z0-9_]{6-50}" />
                             </td>
                         </tr>
                         <tr>
                             <td>确认密码：</td>
                             <td>
-                                <input class="span12" name="password2" placeholder="再次输入密码" type="password" />
+                                <input class="span12" name="password2" placeholder="再次输入密码" type="password" pattern="[A-Za-z0-9_]{6-50}" />
                             </td>
                         </tr>
                         <tr>
-                            <td>用户名：</td>
+                            <td>昵称：</td>
                             <td>
-                                <input class="span12" name="username" placeholder="请输入用户名" type="text" />
+                                <input class="span12" name="nickname" placeholder="只能含有汉字、字母、数字、下划线" type="text" pattern="[A-Za-z0-9\u4e00-\u9fa5_]{6-50}" />
                             </td>
                         </tr>
                         <tr>
                             <td>单位：</td>
                             <td>
-                                <input class="span12" name="unit" placeholder="单位" type="text" />
+                                <input class="span12" name="unit" placeholder="单位" type="text" pattern="[\u4e00-\u9fa5]{1,255}" />
                             </td>
                         </tr>
                         <tr>
                             <td>地址：</td>
                             <td>
-                                <input class="span12" name="address" placeholder="精确到省" type="text" />
+                                <input class="span12" name="address" placeholder="精确到省" type="text" pattern="[\u4e00-\u9fa5]{1,255}" />
                             </td>
                         </tr>
                         <tr>
                             <td>手机号：</td>
                             <td>
-                                <input class="span12" name="phone" placeholder="请输入11位手机号" type="text" />
+                                <input class="span12" name="phone" placeholder="请输入11位手机号" type="text" pattern="1[0-9]{10}" />
                             </td>
                         </tr>
                         <tr>
                             <td>E-mail：</td>
                             <td>
-                                <input class="span12" name="phone" placeholder="XXXXXXXX @ XXX .com" type="text" />
+                                <input class="span12" name="email" placeholder="XXXXXXXX @ XXX .com" type="text" pattern="[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+" />
                             </td>
                         </tr>
                     </table>
@@ -103,13 +103,14 @@
                         <label for="mainAcceptIpt">同意<a href="javascript:void(0);" > "服务条款" </a>
                             和<a href="javascript:void(0);" > "隐私权相关政策" </a></label>
                     </div>
-                    <a class="btn-glow primary login"  href="javascript:document.getElementById('loginForm').submit();">注册</a>
+                    <a class="btn-glow primary login"  href="javascript:document.getElementById('registerForm').submit();">注册</a>
                 </form>
                 <div class="forgot">已有帐号？<a href="signin.jsp">直接登录</a></div>
             </div>
         </div>
-
     </div>
-
 </body>
+<script type="application/javascript">
+    
+</script>
 </html>

@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>稿件管理系统 - 主页</title>
+    <title>稿件管理系统 - 个人信息</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
@@ -10,24 +10,19 @@
     <link href="css/bootstrap/bootstrap-responsive.css" rel="stylesheet"/>
     <link href="css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet"/>
 
-    <!-- libraries -->
-    <link href="css/lib/jquery-ui-1.10.2.custom.css" rel="stylesheet" type="text/css"/>
-    <link href="css/lib/font-awesome.css" type="text/css" rel="stylesheet"/>
-
     <!-- global styles -->
     <link rel="stylesheet" type="text/css" href="css/layout.css"/>
     <link rel="stylesheet" type="text/css" href="css/elements.css"/>
     <link rel="stylesheet" type="text/css" href="css/icons.css"/>
 
+    <!-- libraries -->
+    <link rel="stylesheet" type="text/css" href="css/lib/font-awesome.css"/>
+
     <!-- this page specific styles -->
-    <link rel="stylesheet" href="css/compiled/index.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="css/compiled/personal-info.css" type="text/css" media="screen"/>
 
     <!-- open sans font -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
-          rel='stylesheet' type='text/css'/>
-
-    <!-- lato font -->
-    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900,300italic,400italic,700italic,900italic'
           rel='stylesheet' type='text/css'/>
 
     <!--[if lt IE 9]>
@@ -122,7 +117,7 @@
 <!-- sidebar -->
 <div id="sidebar-nav">
     <ul id="dashboard-menu">
-        <li class="active">
+        <li>
             <div class="pointer">
                 <div class="arrow"></div>
                 <div class="arrow_border"></div>
@@ -132,14 +127,14 @@
                 <span>主页</span>
             </a>
         </li>
-        <li>
+        <li class="active">
             <a class="dropdown-toggle" href="#">
                 <i class="icon-group"></i>
                 <span>用户中心</span>
                 <i class="icon-chevron-down"></i>
             </a>
-            <ul class="submenu">
-                <li><a href="personal-info.html">个人信息</a></li>
+            <ul class="active submenu">
+                <li><a href="personal-info.html" class="active">个人信息</a></li>
                 <li><a href="revise-avatar.html">修改头像</a></li>
                 <li><a href="modify-password.html">更改密码</a></li>
             </ul>
@@ -151,8 +146,8 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="my-manuscript.html">我的稿件</a></li>
-                <li><a href="submit-manuscript.html">提交稿件</a></li>
+                <li><a href="submit-manuscript.html">我的稿件</a></li>
+                <li><a href="form-wizard.html">提交稿件</a></li>
             </ul>
         </li>
         <li>
@@ -167,14 +162,53 @@
 
 <!-- main container -->
 <div class="content">
+    <div class="container-fluid">
+        <div class="settings-wrapper" id="pad-wrapper">
 
+            <!-- edit form column -->
+            <div class="span7 personal-info">
+                <h5 class="personal-title">个人信息</h5>
+
+                <form/>
+                <div class="field-box">
+                    <label>姓名:</label>
+                    <input class="span5 inline-input" type="text" value="nickname"/>
+                </div>
+                <div class="field-box">
+                    <label>用户名:</label>
+                    <input class="span5 inline-input" type="text" value="username"/>
+                </div>
+                <div class="field-box">
+                    <label>单位:</label>
+                    <input class="span5 inline-input" type="text" value="unit"/>
+                </div>
+                <div class="field-box">
+                    <label>地址:</label>
+                    <input class="span5 inline-input" type="text" value="address"/>
+                </div>
+                <div class="field-box">
+                    <label>手机号:</label>
+                    <input class="span5 inline-input" type="text" value="phone" disabled="true"/>
+                </div>
+                <div class="field-box">
+                    <label>E-mail:</label>
+                    <input class="span5 inline-input" type="text" value="email" disabled="true"/>
+                </div>
+                <div class="span6 field-box actions">
+                    <input type="button" class="btn-glow primary" value="保存修改" />
+                    <span>或</span>
+                    <input type="reset" value="取消" class="reset" />
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
-
+<!-- end main container -->
 
 <!-- scripts -->
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/theme.js"></script>
-
 </body>
 </html>

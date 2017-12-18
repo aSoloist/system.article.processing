@@ -46,7 +46,7 @@
             <span class="icon-bar"></span>
         </button>
 
-        <a class="brand" href="index.html">稿件管理系统</a>
+        <a class="brand" href="index.jsp">稿件管理系统</a>
 
         <ul class="nav pull-right">
             <li class="hidden-phone">
@@ -99,13 +99,13 @@
                 <a href="#" class="dropdown-toggle hidden-phone" data-toggle="dropdown">我的账户<b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a href="personal-info.html">个人信息</a></li>
+                    <li><a href="personal-info.jsp">个人信息</a></li>
                     <li><a href="#">账户设置</a></li>
                     <li><a href="#">我的钱包</a></li>
                 </ul>
             </li>
             <li class="settings hidden-phone">
-                <a href="personal-info.html" role="button">
+                <a href="personal-info.jsp" role="button">
                     <i class="icon-cog"></i>
                 </a>
             </li>
@@ -127,7 +127,7 @@
                 <div class="arrow"></div>
                 <div class="arrow_border"></div>
             </div>
-            <a href="index.html">
+            <a href="index.jsp">
                 <i class="icon-home"></i>
                 <span>主页</span>
             </a>
@@ -139,9 +139,9 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="personal-info.html">个人信息</a></li>
-                <li><a href="revise-avatar.html">修改头像</a></li>
-                <li><a href="modify-password.html">更改密码</a></li>
+                <li><a href="personal-info.jsp">个人信息</a></li>
+                <li><a href="revise-avatar.jsp">修改头像</a></li>
+                <li><a href="modify-password.jsp">更改密码</a></li>
             </ul>
         </li>
         <li>
@@ -151,8 +151,8 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="my-manuscript.html">我的稿件</a></li>
-                <li><a href="submit-manuscript.html">提交稿件</a></li>
+                <li><a href="my-manuscript.jsp">我的稿件</a></li>
+                <li><a href="submit-manuscript.jsp">提交稿件</a></li>
             </ul>
         </li>
         <li>

@@ -9,19 +9,19 @@ import java.util.UUID;
  */
 public class Article {
     //id
-    String id = UUID.randomUUID().toString();
+    private String id = UUID.randomUUID().toString();
     //题目
-    String title;
+    private String title;
     //内容
-    String content;
+    private String content;
     //作者
-    String userId;
+    private String userId;
     //创建时间
-    Timestamp createTime = new Timestamp(new java.util.Date().getTime());
+    private Timestamp createTime = new Timestamp(new java.util.Date().getTime());
     //组
-    String group = UUID.randomUUID().toString();
+    private String group = UUID.randomUUID().toString();
     //状态
-    int status = 0;
+    private int status = 0;
 
     public String getId() {
         return id;

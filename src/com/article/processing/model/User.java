@@ -10,25 +10,25 @@ import java.util.UUID;
  */
 public class User {
     //id
-    String id = UUID.randomUUID().toString();
+    private String id = UUID.randomUUID().toString();
     //昵称
-    String nickname;
+    private String nickname;
     //密码
-    String password;
+    private String password;
     //姓名
-    String username;
+    private String username;
     //单位
-    String unit;
+    private String unit;
     //地址
-    String address;
+    private String address;
     //手机号
-    String phone;
+    private String phone;
     //邮箱
-    String email;
+    private String email;
     //状态
-    int status = 0;
+    private int status = 0;
     //创建时间
-    Timestamp createTime = new Timestamp(new Date().getTime());
+    private Timestamp createTime = new Timestamp(new Date().getTime());
     
     public void setId(String id) {
         this.id = id;

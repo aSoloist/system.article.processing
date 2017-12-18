@@ -45,18 +45,18 @@
                 <form id="loginForm" method="post" action="${pageContext.request.contextPath}/login">
                     <input class="span12" type="text" placeholder="手机号/E-mail" name="phoneOrEmail"/>
                     <input class="span12" type="password" placeholder="密码"  name="password"/>
-                    <a href="#" class="forgot">忘记密码?</a>
+                    <a href="#" class="forgot">忘记密码？</a>
                     <a class="btn-glow primary login"  href="javascript:document.getElementById('loginForm').submit();">登录</a>
                 </form>
             </div>
         </div>
 
         <div class="span4 no-account">
-            <p>还没有帐号?</p>
+            <p>还没有帐号？</p>
             <a href="signup.html">注册一个</a>
         </div>
         <div class="span4 no-account">
-            <a href="admin-signup.jsp">管理员登录</a>
+            <a href="admin-signin.jsp">管理员登录</a>
         </div>
 
     </div>

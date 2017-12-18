@@ -46,7 +46,7 @@
                     <i class="icon-lightbulb"></i>
                     可用作提示错误信息
                 </div>
-                <form id="loginForm" method="post" action="${pageContext.request.contextPath}/login">
+                <form id="registForm" method="post" action="${pageContext.request.contextPath}/login">
                     <table id="TABLE">
                         <tbody>
                         <tr>
@@ -103,7 +103,7 @@
                         <label for="mainAcceptIpt">同意<a href="javascript:void(0);" > "服务条款" </a>
                             和<a href="javascript:void(0);" > "隐私权相关政策" </a></label>
                     </div>
-                    <a class="btn-glow primary login"  href="javascript:document.getElementById('loginForm').submit();">注册</a>
+                    <a class="btn-glow primary login"  href="javascript:document.getElementById('registForm').submit();">注册</a>
                 </form>
                 <div class="forgot">已有帐号？<a href="signin.jsp">直接登录</a></div>
             </div>

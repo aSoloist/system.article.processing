@@ -84,4 +84,13 @@
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
     
+    <servlet>
+        <servlet-name>adminLoginServlet</servlet-name>
+        <servlet-class>com.article.processing.servlet.AdminLoginServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>adminLoginServlet</servlet-name>
+        <url-pattern>/admin-login</url-pattern>
+    </servlet-mapping>
 </web-app>

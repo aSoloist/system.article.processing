@@ -42,8 +42,8 @@
     <div class="span4 box">
         <div class="content-wrap">
             <h6>管理员登录</h6>
-            <form id="loginForm" method="post" action="${pageContext.request.contextPath}/login">
-                <input class="span12" type="text" placeholder="用户名" name="adminUsername"/>
+            <form id="loginForm" method="post" action="${pageContext.request.contextPath}/admin-login">
+                <input class="span12" type="text" placeholder="手机号/E-mail" name="phoneOrEmail"/>
                 <input class="span12" type="password" placeholder="密码"  name="password"/><br><br>
                 <a class="btn-glow primary login"  href="javascript:document.getElementById('loginForm').submit();">登录</a>
             </form>

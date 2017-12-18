@@ -43,7 +43,7 @@
             <div class="content-wrap">
                 <h6>登录</h6>
                 <form id="loginForm" method="post" action="${pageContext.request.contextPath}/login">
-                    <input class="span12" type="text" placeholder="用户名/手机号/E-mail" name="usernameOrPhoneOrEmail"/>
+                    <input class="span12" type="text" placeholder="手机号/E-mail" name="phoneOrEmail"/>
                     <input class="span12" type="password" placeholder="密码"  name="password"/>
                     <a href="#" class="forgot">忘记密码?</a>
                     <a class="btn-glow primary login"  href="javascript:document.getElementById('loginForm').submit();">登录</a>

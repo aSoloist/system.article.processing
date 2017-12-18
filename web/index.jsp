@@ -127,7 +127,7 @@
                 <div class="arrow"></div>
                 <div class="arrow_border"></div>
             </div>
-            <a href="index.html">
+            <a href="index.jsp">
                 <i class="icon-home"></i>
                 <span>主页</span>
             </a>
@@ -139,9 +139,9 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="personal-info.html">个人信息</a></li>
-                <li><a href="revise-avatar.html">修改头像</a></li>
-                <li><a href="modify-password.html">更改密码</a></li>
+                <li><a href="personal-info.jsp">个人信息</a></li>
+                <li><a href="revise-avatar.jsp">修改头像</a></li>
+                <li><a href="modify-password.jsp">更改密码</a></li>
             </ul>
         </li>
         <li>
@@ -151,8 +151,8 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="my-manuscript.html">我的稿件</a></li>
-                <li><a href="submit-manuscript.html">提交稿件</a></li>
+                <li><a href="my-manuscript.jsp">我的稿件</a></li>
+                <li><a href="submit-manuscript.jsp">提交稿件</a></li>
             </ul>
         </li>
         <li>

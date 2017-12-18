@@ -53,7 +53,7 @@
 
         <div class="span4 no-account">
             <p>还没有帐号？</p>
-            <a href="signup.html">注册一个</a>
+            <a href="signup.jsp">注册一个</a>
         </div>
         <div class="span4 no-account">
             <a href="admin-signin.jsp">管理员登录</a>

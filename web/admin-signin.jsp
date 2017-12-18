@@ -50,6 +50,10 @@
         </div>
     </div>
 
+    <div class="span4 no-account">
+        <a href="signin.jsp">普通用户登录</a>
+    </div>
+
 </div>
 
 </body>

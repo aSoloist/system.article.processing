@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html class="login-bg" >
 <head>
-    <title>Detail Admin - Sign in</title>
+    <title>稿件管理系统 - 管理员登录</title>
 
     <style type="text/css">
         body {

@@ -9,7 +9,7 @@
             background-size:100% 100%;
             -moz-background-size:100% 100%;}
     </style>
-    
+
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	
     <!-- bootstrap -->
@@ -42,6 +42,10 @@
         <div class="span4 box">
             <div class="content-wrap">
                 <h6>登录</h6>
+                <div class="alert alert-info">
+                    <i class="icon-lightbulb"></i>
+                    可用作登录错误提示信息
+                </div>
                 <form id="loginForm" method="post" action="${pageContext.request.contextPath}/login">
                     <input class="span12" type="text" placeholder="手机号/E-mail" name="phoneOrEmail"/>
                     <input class="span12" type="password" placeholder="密码"  name="password"/>

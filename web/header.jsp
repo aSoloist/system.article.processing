@@ -72,12 +72,12 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li><a href="personal-info.html">个人信息</a></li>
-                    <li><a href="#">账户设置</a></li>
-                    <li><a href="#">我的钱包</a></li>
+                    <li><a href="javascript：void(0);">账户设置</a></li>
+                    <li><a href="javascript：void(0);">我的钱包</a></li>
                 </ul>
             </li>
             <li class="settings hidden-phone">
-                <a href="personal-info.html" role="button">
+                <a href="javascript：void(0);" role="button">
                     <i class="icon-cog"></i>
                 </a>
             </li>

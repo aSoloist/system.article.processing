@@ -106,12 +106,6 @@
                         <h4>稿件状态</h4>
                     </div>
                 </div>
-
-                <div class="row-fluid filter-block">
-                    <div class="pull-right">
-                        <button class="glow right large" onclick="window.location.href='my-manuscript.jsp'">查看全部>></button>
-                    </div>
-                </div>
                 <br>
 
                 <div class="row-fluid">
@@ -248,6 +242,16 @@
                 </div>
             </div>
             <!-- end orders table -->
+            <div class="pagination pull-left right">
+                <ul>
+                    <li><a href="#">‹</a></li>
+                    <li><a class="active" href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">›</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>

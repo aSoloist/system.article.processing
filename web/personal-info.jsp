@@ -66,8 +66,8 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="submit-manuscript.jsp">我的稿件</a></li>
-                <li><a href="form-wizard.jsp">提交稿件</a></li>
+                <li><a href="my-manuscript.jsp">我的稿件</a></li>
+                <li><a href="submit-manuscript.jsp">提交稿件</a></li>
             </ul>
         </li>
         <li>

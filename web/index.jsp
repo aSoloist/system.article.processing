@@ -87,10 +87,40 @@
 
 <!-- main container -->
 <div class="content">
-
     <div class="container-fluid">
-        <div id="pad-wrapper">
 
+        <!-- upper main stats -->
+        <div id="main-stats">
+            <div class="row-fluid stats-row">
+                <div class="span3 stat">
+                    <div class="data">
+                        <span class="number">河南 - 郑州</span>
+                        上次登录
+                    </div>
+                </div>
+                <div class="span3 stat">
+                    <div class="data">
+                        <span class="number">192.168.0.1</span>
+                        当前IP地址
+                    </div>
+                </div>
+                <div class="span3 stat">
+                    <div class="data">
+                        <span class="number">3篇</span>
+                        正在审核的稿件
+                    </div>
+                </div>
+                <div class="span3 stat last">
+                    <div class="data">
+                        <span class="number">86篇</span>
+                        已通过稿件
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end upper main stats -->
+
+        <div id="pad-wrapper">
             <!-- orders table -->
             <div class="table-wrapper orders-table section">
                 <div class="row-fluid head">
@@ -101,7 +131,8 @@
 
                 <div class="row-fluid filter-block">
                     <div class="pull-right">
-                        <button class="glow right large" onclick="window.location.href='my-manuscript.jsp'">查看全部>></button>
+                        <button class="glow right large" onclick="window.location.href='my-manuscript.jsp'">查看全部>>
+                        </button>
                     </div>
                 </div>
                 <br>

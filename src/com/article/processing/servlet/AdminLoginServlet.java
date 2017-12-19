@@ -16,7 +16,7 @@ public class AdminLoginServlet extends BaseServlet<UserDaoImpl> {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String phoneOrEmail = req.getParameter("phoneOrEmail");
-        String password = MD5Util.eccrypt(req.getParameter("password"));
+        String password = MD5Util.encrypt(req.getParameter("password"));
         User user = null;
         if (phoneOrEmail.matches("^1[0-9]{10}$")) {
             user = baseDao.getUserByPhoneAndPass(phoneOrEmail, password);
@@ -30,7 +30,7 @@ public class AdminLoginServlet extends BaseServlet<UserDaoImpl> {
             resp.getWriter().write("用户不存在");
         } else {
             req.getSession().setAttribute("user", user);
-            resp.sendRedirect("index.jsp");
+            resp.sendRedirect("/admin/index.jsp");
         }
     }
 }

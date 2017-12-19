@@ -19,7 +19,7 @@ public class MD5Util {
         }
     }
     
-    public static String eccrypt(String message) {
+    public static String encrypt(String message) {
         byte[] bytes = new byte[0];
         try {
             bytes = (message + KEY).getBytes("UTF-8");
@@ -35,8 +35,8 @@ public class MD5Util {
         return ret.toString();
     }
 
-    public static void main(String[] args) {
-        String m = "947721002@qq.com";
-        System.out.println(eccrypt(m));
-    }
+    /*public static void main(String[] args) {
+        String m = "123546";
+        System.out.println(encrypt(m));
+    }*/
 }

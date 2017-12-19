@@ -37,7 +37,7 @@
                         <a href="#" class="close-icon"><i class="icon-remove-sign"></i></a>
                         <div class="messages">
                             <a href="#" class="item">
-                                <img src="img/admin.jpg" class="display"/>
+                                <img src="../img/admin.jpg" class="display"/>
                                 <div class="name">管理员</div>
                                 <div class="msg">
                                     你有一条新的消息。
@@ -45,7 +45,7 @@
                                 <span class="time"><i class="icon-time"></i> 13 分钟前</span>
                             </a>
                             <a href="#" class="item">
-                                <img src="img/admin.jpg" class="display"/>
+                                <img src="../img/admin.jpg" class="display"/>
                                 <div class="name">管理员</div>
                                 <div class="msg">
                                     你有一条新的消息，请注意查收。
@@ -53,7 +53,7 @@
                                 <span class="time"><i class="icon-time"></i> 26 分钟前</span>
                             </a>
                             <a href="#" class="item last">
-                                <img src="img/admin.jpg" class="display"/>
+                                <img src="../img/admin.jpg" class="display"/>
                                 <div class="name">管理员</div>
                                 <div class="msg">
                                     你有一条新的消息，请注意查收。emmmmm。
@@ -82,7 +82,7 @@
                 </a>
             </li>
             <li class="settings hidden-phone">
-                <a href="signin.jsp" role="button">
+                <a href="../signin.jsp" role="button">
                     <i class="icon-share-alt"></i>
                 </a>
             </li>

@@ -43,12 +43,12 @@ public class RegisterServlet extends BaseServlet<UserDaoImpl> {
         } else {
             user.setUsername(req.getParameter("username"));
             user.setNickname(req.getParameter("nickname"));
-            user.setPassword(MD5Util.eccrypt(req.getParameter("password")));
+            user.setPassword(MD5Util.encrypt(req.getParameter("password")));
             user.setPhone(phone);
             user.setEmail(email);
             user.setAddress(req.getParameter("address"));
             user.setUnit(req.getParameter("unit"));
-            String v = MD5Util.eccrypt(email);
+            String v = MD5Util.encrypt(email);
             String message = "点击下面链接激活账号，十分钟内有效，否则重新注册账号，链接只能使用一次，请尽快激活！<br/>" 
                     + "<a href=\"" + req.getRequestURL() + "/userVerification?email=" +
                     email + "&v=" + v + "\">点击验证</a>";

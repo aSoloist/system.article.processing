@@ -1,25 +1,25 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Detail Admin - My Info</title>
+    <title>稿件管理系统 - 修改密码</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
     <!-- bootstrap -->
-    <link href="css/bootstrap/bootstrap.css" rel="stylesheet"/>
-    <link href="css/bootstrap/bootstrap-responsive.css" rel="stylesheet"/>
-    <link href="css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet"/>
+    <link href="../css/bootstrap/bootstrap.css" rel="stylesheet"/>
+    <link href="../css/bootstrap/bootstrap-responsive.css" rel="stylesheet"/>
+    <link href="../css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet"/>
 
     <!-- global styles -->
-    <link rel="stylesheet" type="text/css" href="css/layout.css"/>
-    <link rel="stylesheet" type="text/css" href="css/elements.css"/>
-    <link rel="stylesheet" type="text/css" href="css/icons.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/layout.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/elements.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/icons.css"/>
 
     <!-- libraries -->
-    <link rel="stylesheet" type="text/css" href="css/lib/font-awesome.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/lib/font-awesome.css"/>
 
     <!-- this page specific styles -->
-    <link rel="stylesheet" href="css/compiled/personal-info.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="../css/compiled/personal-info.css" type="text/css" media="screen"/>
 
     <!-- open sans font -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
@@ -71,7 +71,7 @@
             </ul>
         </li>
         <li>
-            <a href="signin.jsp">
+            <a href="../signin.jsp">
                 <i class="icon-share-alt"></i>
                 <span>退出帐号</span>
             </a>
@@ -89,18 +89,18 @@
             <div class="span7 personal-info">
                 <h5 class="personal-title">修改密码</h5>
 
-                <form/>
+                <form class="modify-password" method="post" action="">
                 <div class="field-box">
                     <label>原密码:</label>
-                    <input class="span5 inline-input" type="password" value="blablablabla"/>
+                    <input class="span5 inline-input" name="oldPassword" type="password" value=""/>
                 </div>
                 <div class="field-box">
                     <label>新密码:</label>
-                    <input class="span5 inline-input" type="password" value="blablablabla"/>
+                    <input class="span5 inline-input" name="newPasswrod" type="password" value=""/>
                 </div>
                 <div class="field-box">
                     <label>再次输入:</label>
-                    <input class="span5 inline-input" type="password" value="blablablabla"/>
+                    <input class="span5 inline-input" name="rePassword" type="password" value=""/>
                 </div>
                 <div class="span6 field-box actions">
                     <input type="button" class="btn-glow primary" value="保存修改"/>
@@ -116,7 +116,54 @@
 
 <!-- scripts -->
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/theme.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/theme.js"></script>
+<script type="application/javascript">
+    var $form = $('.modify-password');
+    $form.bootstrapValidator({
+        message : '无效的输入值',
+        feedbackIcons : {
+            valid : 'glyphicon glyphicon-ok',
+            invalid : 'glyphicon glyphicon-remove',
+            validating : 'glyphicon glyphicon-refresh'
+        },
+        fields : {
+            oldPassword : {
+                message: '密码验证失败',
+                validators: {
+                    notEmpty: {
+                        message: '密码不能为空'
+                    },
+                    stringLength: {
+                        min: 6,
+                        max: 18,
+                        message: '密码长度必须在6到18位之间'
+                    },
+                    regexp: {
+                        regexp: /^[a-zA-Z0-9_]+$/,
+                        message: '密码只能包含大写、小写、数字和下划线'
+                    }
+                }
+            },
+            newPassword : {
+                message: '密码验证失败',
+                validators: {
+                    notEmpty: {
+                        message: '密码不能为空'
+                    },
+                    stringLength: {
+                        min: 6,
+                        max: 18,
+                        message: '密码长度必须在6到18位之间'
+                    },
+                    regexp: {
+                        regexp: /^[a-zA-Z0-9_]+$/,
+                        message: '密码只能包含大写、小写、数字和下划线'
+                    }
+                }
+            }
+        }
+    })
+</script>
 </body>
 </html>

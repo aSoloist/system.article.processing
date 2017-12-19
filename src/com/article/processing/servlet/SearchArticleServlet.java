@@ -25,6 +25,6 @@ public class SearchArticleServlet extends BaseServlet<ArticleDaoImpl> {
         String title = req.getParameter("title");
         List<Article> list = baseDao.getByTitle(user.getId(), title);
         req.setAttribute("articles", list);
-        req.getRequestDispatcher("my-manuscript.jsp").forward(req, resp);
+        req.getRequestDispatcher("/admin/my-manuscript.jsp").forward(req, resp);
     }
 }

@@ -188,13 +188,14 @@ public class UserDaoImpl implements UserDao {
     public User getUserByPhoneAndPass(String phone, String password) {
         String sql = "select * from user where phone = ? and password = ? and status <> -1";
         PreparedStatement preparedStatement = DBUtil.getPatmt(sql);
-        User user = new User();
+        User user = null;
         ResultSet resultSet = null;
         try {
             preparedStatement.setString(1, phone);
             preparedStatement.setString(2, password);
             resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
+                user = new User();
                 createUser(user, resultSet);
             }
         } catch (SQLException e) {
@@ -214,13 +215,14 @@ public class UserDaoImpl implements UserDao {
     public User getUserByEmailAndPass(String email, String password) {
         String sql = "select * from user where email = ? and password = ? and status <> -1";
         PreparedStatement preparedStatement = DBUtil.getPatmt(sql);
-        User user = new User();
+        User user = null;
         ResultSet resultSet = null;
         try {
             preparedStatement.setString(1, email);
             preparedStatement.setString(2, password);
             resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
+                user = new User();
                 createUser(user, resultSet);
             }
         } catch (SQLException e) {

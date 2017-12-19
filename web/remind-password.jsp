@@ -42,7 +42,7 @@
     <div class="span4 box">
         <div class="content-wrap">
             <h6>找回密码</h6>
-            <form id="loginForm" method="post" action="${pageContext.request.contextPath}/admin-login">
+            <form id="loginForm" method="post" action="${pageContext.request.contextPath}/forgetPassword">
                 <input class="span12" type="text" placeholder="E-mail" name="email"/>
                 <a class="btn-glow primary login"  href="javascript:document.getElementById('loginForm').submit();">发送邮件</a>
             </form>

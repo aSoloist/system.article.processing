@@ -66,7 +66,7 @@
         <a href="signup.jsp">注册一个</a>
     </div>
     <div class="span4 no-account">
-        <a href="admin-signin.jsp">管理员登录</a>
+        <a href="admin/admin-signin.jsp">管理员登录</a>
     </div>
 
 </div>

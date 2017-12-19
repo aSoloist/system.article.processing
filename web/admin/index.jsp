@@ -53,6 +53,12 @@
             </a>
         </li>
         <li>
+            <a href="get-message.jsp">
+                <i class="icon-home"></i>
+                <span>消息</span>
+            </a>
+        </li>
+        <li>
             <a class="dropdown-toggle" href="#">
                 <i class="icon-group"></i>
                 <span>用户中心</span>

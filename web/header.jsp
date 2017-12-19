@@ -18,11 +18,11 @@
             <span class="icon-bar"></span>
         </button>
 
-        <a class="brand" href="index.html">稿件管理系统</a>
+        <a class="brand" href="index.jsp">稿件管理系统</a>
 
         <ul class="nav pull-right">
             <li class="hidden-phone">
-                <input class="search" type="text"/>
+                <input class="search" type="text" placeholder=""/>
             </li>
             <li class="notification-dropdown hidden-phone">
                 <a href="#" class="trigger">

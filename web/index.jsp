@@ -121,6 +121,25 @@
         <!-- end upper main stats -->
 
         <div id="pad-wrapper">
+
+            <div class="row-fluid chart">
+                <div class="row-fluid head">
+                    <div class="span12">
+                        <h4>公告板</h4>
+                    </div>
+                </div>
+
+                <div class="row-fluid filter-block">
+                    <div class="pull-right">
+                        <a class="glow right" href="javascript:void(0);">查看全部>></a>
+                    </div>
+                </div>
+                <br>
+                <div class="span12"><h5>电子公告板英文缩写是BBS，是“Bulletin Board
+                    System”的首字母缩写，网络用语，即电子公告板，是Internet上的一种电于信息服务系统。
+                    它提供一块公共电子白板，每个用户都可以在上面书写，可发布信息或提出看法。</h5></div>
+            </div>
+
             <!-- orders table -->
             <div class="table-wrapper orders-table section">
                 <div class="row-fluid head">
@@ -131,8 +150,7 @@
 
                 <div class="row-fluid filter-block">
                     <div class="pull-right">
-                        <button class="glow right large" onclick="window.location.href='my-manuscript.jsp'">查看全部>>
-                        </button>
+                        <a class="glow right" href="my-manuscript.jsp">查看全部>></a>
                     </div>
                 </div>
                 <br>

@@ -1,7 +1,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: Soloist
+  Date: 2017/12/14
+  Time: 22:24
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>稿件管理系统 - 主页</title>
+    <title>稿件管理系统 - 我的稿件</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
@@ -42,7 +50,7 @@
 <!-- sidebar -->
 <div id="sidebar-nav">
     <ul id="dashboard-menu">
-        <li class="active">
+        <li>
             <div class="pointer">
                 <div class="arrow"></div>
                 <div class="arrow_border"></div>
@@ -64,14 +72,14 @@
                 <li><a href="modify-password.jsp">更改密码</a></li>
             </ul>
         </li>
-        <li>
+        <li class="active">
             <a class="dropdown-toggle" href="#">
                 <i class="icon-edit"></i>
                 <span>稿件管理</span>
                 <i class="icon-chevron-down"></i>
             </a>
-            <ul class="submenu">
-                <li><a href="my-manuscript.jsp">我的稿件</a></li>
+            <ul class="active submenu">
+                <li><a href="my-manuscript.jsp" class="active">我的稿件</a></li>
                 <li><a href="submit-manuscript.jsp">提交稿件</a></li>
             </ul>
         </li>
@@ -202,6 +210,25 @@
                             </td>
                             <td>
                                 Jan 03, 2017
+                            </td>
+                            <td>
+                                <a href="#">emmmmmmm</a>
+                            </td>
+                            <td>
+                                四个瓜皮
+                            </td>
+                            <td>
+                                8
+                            </td>
+                            <td>
+                                <span class="label">未通过</span>
+                            </td>
+                        </tr><tr>
+                            <td>
+                                <a href="#">#625</a>
+                            </td>
+                            <td>
+                                Jan 06, 2017
                             </td>
                             <td>
                                 <a href="#">emmmmmmm</a>

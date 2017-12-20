@@ -86,7 +86,7 @@
             </ul>
         </li>
         <li>
-            <a href="../signin.jsp">
+            <a href="${pageContext.request.contextPath}/exit">
                 <i class="icon-share-alt"></i>
                 <span>退出帐号</span>
             </a>

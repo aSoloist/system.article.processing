@@ -48,7 +48,7 @@
                 <div class="arrow_border"></div>
             </div>
             <a href="index.jsp">
-                <i class="icon-home"></i>
+                <i class="icon-comment"></i>
                 <span>主页</span>
             </a>
         </li>

@@ -16,7 +16,8 @@
     <link href="css/bootstrap/bootstrap.css" rel="stylesheet" />
     <link href="css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
     <link href="css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet" />
-
+    <!-- validator -->
+    <link href="css/validate.css" type="text/css" rel="stylesheet">
     <!-- global styles -->
     <link rel="stylesheet" type="text/css" href="css/layout.css" />
     <link rel="stylesheet" type="text/css" href="css/elements.css" />
@@ -42,10 +43,14 @@
     <div class="span4 box">
         <div class="content-wrap">
             <h6>管理员登录</h6>
+            <div class="alert alert-info">
+                <i class="icon-lightbulb"></i>
+                <span style="font-size: 16px" class="point">提示</span>
+            </div>
             <form id="loginForm" method="post" action="${pageContext.request.contextPath}/admin-login">
-                <input class="span12" type="text" placeholder="手机号/E-mail" name="phoneOrEmail"/>
-                <input class="span12" type="password" placeholder="密码"  name="password"/><br><br>
-                <a class="btn-glow primary login"  href="javascript:document.getElementById('loginForm').submit();">登录</a>
+                <input class="span12" type="text" placeholder="手机号/E-mail" reg="^\S+$" tip="手机号或邮箱不能为空" name="phoneOrEmail"/>
+                <input class="span12" type="password" placeholder="密码" reg="^\S+$" tip="密码不能为空"  name="password"/><br><br>
+                <a class="btn-glow primary login" id="login"  href="javascript:document.getElementById('loginForm').submit();">登录</a>
             </form>
         </div>
     </div>
@@ -55,6 +60,8 @@
     </div>
 
 </div>
-
+<script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
+<script type="application/javascript" src="js/easy_validator.pack.js"></script>
+<script type="text/javascript" src="js/jquery.bgiframe.min.js"></script>
 </body>
 </html>

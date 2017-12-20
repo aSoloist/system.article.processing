@@ -9,6 +9,7 @@
     <link href="css/bootstrap/bootstrap.css" rel="stylesheet" />
     <link href="css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
     <link href="css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet" />
+    <link href="css/validate.css" type="text/css" rel="stylesheet">
 
     <!-- global styles -->
     <link rel="stylesheet" type="text/css" href="css/layout.css" />
@@ -33,7 +34,7 @@
 <body>
 
 <div class="header">
-    <a href="index.html">
+    <a href="signin.jsp">
         <img src="img/logo.png" class="logo" />
     </a>
 </div>
@@ -41,55 +42,60 @@
     <div class="box">
         <div class="content-wrap">
             <h6>注册新用户</h6>
+            <div class="alert alert-info">
+                <i class="icon-lightbulb"></i>
+                <span style="font-size: 16px" class="point">提示</span>
+            </div>
             <form id="loginForm" method="post" action="${pageContext.request.contextPath}/register">
                 <table id="TABLE">
                     <tbody>
                     <tr>
                         <td>姓名：</td>
                         <td>
-                            <input class="span12" name="nickname" placeholder="2 - 4个汉字" type="text"/>
+                            <input class="span12" name="username" reg="^[\u4e00-\u9fa5]{2,4}$" tip="请输入2-4个汉字" type="text"/>
                         </td>
                     </tr>
                     <tr>
                         <td>密码：</td>
                         <td>
-                            <input class="span12" name="password" placeholder="密码" type="password"/>
+                            <input class="span12" name="password" reg="^[a-zA-Z0-9_]{6,}$" tip="密码长度最小为6，只能含有字母数字下划线" type="password"/>
                         </td>
                     </tr>
                     <tr>
                         <td>确认密码：</td>
                         <td>
-                            <input class="span12" name="password2" placeholder="再次输入密码" type="password"/>
+                            <input class="span12" name="password2" reg="^[a-zA-Z0-9_]{6,}$" tip="请再次输入密码" type="password"/>
                         </td>
                     </tr>
                     <tr>
                         <td>用户名：</td>
                         <td>
-                            <input class="span12" name="username" placeholder="请输入用户名" type="text"/>
+                            <input class="span12" name="nickname" reg="^[\u4e00-\u9fa5a-zA-Z0-9_]{3,}$" tip="用户名长度最小为3，可以含有汉字字母数字下划线" type="text"/>
                         </td>
                     </tr>
                     <tr>
                         <td>单位：</td>
                         <td>
-                            <input class="span12" name="unit" placeholder="单位" type="text"/>
+                            <input class="span12" name="unit" reg="^[\u4e00-\u9fa5]+$" tip="请输入所在单位" type="text"/>
                         </td>
                     </tr>
                     <tr>
                         <td>地址：</td>
                         <td>
-                            <input class="span12" name="address" placeholder="精确到省" type="text"/>
+                            <input class="span12" name="address" reg="^[\u4e00-\u9fa5]{6,}$" tip="请输入地址，例如：河南省郑州市" type="text"/>
                         </td>
                     </tr>
                     <tr>
                         <td>手机号：</td>
                         <td>
-                            <input class="span12" name="phone" placeholder="请输入11位手机号" type="text"/>
+                            <input class="span12" name="phone" reg="^1[3|5|7|8][0-9]{9}$" tip="请输入正确格式的手机号" url="${pageContext.request.contextPath}/isExist" type="text"/>
                         </td>
                     </tr>
                     <tr>
                         <td>E-mail：</td>
                         <td>
-                            <input class="span12" name="email" placeholder="XXXXXXXX @ XXX .com" type="text"/>
+                            <input class="span12" name="email" reg="^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$" tip="请输入正确格式的邮箱"
+                                   url="${pageContext.request.contextPath}/isExist" type="text"/>
                         </td>
                     </tr>
                 </table>
@@ -99,7 +105,7 @@
                         和<a href="javascript:void(0);"> "隐私相关政策" </a></label>
                 </div>
                 <div class="action">
-                    <a class="btn-glow primary signup" href="javascript:document.getElementById('loginForm').submit();">注册</a>
+                    <a class="btn-glow primary signup" id="login" href="javascript:document.getElementById('loginForm').submit();">注册</a>
                 </div>
             </form>
         </div>
@@ -115,6 +121,8 @@
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/theme.js"></script>
-
+<script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
+<script type="application/javascript" src="js/easy_validator.pack.js"></script>
+<script type="text/javascript" src="js/jquery.bgiframe.min.js"></script>
 </body>
 </html>

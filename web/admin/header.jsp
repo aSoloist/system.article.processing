@@ -82,7 +82,7 @@
                 </a>
             </li>
             <li class="settings hidden-phone">
-                <a href="../signin.jsp" role="button">
+                <a href="${pageContext.request.contextPath}/exit" role="button">
                     <i class="icon-share-alt"></i>
                 </a>
             </li>

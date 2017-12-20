@@ -33,6 +33,8 @@ public class UpdateUserServlet extends BaseServlet<UserDaoImpl> {
             user.setUnit(unit);
             int reuslt = baseDao.update(user);
             if (reuslt == 1) {
+                req.getSession().removeAttribute("user");
+                req.getSession().setAttribute("user", user);
                 resp.getWriter().write("success");
             } else {
                 resp.getWriter().write("fail");               

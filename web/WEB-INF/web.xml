@@ -117,4 +117,14 @@
         <servlet-name>updateUserServlet</servlet-name>
         <url-pattern>/updateUser</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>exitServlet</servlet-name>
+        <servlet-class>com.article.processing.servlet.ExitServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>exitServlet</servlet-name>
+        <url-pattern>/exit</url-pattern>
+    </servlet-mapping>
 </web-app>

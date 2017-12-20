@@ -24,10 +24,12 @@ public class UpdatePasswordServlet extends BaseServlet<UserDaoImpl> {
         } else {
             String oldPassword = encrypt(req.getParameter("oldPassword"));
             if (user.getPassword().equals(oldPassword)) {
-                String password = req.getParameter("newPasswrod");
+                String password = encrypt(req.getParameter("newPasswrod"));
                 user.setPassword(password);
                 int result = baseDao.update(user);
                 if (result == 1) {
+                    req.getSession().removeAttribute("user");
+                    req.getSession().setAttribute("user", user);
                     resp.getWriter().write("success");
                 } else {
                     resp.getWriter().write("fail");

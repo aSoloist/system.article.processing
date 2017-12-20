@@ -55,7 +55,7 @@
             <form id="loginForm" method="post" action="${pageContext.request.contextPath}/login">
                 <input class="span12" type="text" placeholder="手机号/E-mail" name="phoneOrEmail" reg="^\S+$" tip="手机号或邮箱不能为空"/>
                 <input class="span12" type="password" placeholder="密码" name="password" reg="^\S+$" tip="密码不能为空"/>
-                <a href="admin/remind-password.jsp" class="forgot">忘记密码？</a>
+                <a href="remind-password.jsp" class="forgot">忘记密码？</a>
                 <a class="btn-glow primary login"
                    href="javascript:document.getElementById('loginForm').submit();">登录</a>
             </form>

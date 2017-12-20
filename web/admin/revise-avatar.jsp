@@ -45,7 +45,7 @@
         </li>
         <li>
             <a href="get-message.jsp">
-                <i class="icon-home"></i>
+                <i class="icon-comment"></i>
                 <span>消息</span>
             </a>
         </li>
@@ -89,12 +89,13 @@
             <div class="span7 personal-info">
                 <h5 class="personal-title">修改头像</h5>
                 <!-- avatar column -->
-                <div class="span3 avatar-box">
-                    <div class="personal-image">
-                        <img src="../img/personal-info.png" class="avatar img-circle"/>
-                        <p>上传一张照片（文件大小2M以下）...</p>
-
-                        <input type="file"/>
+                <div class="field-box">
+                    <div class="span12 avatar-box">
+                        <div class="personal-image">
+                            <img src="../img/personal-info.png" class="avatar img-circle"/>
+                            <p>上传一张照片（文件大小2M以下）...</p>
+                            <input type="file"/>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -29,7 +29,7 @@
                     </div>
                     <div class="oper">
                         <p><a href="javascript:history.go(-1);">返回上一级页面&gt;</a></p>
-                        <p><a href="/">回到网站首页&gt;</a></p>
+                        <p><a href="<%=basePath %>admin/index.jsp">回到网站首页&gt;</a></p>
                     </div>
                 </div>
             </div>

@@ -28,7 +28,7 @@ $(function () {
         }
     });
 
-    $("a.login").click(function () {
+    $("a#login").click(function () {
         var isSubmit = true;
         $("[reg],[url]:not([reg])").each(function () {
             if ($(this).attr("reg") === undefined) {
@@ -41,11 +41,6 @@ $(function () {
                 }
             }
         });
-        if (typeof(isExtendsValidate) !== "undefined") {
-            if (isSubmit && isExtendsValidate) {
-                return extendsValidate();
-            }
-        }
         return isSubmit;
     });
 
@@ -81,14 +76,16 @@ function ajax_validate(obj) {
         url_str = url_str + "?" + obj.attr("name") + "=" + obj.attr("value");
     }
     var feed_back = $.ajax({url: url_str, cache: false, async: false}).responseText;
-    feed_back = feed_back.replace(/(^\s*)|(\s*$)/g, "");
+    var point = $('span.point');
     if (feed_back === 'success') {
-        change_error_style(obj, "remove");
-        change_tip(obj, null, "remove");
+        change_error_style($('div.alert'), "remove");
+        point.empty();
+        point.append(obj.attr("value") + "可以使用");
         return true;
-    } else {
-        change_error_style(obj, "add");
-        change_tip(obj, feed_back, "add");
+    } else if (feed_back === 'fail') {
+        change_error_style($('div.alert'), "add");
+        point.empty();
+        point.append(obj.attr("value") + "已存在");
         return false;
     }
 }
@@ -102,17 +99,6 @@ function change_error_style(obj, action_type) {
         obj.addClass("alert-info");
         var point = $('span.point');
         point.empty();
+        point.append('格式正确');
     }
 }
-
-$.fn.validate_callback = function (msg, action_type, options) {
-    this.each(function () {
-        if (action_type === "failed") {
-            change_error_style($(this), "add");
-            change_tip($(this), msg, "add");
-        } else {
-            change_error_style($(this), "remove");
-            change_tip($(this), null, "remove");
-        }
-    });
-};

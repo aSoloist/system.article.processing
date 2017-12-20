@@ -94,22 +94,22 @@
             <div class="span7 personal-info">
                 <h5 class="personal-title">个人信息</h5>
 
-                <form/>
+                <form action="${pageContext.request.contextPath}/updateUser" method="post">
                 <div class="field-box">
                     <label>姓名:</label>
-                    <input class="span5 inline-input" type="text" value="<%=user.getUsername()%>"/>
+                    <input class="span5 inline-input" type="text" name="username" value="<%=user.getUsername()%>"/>
                 </div>
                 <div class="field-box">
                     <label>用户名:</label>
-                    <input class="span5 inline-input" type="text" value="<%=user.getNickname()%>"/>
+                    <input class="span5 inline-input" type="text" name="nickname" value="<%=user.getNickname()%>"/>
                 </div>
                 <div class="field-box">
                     <label>单位:</label>
-                    <input class="span5 inline-input" type="text" value="<%=user.getUnit()%>"/>
+                    <input class="span5 inline-input" type="text" name="unit" value="<%=user.getUnit()%>"/>
                 </div>
                 <div class="field-box">
                     <label>地址:</label>
-                    <input class="span5 inline-input" type="text" value="<%=user.getAddress()%>"/>
+                    <input class="span5 inline-input" type="text" name="address" value="<%=user.getAddress()%>"/>
                 </div>
                 <div class="field-box">
                     <label>手机号:</label>
@@ -120,7 +120,7 @@
                     <input class="span5 inline-input" type="text" value="<%=user.getEmail()%>" disabled="true"/>
                 </div>
                 <div class="span6 field-box actions">
-                    <input type="button" class="btn-glow primary" value="保存修改"/>
+                    <input type="submit" class="btn-glow primary" value="保存修改"/>
                     <span>或</span>
                     <input type="reset" value="取消" class="reset"/>
                 </div>

@@ -91,7 +91,7 @@
             <div class="span7 personal-info">
                 <h5 class="personal-title">修改密码</h5>
 
-                <form class="modify-password" method="post" action="">
+                <form class="modify-password" method="post" action="${pageContext.request.contextPath}/updatePassword">
                 <div class="field-box">
                     <label>原密码:</label>
                     <input class="span5 inline-input" name="oldPassword" type="password" value=""/>
@@ -105,7 +105,7 @@
                     <input class="span5 inline-input" name="rePassword" type="password" value=""/>
                 </div>
                 <div class="span6 field-box actions">
-                    <input type="button" class="btn-glow primary" value="保存修改"/>
+                    <input type="submit" class="btn-glow primary" value="保存修改"/>
                     <span>或</span>
                     <input type="reset" value="取消" class="reset"/>
                 </div>

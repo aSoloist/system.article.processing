@@ -53,10 +53,6 @@
                 <div class="arrow"></div>
                 <div class="arrow_border"></div>
             </div>
-            <div class="pointer">
-                <div class="arrow"></div>
-                <div class="arrow_border"></div>
-            </div>
             <a href="get-message.jsp">
                 <i class="icon-home"></i>
                 <span>消息</span>

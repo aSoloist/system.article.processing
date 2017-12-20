@@ -154,128 +154,127 @@
                     </div>
                 </div>
 
-                <div class="row-fluid filter-block">
+                <div class="row-fluid filter-block span12">
                     <div class="pull-right">
                         <a class="glow right" href="my-manuscript.jsp">查看全部>></a>
                     </div>
-                </div>
-                <br>
 
-                <div class="row-fluid">
-                    <table class="table table-hover">
-                        <thead>
-                        <tr>
-                            <th class="span2">
-                                稿件ID
-                            </th>
-                            <th class="span3">
-                                最近提交日期
-                            </th>
-                            <th class="span3">
-                                <span class="line"></span>
-                                标题
-                            </th>
-                            <th class="span3">
-                                <span class="line"></span>
-                                内容
-                            </th>
-                            <th class="span3">
-                                <span class="line"></span>
-                                提交次数
-                            </th>
-                            <th class="span3">
-                                <span class="line"></span>
-                                状态
-                            </th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <!-- row -->
-                        <tr class="first">
-                            <td>
-                                <a href="#">#459</a>
-                            </td>
-                            <td>
-                                Jan 03, 2017
-                            </td>
-                            <td>
-                                <a href="#">emmmm</a>
-                            </td>
-                            <td>
-                                瓜皮
-                            </td>
-                            <td>
-                                3
-                            </td>
-                            <td>
-                                <span class="label label-success">通过</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="#">#510</a>
-                            </td>
-                            <td>
-                                Feb 22, 2017
-                            </td>
-                            <td>
-                                <a href="#">emmmmm</a>
-                            </td>
-                            <td>
-                                两个瓜皮
-                            </td>
-                            <td>
-                                5
-                            </td>
-                            <td>
-                                <span class="label label-info">审核中</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="#">#590</a>
-                            </td>
-                            <td>
-                                Mar 03, 2017
-                            </td>
-                            <td>
-                                <a href="#">emmmmmm</a>
-                            </td>
-                            <td>
-                                三个瓜皮
-                            </td>
-                            <td>
-                                4
-                            </td>
-                            <td>
-                                <span class="label label-success">通过</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="#">#618</a>
-                            </td>
-                            <td>
-                                Jan 03, 2017
-                            </td>
-                            <td>
-                                <a href="#">emmmmmmmm</a>
-                            </td>
-                            <td>
-                                四个瓜皮
-                            </td>
-                            <td>
-                                8
-                            </td>
-                            <td>
-                                <span class="label">未通过</span>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+                    <div class="row-fluid">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th class="span2">
+                                    稿件ID
+                                </th>
+                                <th class="span3">
+                                    最近提交日期
+                                </th>
+                                <th class="span3">
+                                    <span class="line"></span>
+                                    标题
+                                </th>
+                                <th class="span3">
+                                    <span class="line"></span>
+                                    内容
+                                </th>
+                                <th class="span3">
+                                    <span class="line"></span>
+                                    提交次数
+                                </th>
+                                <th class="span3">
+                                    <span class="line"></span>
+                                    状态
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <!-- row -->
+                            <tr class="first">
+                                <td>
+                                    <a href="#">#459</a>
+                                </td>
+                                <td>
+                                    Jan 03, 2017
+                                </td>
+                                <td>
+                                    <a href="#">emmmm</a>
+                                </td>
+                                <td>
+                                    瓜皮
+                                </td>
+                                <td>
+                                    3
+                                </td>
+                                <td>
+                                    <span class="label label-success">通过</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="#">#510</a>
+                                </td>
+                                <td>
+                                    Feb 22, 2017
+                                </td>
+                                <td>
+                                    <a href="#">emmmmm</a>
+                                </td>
+                                <td>
+                                    两个瓜皮
+                                </td>
+                                <td>
+                                    5
+                                </td>
+                                <td>
+                                    <span class="label label-info">审核中</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="#">#590</a>
+                                </td>
+                                <td>
+                                    Mar 03, 2017
+                                </td>
+                                <td>
+                                    <a href="#">emmmmmm</a>
+                                </td>
+                                <td>
+                                    三个瓜皮
+                                </td>
+                                <td>
+                                    4
+                                </td>
+                                <td>
+                                    <span class="label label-success">通过</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="#">#618</a>
+                                </td>
+                                <td>
+                                    Jan 03, 2017
+                                </td>
+                                <td>
+                                    <a href="#">emmmmmmmm</a>
+                                </td>
+                                <td>
+                                    四个瓜皮
+                                </td>
+                                <td>
+                                    8
+                                </td>
+                                <td>
+                                    <span class="label">未通过</span>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
+                <!-- end orders table -->
             </div>
-            <!-- end orders table -->
         </div>
     </div>
 </div>

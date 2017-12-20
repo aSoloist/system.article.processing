@@ -41,13 +41,15 @@
 <div id="sidebar-nav">
     <ul id="dashboard-menu">
         <li>
-            <div class="pointer">
-                <div class="arrow"></div>
-                <div class="arrow_border"></div>
-            </div>
             <a href="index.jsp">
                 <i class="icon-home"></i>
                 <span>主页</span>
+            </a>
+        </li>
+        <li>
+            <a href="get-message.jsp">
+                <i class="icon-home"></i>
+                <span>消息</span>
             </a>
         </li>
         <li class="active">

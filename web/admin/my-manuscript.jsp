@@ -100,7 +100,7 @@
         <div id="pad-wrapper">
 
             <!-- orders table -->
-            <div class="table-wrapper orders-table section">
+            <div class="table-wrapper orders-table">
                 <div class="row-fluid head">
                     <div class="span12">
                         <h4>稿件状态</h4>
@@ -108,7 +108,7 @@
                 </div>
                 <br>
 
-                <div class="row-fluid">
+                <div class="row-fluid span12">
                     <table class="table table-hover">
                         <thead>
                         <tr>

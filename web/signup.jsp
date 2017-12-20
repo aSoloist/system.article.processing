@@ -41,7 +41,7 @@
     <div class="box">
         <div class="content-wrap">
             <h6>注册新用户</h6>
-            <form id="loginForm" method="post" action="${pageContext.request.contextPath}/login">
+            <form id="loginForm" method="post" action="${pageContext.request.contextPath}/register">
                 <table id="TABLE">
                     <tbody>
                     <tr>
@@ -89,7 +89,7 @@
                     <tr>
                         <td>E-mail：</td>
                         <td>
-                            <input class="span12" name="phone" placeholder="XXXXXXXX @ XXX .com" type="text"/>
+                            <input class="span12" name="email" placeholder="XXXXXXXX @ XXX .com" type="text"/>
                         </td>
                     </tr>
                 </table>

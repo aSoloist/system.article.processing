@@ -97,7 +97,270 @@
 
 <!-- main container -->
 <div class="content">
+    <div class="container-fluid">
+        <div id="pad-wrapper">
+            <div class="table-wrapper orders-table">
+                <div class="row-fluid head">
+                    <div class="span12">
+                        <h4>消息</h4>
+                    </div>
+                </div>
+                <br>
 
+                <div class="row-fluid">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th class="span1">
+                                <input type="checkbox" title="">
+                            </th>
+                            <th class="span2">
+                                <span class="line"></span>时间
+                            </th>
+                            <th class="span3">
+                                <span class="line"></span>标题
+                            </th>
+                            <th class="span12">
+                                <span class="line"></span>内容
+                            </th>
+                            <th class="span2">
+                                <span class="line"></span>操作
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!-- row -->
+                        <tr>
+                            <td>
+                                <input type="checkbox" title="">
+                            </td>
+                            <td class="time">
+                                Jun 20, 2017
+                            </td>
+                            <td>
+                                <a href="#" class="name">一个瓜皮标题</a>
+                            </td>
+                            <td class="description">
+                                测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本
+                            </td>
+                            <td>
+                                <ul></ul>
+                                <ul class="actions">
+                                    <li><a href="#">已读</a></li>
+                                    <li class="last"><a href="#">删除</a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <!-- row -->
+                        <tr>
+                            <td>
+                                <input type="checkbox" title="">
+                            </td>
+                            <td class="time">
+                                Jun 20, 2017
+                            </td>
+                            <td>
+                                <a href="#" class="name">一个瓜皮标题</a>
+                            </td>
+                            <td class="description">
+                                测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本
+                            </td>
+                            <td>
+                                <ul></ul>
+                                <ul class="actions">
+                                    <li><a href="#">已读</a></li>
+                                    <li class="last"><a href="#">删除</a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <!-- row -->
+                        <tr>
+                            <td>
+                                <input type="checkbox" title="">
+                            </td>
+                            <td class="time">
+                                Jun 20, 2017
+                            </td>
+                            <td>
+                                <a href="#" class="name">一个瓜皮标题</a>
+                            </td>
+                            <td class="description">
+                                测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本
+                            </td>
+                            <td>
+                                <ul></ul>
+                                <ul class="actions">
+                                    <li><a href="#">已读</a></li>
+                                    <li class="last"><a href="#">删除</a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <!-- row -->
+                        <tr>
+                            <td>
+                                <input type="checkbox" title="">
+                            </td>
+                            <td class="time">
+                                Jun 20, 2017
+                            </td>
+                            <td>
+                                <a href="#" class="name">一个瓜皮标题</a>
+                            </td>
+                            <td class="description">
+                                测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本
+                            </td>
+                            <td>
+                                <ul></ul>
+                                <ul class="actions">
+                                    <li><a href="#">已读</a></li>
+                                    <li class="last"><a href="#">删除</a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" title="">
+                            </td>
+                            <td class="time">
+                                Jun 20, 2017
+                            </td>
+                            <td>
+                                <a href="#" class="name">一个瓜皮标题</a>
+                            </td>
+                            <td class="description">
+                                测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本
+                            </td>
+                            <td>
+                                <ul></ul>
+                                <ul class="actions">
+                                    <li><a href="#">已读</a></li>
+                                    <li class="last"><a href="#">删除</a></li>
+                                </ul>
+                            </td>
+                        </tr>                        <tr class="first">
+                            <td>
+                                <input type="checkbox" title="">
+                            </td>
+                            <td class="time">
+                                Jun 20, 2017
+                            </td>
+                            <td>
+                                <a href="#" class="name">一个瓜皮标题</a>
+                            </td>
+                            <td class="description">
+                                测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本
+                            </td>
+                            <td>
+                                <ul></ul>
+                                <ul class="actions">
+                                    <li><a href="#">已读</a></li>
+                                    <li class="last"><a href="#">删除</a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <!-- row -->
+                        <tr>
+                            <td>
+                                <input type="checkbox" title="">
+                            </td>
+                            <td class="time">
+                                Jun 20, 2017
+                            </td>
+                            <td>
+                                <a href="#" class="name">一个瓜皮标题</a>
+                            </td>
+                            <td class="description">
+                                测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本
+                            </td>
+                            <td>
+                                <ul></ul>
+                                <ul class="actions">
+                                    <li><a href="#">已读</a></li>
+                                    <li class="last"><a href="#">删除</a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <!-- row -->
+                        <tr>
+                            <td>
+                                <input type="checkbox" title="">
+                            </td>
+                            <td class="time">
+                                Jun 20, 2017
+                            </td>
+                            <td>
+                                <a href="#" class="name">一个瓜皮标题</a>
+                            </td>
+                            <td class="description">
+                                测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本
+                            </td>
+                            <td>
+                                <ul></ul>
+                                <ul class="actions">
+                                    <li><a href="#">已读</a></li>
+                                    <li class="last"><a href="#">删除</a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <!-- row -->
+                        <tr>
+                            <td>
+                                <input type="checkbox" title="">
+                            </td>
+                            <td class="time">
+                                Jun 20, 2017
+                            </td>
+                            <td>
+                                <a href="#" class="name">一个瓜皮标题</a>
+                            </td>
+                            <td class="description">
+                                测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本
+                            </td>
+                            <td>
+                                <ul></ul>
+                                <ul class="actions">
+                                    <li><a href="#">已读</a></li>
+                                    <li class="last"><a href="#">删除</a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" title="">
+                            </td>
+                            <td class="time">
+                                Jun 20, 2017
+                            </td>
+                            <td>
+                                <a href="#" class="name">一个瓜皮标题</a>
+                            </td>
+                            <td class="description">
+                                测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本
+                            </td>
+                            <td>
+                                <ul></ul>
+                                <ul class="actions">
+                                    <li><a href="#">已读</a></li>
+                                    <li class="last"><a href="#">删除</a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="pagination pull-left right">
+                        <ul>
+                            <li><a href="#">‹</a></li>
+                            <li><a class="active" href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">›</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- scripts -->

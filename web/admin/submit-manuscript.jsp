@@ -58,7 +58,7 @@
         </li>
         <li>
             <a href="get-message.jsp">
-                <i class="icon-home"></i>
+                <i class="icon-comment"></i>
                 <span>消息</span>
             </a>
         </li>

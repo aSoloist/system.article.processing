@@ -103,13 +103,10 @@
                 </div>
                 <br>
 
-                <div class="row-fluid">
+                <div class="row-fluid span12">
                     <table class="table table-hover">
                         <thead>
                         <tr>
-                            <th class="span1">
-                                <input type="checkbox" title="">
-                            </th>
                             <th class="span2">
                                 <span class="line"></span>时间
                             </th>
@@ -119,17 +116,11 @@
                             <th class="span12">
                                 <span class="line"></span>内容
                             </th>
-                            <th class="span2">
-                                <span class="line"></span>操作
-                            </th>
                         </tr>
                         </thead>
                         <tbody>
                         <!-- row -->
-                        <tr>
-                            <td>
-                                <input type="checkbox" title="">
-                            </td>
+                        <tr class="first">
                             <td class="time">
                                 Jun 20, 2017
                             </td>
@@ -139,19 +130,9 @@
                             <td class="description">
                                 测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本
                             </td>
-                            <td>
-                                <ul></ul>
-                                <ul class="actions">
-                                    <li><a href="#">已读</a></li>
-                                    <li class="last"><a href="#">删除</a></li>
-                                </ul>
-                            </td>
                         </tr>
                         <!-- row -->
                         <tr>
-                            <td>
-                                <input type="checkbox" title="">
-                            </td>
                             <td class="time">
                                 Jun 20, 2017
                             </td>
@@ -161,19 +142,9 @@
                             <td class="description">
                                 测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本
                             </td>
-                            <td>
-                                <ul></ul>
-                                <ul class="actions">
-                                    <li><a href="#">已读</a></li>
-                                    <li class="last"><a href="#">删除</a></li>
-                                </ul>
-                            </td>
                         </tr>
                         <!-- row -->
                         <tr>
-                            <td>
-                                <input type="checkbox" title="">
-                            </td>
                             <td class="time">
                                 Jun 20, 2017
                             </td>
@@ -183,19 +154,9 @@
                             <td class="description">
                                 测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本
                             </td>
-                            <td>
-                                <ul></ul>
-                                <ul class="actions">
-                                    <li><a href="#">已读</a></li>
-                                    <li class="last"><a href="#">删除</a></li>
-                                </ul>
-                            </td>
                         </tr>
                         <!-- row -->
                         <tr>
-                            <td>
-                                <input type="checkbox" title="">
-                            </td>
                             <td class="time">
                                 Jun 20, 2017
                             </td>
@@ -205,18 +166,8 @@
                             <td class="description">
                                 测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本
                             </td>
-                            <td>
-                                <ul></ul>
-                                <ul class="actions">
-                                    <li><a href="#">已读</a></li>
-                                    <li class="last"><a href="#">删除</a></li>
-                                </ul>
-                            </td>
                         </tr>
                         <tr>
-                            <td>
-                                <input type="checkbox" title="">
-                            </td>
                             <td class="time">
                                 Jun 20, 2017
                             </td>
@@ -226,17 +177,8 @@
                             <td class="description">
                                 测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本
                             </td>
-                            <td>
-                                <ul></ul>
-                                <ul class="actions">
-                                    <li><a href="#">已读</a></li>
-                                    <li class="last"><a href="#">删除</a></li>
-                                </ul>
-                            </td>
-                        </tr>                        <tr class="first">
-                            <td>
-                                <input type="checkbox" title="">
-                            </td>
+                        </tr>
+                        <tr>
                             <td class="time">
                                 Jun 20, 2017
                             </td>
@@ -246,19 +188,9 @@
                             <td class="description">
                                 测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本
                             </td>
-                            <td>
-                                <ul></ul>
-                                <ul class="actions">
-                                    <li><a href="#">已读</a></li>
-                                    <li class="last"><a href="#">删除</a></li>
-                                </ul>
-                            </td>
                         </tr>
                         <!-- row -->
                         <tr>
-                            <td>
-                                <input type="checkbox" title="">
-                            </td>
                             <td class="time">
                                 Jun 20, 2017
                             </td>
@@ -268,19 +200,9 @@
                             <td class="description">
                                 测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本
                             </td>
-                            <td>
-                                <ul></ul>
-                                <ul class="actions">
-                                    <li><a href="#">已读</a></li>
-                                    <li class="last"><a href="#">删除</a></li>
-                                </ul>
-                            </td>
                         </tr>
                         <!-- row -->
                         <tr>
-                            <td>
-                                <input type="checkbox" title="">
-                            </td>
                             <td class="time">
                                 Jun 20, 2017
                             </td>
@@ -290,19 +212,9 @@
                             <td class="description">
                                 测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本
                             </td>
-                            <td>
-                                <ul></ul>
-                                <ul class="actions">
-                                    <li><a href="#">已读</a></li>
-                                    <li class="last"><a href="#">删除</a></li>
-                                </ul>
-                            </td>
                         </tr>
                         <!-- row -->
                         <tr>
-                            <td>
-                                <input type="checkbox" title="">
-                            </td>
                             <td class="time">
                                 Jun 20, 2017
                             </td>
@@ -312,18 +224,8 @@
                             <td class="description">
                                 测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本
                             </td>
-                            <td>
-                                <ul></ul>
-                                <ul class="actions">
-                                    <li><a href="#">已读</a></li>
-                                    <li class="last"><a href="#">删除</a></li>
-                                </ul>
-                            </td>
                         </tr>
                         <tr>
-                            <td>
-                                <input type="checkbox" title="">
-                            </td>
                             <td class="time">
                                 Jun 20, 2017
                             </td>
@@ -333,12 +235,63 @@
                             <td class="description">
                                 测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本
                             </td>
+                        </tr>
+                        <tr>
+                            <td class="time">
+                                Jun 20, 2017
+                            </td>
                             <td>
-                                <ul></ul>
-                                <ul class="actions">
-                                    <li><a href="#">已读</a></li>
-                                    <li class="last"><a href="#">删除</a></li>
-                                </ul>
+                                <a href="#" class="name">一个瓜皮标题</a>
+                            </td>
+                            <td class="description">
+                                测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本
+                            </td>
+                        </tr>
+                        <!-- row -->
+                        <tr>
+                            <td class="time">
+                                Jun 20, 2017
+                            </td>
+                            <td>
+                                <a href="#" class="name">一个瓜皮标题</a>
+                            </td>
+                            <td class="description">
+                                测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本
+                            </td>
+                        </tr>
+                        <!-- row -->
+                        <tr>
+                            <td class="time">
+                                Jun 20, 2017
+                            </td>
+                            <td>
+                                <a href="#" class="name">一个瓜皮标题</a>
+                            </td>
+                            <td class="description">
+                                测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本
+                            </td>
+                        </tr>
+                        <!-- row -->
+                        <tr>
+                            <td class="time">
+                                Jun 20, 2017
+                            </td>
+                            <td>
+                                <a href="#" class="name">一个瓜皮标题</a>
+                            </td>
+                            <td class="description">
+                                测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="time">
+                                Jun 20, 2017
+                            </td>
+                            <td>
+                                <a href="#" class="name">一个瓜皮标题</a>
+                            </td>
+                            <td class="description">
+                                测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本
                             </td>
                         </tr>
                         </tbody>

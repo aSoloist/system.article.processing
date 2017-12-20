@@ -34,10 +34,12 @@ $(function () {
             if ($(this).attr("reg") === undefined) {
                 if (!ajax_validate($(this))) {
                     isSubmit = false;
+                    return false;
                 }
             } else {
                 if (!validate($(this))) {
                     isSubmit = false;
+                    return false;
                 }
             }
         });

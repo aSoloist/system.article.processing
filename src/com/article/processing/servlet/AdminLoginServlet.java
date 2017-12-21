@@ -4,6 +4,7 @@ import com.article.processing.dao.impl.UserDaoImpl;
 import com.article.processing.model.User;
 import com.article.processing.utils.MD5Util;
 
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -11,6 +12,7 @@ import java.io.IOException;
 /**
  * Created by Soloist on 2017/12/18 17:53
  */
+@WebServlet("/admin-login")
 public class AdminLoginServlet extends BaseServlet<UserDaoImpl> {
 
     @Override

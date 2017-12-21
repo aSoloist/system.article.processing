@@ -3,6 +3,7 @@ package com.article.processing.servlet;
 import com.article.processing.dao.impl.UserDaoImpl;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -10,6 +11,7 @@ import java.io.IOException;
 /**
  * Created by Soloist on 2017/12/21 0:07
  */
+@WebServlet("/isExist")
 public class IsExistServlet extends BaseServlet<UserDaoImpl> {
 
     @Override
@@ -21,6 +23,8 @@ public class IsExistServlet extends BaseServlet<UserDaoImpl> {
             isExist = baseDao.isExist("", phone);
         } else if (email != null) {
             isExist = baseDao.isExist(email, "");
+        } else {
+            resp.getWriter().write("参数错误");
         }
         if (isExist) {
             resp.getWriter().write("fail");

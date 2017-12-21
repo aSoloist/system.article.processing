@@ -4,6 +4,7 @@ import com.article.processing.dao.impl.UserDaoImpl;
 import com.article.processing.model.User;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -13,6 +14,7 @@ import static com.article.processing.utils.MD5Util.encrypt;
 /**
  * Created by Soloist on 2017/12/20 21:27
  */
+@WebServlet("/updatePassword")
 public class UpdatePasswordServlet extends BaseServlet<UserDaoImpl> {
 
     @Override

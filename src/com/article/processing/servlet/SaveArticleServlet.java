@@ -5,6 +5,7 @@ import com.article.processing.model.Article;
 import com.article.processing.model.User;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -12,6 +13,7 @@ import java.io.IOException;
 /**
  * Created by Soloist on 2017/12/13 17:38
  */
+@WebServlet("/saveArticle")
 public class SaveArticleServlet extends BaseServlet<ArticleDaoImpl> {
 
     /**

@@ -4,6 +4,7 @@ import com.article.processing.dao.impl.UserDaoImpl;
 import com.article.processing.model.User;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -11,6 +12,7 @@ import java.io.IOException;
 /**
  * Created by Soloist on 2017/12/20 21:20
  */
+@WebServlet("/updateUser")
 public class UpdateUserServlet extends BaseServlet<UserDaoImpl> {
 
     /**
@@ -24,13 +26,26 @@ public class UpdateUserServlet extends BaseServlet<UserDaoImpl> {
         User user = (User) req.getSession().getAttribute("user");
         if (user != null) {
             String username = req.getParameter("username");
+            if (username != null && !"".equals(username)) {
+                username = username.trim();
+                user.setUsername(username);
+            }
             String nickname = req.getParameter("nickname");
+            if (nickname != null && !"".equals(nickname)) {
+                nickname = nickname.trim();
+                user.setNickname(nickname);
+            }
             String address = req.getParameter("address");
+            if (address != null && !"".equals(address)) {
+                address = address.trim();
+                user.setAddress(address);
+            }
             String unit = req.getParameter("unit");
-            user.setUsername(username);
-            user.setNickname(nickname);
-            user.setAddress(address);
-            user.setUnit(unit);
+            if (unit != null && !"".equals(unit)) {
+                unit = unit.trim();
+                user.setUnit(unit);
+            }
+            
             int reuslt = baseDao.update(user);
             if (reuslt == 1) {
                 req.getSession().removeAttribute("user");

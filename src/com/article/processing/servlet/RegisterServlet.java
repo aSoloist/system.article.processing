@@ -4,9 +4,11 @@ import com.article.processing.dao.impl.UserDaoImpl;
 import com.article.processing.model.User;
 import com.article.processing.utils.MD5Util;
 import com.article.processing.utils.MailUtil;
+import com.article.processing.utils.StringUtil;
 
 import javax.mail.MessagingException;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -14,6 +16,7 @@ import java.io.IOException;
 /**
  * Created by Soloist on 2017/12/7 21:12
  */
+@WebServlet("/register")
 public class RegisterServlet extends BaseServlet<UserDaoImpl> {
 
     /**
@@ -31,7 +34,20 @@ public class RegisterServlet extends BaseServlet<UserDaoImpl> {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         User user = new User();
         String email = req.getParameter("email");
+        email = StringUtil.validator(email);
+        if (email != null && !"".equals(email)) {
+            email = email.trim();
+        } else {
+            resp.getWriter().write("邮箱不能为空");
+            resp.setHeader("refresh", "3;url=signup.jsp");
+        }
         String phone = req.getParameter("phone");
+        if (phone != null && !"".equals(phone)) {
+            phone = phone.trim();
+        } else {
+            resp.getWriter().write("手机号不能为空");
+            resp.setHeader("refresh", "3;url=signup.jsp");
+        }
         if (baseDao.isIdExist(user.getId())) {
             try {
                 req.getRequestDispatcher("/register").forward(req, resp);

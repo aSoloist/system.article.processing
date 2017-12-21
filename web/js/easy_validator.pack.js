@@ -11,7 +11,7 @@ $(function () {
             if ($(this).attr('tip') !== undefined) {
                 var top = ($(this).offset().top + $(this).height() + 15);
                 var left = ($(this).offset().left + 30);
-                $('body').append( '<p id="vtip" style="top: ' + top + 'px;left: ' + left + 'px;"><img id="vtipArrow" src="../img/vtip_arrow.png"/>' + $(this).attr('tip') + '</p>' );
+                $('body').append('<p id="vtip" style="top: ' + top + 'px;left: ' + left + 'px;"><img id="vtipArrow" src="../img/vtip_arrow.png"/>' + $(this).attr('tip') + '</p>');
             }
         },
         function () {
@@ -20,15 +20,29 @@ $(function () {
             }
         }
     ).blur(function () {
-        if($(this).attr('tip') !== undefined){
+        if ($(this).attr('tip') !== undefined) {
             $("p#vtip").remove();
         }
         if ($(this).attr("reg") !== undefined) {
-            validate($(this));
+            if ($(this).attr('name') === 'password2' || $(this).attr('name') === 'password') {
+                pass_validate($(this));
+            } else {
+                validate($(this));
+            }
         }
     });
 
     $("a#login").click(function () {
+        var mainAccept = $('input#mainAcceptIpt');
+        if (mainAccept !== undefined) {
+            if (!mainAccept.is(":checked")) {
+                var point = $('span.point');
+                point.empty();
+                point.append('请先同意服务条款与隐私相关政策');
+                change_error_style($('div.alert'), "add");
+                return false;
+            }
+        }
         var isSubmit = true;
         $("[reg],[url]:not([reg])").each(function () {
             if ($(this).attr("reg") === undefined) {
@@ -37,7 +51,10 @@ $(function () {
                     return false;
                 }
             } else {
-                if (!validate($(this))) {
+                if ($(this).attr('name') === 'password2') {
+                    isSubmit = pass_validate($(this));
+                    return false;
+                } else if (!validate($(this))) {
                     isSubmit = false;
                     return false;
                 }
@@ -47,6 +64,23 @@ $(function () {
     });
 
 });
+
+function pass_validate(obj) {
+    var point = $('span.point');
+    point.empty();
+    point.append(obj.attr('tip'));
+    
+    var objValue = obj.attr("value");
+    var pValue = $('input#password').attr("value");
+    var pValue2 = $('input#password2').attr("value");
+    if (objValue === pValue && objValue === pValue2) {
+        change_error_style($('div.alert'), "remove");
+        return validate(obj);
+    } else {
+        change_error_style($('div.alert'), "add");
+        return false;
+    }
+}
 
 function validate(obj) {
     var reg = new RegExp(obj.attr("reg"));

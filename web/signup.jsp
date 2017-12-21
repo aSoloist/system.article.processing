@@ -58,13 +58,13 @@
                     <tr>
                         <td>密码：</td>
                         <td>
-                            <input class="span12" name="password" reg="^[a-zA-Z0-9_]{6,}$" tip="密码长度最小为6，只能含有字母数字下划线" type="password"/>
+                            <input id="password" class="span12" name="password" reg="^[a-zA-Z0-9_]{6,}$" tip="密码长度最小为6，只能含有字母数字下划线，且两次密码一致" type="password"/>
                         </td>
                     </tr>
                     <tr>
                         <td>确认密码：</td>
                         <td>
-                            <input class="span12" name="password2" reg="^[a-zA-Z0-9_]{6,}$" tip="请再次输入密码" type="password"/>
+                            <input id="password2" class="span12" name="password2" reg="^[a-zA-Z0-9_]{6,}$" tip="两次密码必须一致" type="password"/>
                         </td>
                     </tr>
                     <tr>

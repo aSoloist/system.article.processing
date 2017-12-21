@@ -5,14 +5,15 @@
   Time: 16:01
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page language="java" contentType="text/html; charset=GBK" isErrorPage="true" pageEncoding="UTF-8" %>
-<%response.setStatus(HttpServletResponse.SC_OK);%>
-<%
+<%@ page language="java" contentType="text/html; charset=UTF-8" isErrorPage="true" pageEncoding="UTF-8" %>
+<%  
+    response.setStatus(HttpServletResponse.SC_OK);
     response.setStatus(500);
 
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
-
+    
+    String errorMessage = pageContext.getException().getMessage();
 %>
 <!DOCTYPE html>
 <html>
@@ -47,7 +48,7 @@
         系统执行发生错误，信息描述如下：<br><br>
         错误状态代码是：${pageContext.errorData.statusCode}<br>
         错误发生页面是：${pageContext.errorData.requestURI}<br>
-        错误信息：${pageContext.exception}<br><br>
+        错误信息：<%=errorMessage%><br><br>
         <a href="javascript:" onclick="history.go(-1);" class="btn">返回上一页</a> &nbsp;
         <a href="javascript:" onclick="window.location.href='../admin/index.jsp';" class="btn">返回主页</a>
     </div>

@@ -2,17 +2,19 @@ package com.article.processing.servlet;
 
 import com.article.processing.dao.impl.UserDaoImpl;
 import com.article.processing.model.User;
+import com.article.processing.utils.MD5Util;
+import com.article.processing.utils.StringUtil;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static com.article.processing.utils.MD5Util.encrypt;
-
 /**
  * Created by Soloist on 2017/12/20 21:27
  */
+@WebServlet("/updatePassword")
 public class UpdatePasswordServlet extends BaseServlet<UserDaoImpl> {
 
     @Override
@@ -22,9 +24,9 @@ public class UpdatePasswordServlet extends BaseServlet<UserDaoImpl> {
             resp.getWriter().write("请先登录");
             resp.setHeader("refresh", "3;url=../signin.jsp");
         } else {
-            String oldPassword = encrypt(req.getParameter("oldPassword"));
+            String oldPassword = MD5Util.encrypt(StringUtil.validator(req.getParameter("oldPassword")));
             if (user.getPassword().equals(oldPassword)) {
-                String password = encrypt(req.getParameter("newPasswrod"));
+                String password = MD5Util.encrypt(StringUtil.validator(req.getParameter("password")));
                 user.setPassword(password);
                 int result = baseDao.update(user);
                 if (result == 1) {
@@ -35,7 +37,7 @@ public class UpdatePasswordServlet extends BaseServlet<UserDaoImpl> {
                     resp.getWriter().write("fail");
                 }
             } else {
-                resp.getWriter().write("密码错误");
+                throw new RuntimeException("密码验证失败");
             }
         }
     }

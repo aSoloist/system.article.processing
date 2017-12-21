@@ -3,8 +3,10 @@ package com.article.processing.servlet;
 import com.article.processing.dao.impl.ArticleDaoImpl;
 import com.article.processing.model.Article;
 import com.article.processing.model.User;
+import com.article.processing.utils.StringUtil;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -12,6 +14,7 @@ import java.io.IOException;
 /**
  * Created by Soloist on 2017/12/13 17:38
  */
+@WebServlet("/saveArticle")
 public class SaveArticleServlet extends BaseServlet<ArticleDaoImpl> {
 
     /**
@@ -32,8 +35,8 @@ public class SaveArticleServlet extends BaseServlet<ArticleDaoImpl> {
                 e.printStackTrace();
             }
         } else if (user != null) {
-            String title = req.getParameter("title");
-            String content = req.getParameter("content");
+            String title = StringUtil.validator(req.getParameter("title"));
+            String content = StringUtil.validator(req.getParameter("content"));
             String userId = user.getId();
             article.setTitle(title);
             article.setUserId(userId);
@@ -42,10 +45,10 @@ public class SaveArticleServlet extends BaseServlet<ArticleDaoImpl> {
             if (result == 1) {
                 resp.getWriter().write("提交成功");
             } else {
-                resp.getWriter().write("提交失败");
+                throw new RuntimeException("提交失败");
             }
         } else {
-            resp.getWriter().write("请先登录");
+            throw new RuntimeException("请先登录");
         }
     }
 }

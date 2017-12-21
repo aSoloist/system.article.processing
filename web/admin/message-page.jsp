@@ -100,12 +100,20 @@
 
 <!-- main container -->
 <div class="content">
+    <div class="span12">
+        <div class="left"><br>
+            <a class="btn-flat white" href="javascript:history.go(-1);">
+                <span class="icon-reply"></span>
+                <span>返回上级</span>
+            </a>
+        </div>
+    </div><br>
     <div class="container-fluid">
         <div id="pad-wrapper">
             <div class="table-wrapper orders-table">
                 <div class="row-fluid text-center">
                     <div class="span12">
-                        <h2>一个瓜皮标题</h2>
+                        <h2>点我点我点我</h2>
                     </div>
                     <br><br>
                     <div class="date">
@@ -130,10 +138,10 @@
     </div>
 </div>
 
-    <!-- scripts -->
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/theme.js"></script>
+<!-- scripts -->
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/theme.js"></script>
 
 </body>
 </html>

@@ -125,7 +125,7 @@
                                 Jun 20, 2017
                             </td>
                             <td>
-                                <a href="#" class="name">一个瓜皮标题</a>
+                                <a href="message-page.jsp" class="name">点我点我点我</a>
                             </td>
                             <td class="description">
                                 测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本

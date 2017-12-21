@@ -9,7 +9,7 @@ import java.util.List;
  * Created by Soloist on 2017/12/4 21:34
  */
 public class Pagination<T> implements Serializable {
-    public static final int ROWS_PRE_PAGE = 10;
+    
     private Integer totalPage = 0;
     
     private Integer page;

@@ -1,3 +1,7 @@
+<%@ page import="com.article.processing.model.Article" %>
+<%@ page import="com.article.processing.model.Pagination" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%--
   Created by IntelliJ IDEA.
@@ -46,7 +50,11 @@
 <body>
 
 <%@include file="header.jsp" %>
-
+<%
+    Pagination pagination = (Pagination) session.getAttribute("articles");
+    int startIndex = pagination.getStartIdx();
+    List list = pagination.getData();
+%>
 <!-- sidebar -->
 <div id="sidebar-nav">
     <ul id="dashboard-menu">
@@ -110,28 +118,26 @@
                 <br>
 
                 <div class="row-fluid span12">
+
                     <table class="table table-hover">
                         <thead>
                         <tr>
-                            <th class="span2">
-                                稿件ID
-                            </th>
-                            <th class="span3">
-                                最近提交日期
-                            </th>
                             <th class="span3">
                                 <span class="line"></span>
                                 标题
                             </th>
-                            <th class="span3">
+                            <th class="span6">
                                 <span class="line"></span>
                                 内容
                             </th>
-                            <th class="span3">
+                            <th class="span2">
+                                最近提交日期
+                            </th>
+                            <th class="span2">
                                 <span class="line"></span>
                                 提交次数
                             </th>
-                            <th class="span3">
+                            <th class="span2">
                                 <span class="line"></span>
                                 状态
                             </th>
@@ -139,111 +145,59 @@
                         </thead>
                         <tbody>
                         <!-- row -->
+                        <%
+                            for (int i = startIndex; i < 4; i++) {
+                                Article article = (Article) list.get(i);
+                        %>
                         <tr class="first">
                             <td>
-                                <a href="#">#459</a>
+                                <a href="#">
+                                    <%
+                                        String title = article.getTitle();
+                                        if (title.length() > 8) {
+                                            title = title.substring(0, 8) + "......";
+                                        }
+                                    %>
+                                    <%=title%>
+                                </a>
                             </td>
                             <td>
-                                Jan 03, 2017
+                                <%
+                                    String content = article.getContent();
+                                    if (content.length() > 40) {
+                                        content = content.substring(0, 40) + "......";
+                                    }
+                                %>
+                                <%=content%>
                             </td>
                             <td>
-                                <a href="#">emmmm</a>
+                                <%=new Date(article.getCreateTime().getTime())%>
                             </td>
                             <td>
-                                瓜皮
+                                <%=article.getVer()%>
                             </td>
                             <td>
-                                3
-                            </td>
-                            <td>
-                                <span class="label label-success">通过</span>
+                                <%
+                                    if (article.getStatus() == 0) {
+                                %><span class="label label-info">审核中
+                                    <%
+                            } else if (article.getStatus() == 1) {
+                        %><span class="label ">未通过
+                                        <%
+                            } else if (article.getStatus() == 2) {
+                        %><span class="label label-success">通过
+                        <%
+                            }
+                        %></span>
                             </td>
                         </tr>
-                        <tr>
-                            <td>
-                                <a href="#">#510</a>
-                            </td>
-                            <td>
-                                Feb 22, 2017
-                            </td>
-                            <td>
-                                <a href="#">emmmmm</a>
-                            </td>
-                            <td>
-                                两个瓜皮
-                            </td>
-                            <td>
-                                5
-                            </td>
-                            <td>
-                                <span class="label label-info">审核中</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="#">#590</a>
-                            </td>
-                            <td>
-                                Mar 03, 2017
-                            </td>
-                            <td>
-                                <a href="#">emmmmmm</a>
-                            </td>
-                            <td>
-                                三个瓜皮
-                            </td>
-                            <td>
-                                4
-                            </td>
-                            <td>
-                                <span class="label label-success">通过</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="#">#618</a>
-                            </td>
-                            <td>
-                                Jan 03, 2017
-                            </td>
-                            <td>
-                                <a href="#">emmmmmmm</a>
-                            </td>
-                            <td>
-                                四个瓜皮
-                            </td>
-                            <td>
-                                8
-                            </td>
-                            <td>
-                                <span class="label">未通过</span>
-                            </td>
-                        </tr><tr>
-                            <td>
-                                <a href="#">#625</a>
-                            </td>
-                            <td>
-                                Jan 06, 2017
-                            </td>
-                            <td>
-                                <a href="#">emmmmmmmm</a>
-                            </td>
-                            <td>
-                                五个瓜皮
-                            </td>
-                            <td>
-                                13
-                            </td>
-                            <td>
-                                <span class="label label-success">通过</span>
-                            </td>
-                        </tr>
+                        <%}%>
                         </tbody>
                     </table>
                 </div>
             </div>
             <!-- end orders table -->
-            <div class="pagination pull-left right">
+            <div class="pagination text-center">
                 <ul>
                     <li><a href="#">‹</a></li>
                     <li><a class="active" href="#">1</a></li>

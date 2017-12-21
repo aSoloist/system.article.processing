@@ -295,7 +295,7 @@
                         </tr>
                         </tbody>
                     </table>
-                    <div class="pagination pull-left right">
+                    <div class="pagination text-center">
                         <ul>
                             <li><a href="#">‹</a></li>
                             <li><a class="active" href="#">1</a></li>

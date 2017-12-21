@@ -101,7 +101,7 @@
                 <form action="${pageContext.request.contextPath}/saveArticle" method="post">
                     <div class="field-box">
                         <label>标题:</label>
-                        <input class="span7 inline-input" type="text" name="title" value="" maxlength="30"/>
+                        <input class="span7 inline-input" type="text" name="title" value="" minlength="1" maxlength="30"/>
                     </div>
                     <div class="field-box">
                         <label>内容:</label>

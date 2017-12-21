@@ -22,6 +22,16 @@ public class Article {
     private String group = UUID.randomUUID().toString();
     //状态
     private int status = 0;
+    
+    private int ver = 1;
+
+    public int getVer() {
+        return ver;
+    }
+
+    public void setVer(int ver) {
+        this.ver = ver;
+    }
 
     public String getId() {
         return id;

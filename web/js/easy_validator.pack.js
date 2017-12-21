@@ -32,7 +32,7 @@ $(function () {
         }
     });
 
-    $("a#login").click(function () {
+    $("#login").click(function () {
         var mainAccept = $('input#mainAcceptIpt');
         if (mainAccept.length > 0) {
             if (!mainAccept.is(":checked")) {

@@ -29,16 +29,6 @@ public class User {
     private int status = 0;
     //创建时间
     private Timestamp createTime = new Timestamp(new Date().getTime());
-    //头像图片路径
-    private String headPicture;
-
-    public String getHeadPicture() {
-        return headPicture;
-    }
-
-    public void setHeadPicture(String headPicture) {
-        this.headPicture = headPicture;
-    }
 
     public void setId(String id) {
         this.id = id;

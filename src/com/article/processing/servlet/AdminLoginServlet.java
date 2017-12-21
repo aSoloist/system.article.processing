@@ -20,20 +20,21 @@ public class AdminLoginServlet extends BaseServlet<UserDaoImpl> {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String phoneOrEmail = StringUtil.validator(req.getParameter("phoneOrEmail"));
         String password = MD5Util.encrypt(StringUtil.validator(req.getParameter("password")));
-        User user = null;
+        User user;
         if (phoneOrEmail.matches("^1[0-9]{10}$")) {
-            user = baseDao.getUserByPhoneAndPass(phoneOrEmail, password);
+            user = baseDao.getUserByPhone(phoneOrEmail);
         } else if (phoneOrEmail.matches("^[A-Za-z0-9\\u4e00-\\u9fa5]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$")) {
-            user = baseDao.getUserByEmailAndPass(phoneOrEmail, password);
+            user = baseDao.getUserByEmail(phoneOrEmail);
         } else {
-            resp.getWriter().write("用户名错误");
+            throw new RuntimeException("用户名格式错误");
         }
-
-        if (user == null || user.getStatus() <= 10) {
-            resp.getWriter().write("用户不存在");
+        if (user == null) {
+            throw new RuntimeException("用户不存在");
+        } else if (!user.getPassword().equals(password)) {
+            throw new RuntimeException("密码错误");
         } else {
             req.getSession().setAttribute("user", user);
-            resp.sendRedirect("/admin/index.jsp");
+            resp.sendRedirect("/admin/getIndex");
         }
     }
 }

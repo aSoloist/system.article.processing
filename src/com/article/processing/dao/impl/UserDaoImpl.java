@@ -148,6 +148,26 @@ public class UserDaoImpl implements UserDao {
         return updateStatus(id, -1);
     }
 
+    public User getUserByPhone(String phone) {
+        String sql = "select * from user where phone = ? and status <> -1";
+        PreparedStatement preparedStatement = DBUtil.getPatmt(sql);
+        ResultSet resultSet = null;
+        User user = null;
+        try {
+            preparedStatement.setString(1, phone);
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                user = new User();
+                createUser(user, resultSet);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBUtil.closeQueryRes(resultSet);
+        }
+        return user;
+    }
+
     /**
      * 更新用户状态
      * @param id
@@ -180,82 +200,13 @@ public class UserDaoImpl implements UserDao {
     }
 
     /**
-     * 通过手机号和密码获取用户
-     * @param phone
-     * @param password
-     * @return
-     */
-    public User getUserByPhoneAndPass(String phone, String password) {
-        String sql = "select * from user where phone = ? and password = ? and status <> -1";
-        PreparedStatement preparedStatement = DBUtil.getPatmt(sql);
-        User user = null;
-        ResultSet resultSet = null;
-        try {
-            preparedStatement.setString(1, phone);
-            preparedStatement.setString(2, password);
-            resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
-                user = new User();
-                createUser(user, resultSet);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            DBUtil.closeQueryRes(resultSet);
-        }
-        return user;
-    }
-
-    /**
-     * 通过邮箱和密码获取用户
-     * @param email
-     * @param password
-     * @return
-     */
-    public User getUserByEmailAndPass(String email, String password) {
-        String sql = "select * from user where email = ? and password = ? and status <> -1";
-        PreparedStatement preparedStatement = DBUtil.getPatmt(sql);
-        User user = null;
-        ResultSet resultSet = null;
-        try {
-            preparedStatement.setString(1, email);
-            preparedStatement.setString(2, password);
-            resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
-                user = new User();
-                createUser(user, resultSet);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            DBUtil.closeQueryRes(resultSet);
-        }
-        return user;
-    }
-
-    /**
      * 判断用户是否存在
      * @param email
      * @param phone
      * @return
      */
     public Boolean isExist(String email, String phone) {
-        String sql = "select * from user where status <> -1 and email = ? or phone = ?";
-        PreparedStatement preparedStatement = DBUtil.getPatmt(sql);
-        ResultSet resultSet = null;
-        Boolean isExist = true;
-        try {
-            preparedStatement.setString(1, email);
-            preparedStatement.setString(2, phone);
-            resultSet = preparedStatement.executeQuery();
-            isExist = resultSet.next();
-        } catch (SQLException e) {
-            System.out.println("数据库异常");
-        } finally {
-            DBUtil.closeQueryRes(resultSet);
-        }
-        
-        return isExist;
+        return getUserByPhone(phone) != null || getUserByEmail(email) != null;
     }
 
     /**

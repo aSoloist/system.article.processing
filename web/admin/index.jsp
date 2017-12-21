@@ -1,3 +1,7 @@
+<%@ page import="com.article.processing.model.Article" %>
+<%@ page import="com.article.processing.model.Pagination" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -38,7 +42,21 @@
 <body>
 
 <%@include file="header.jsp" %>
-
+<%
+    Pagination pagination = (Pagination) session.getAttribute("articles");
+    int startIndex = pagination.getStartIdx();
+    List list = pagination.getData();
+    int unCheck = 0;
+    int accept = 0;
+    for (Object aList : list) {
+        Article article = (Article) aList;
+        if (article.getStatus() == 0) {
+            unCheck++;
+        } else if (article.getStatus() == 2) {
+            accept++;
+        }
+    }
+%>
 <!-- sidebar -->
 <div id="sidebar-nav">
     <ul id="dashboard-menu">
@@ -111,13 +129,13 @@
                 </div>
                 <div class="span3 stat">
                     <div class="data">
-                        <span class="number">3篇</span>
+                        <span class="number"><%=unCheck%>篇</span>
                         正在审核的稿件
                     </div>
                 </div>
                 <div class="span3 stat last">
                     <div class="data">
-                        <span class="number">86篇</span>
+                        <span class="number"><%=accept%>篇</span>
                         已通过稿件
                     </div>
                 </div>
@@ -136,7 +154,7 @@
 
                 <div class="row-fluid filter-block">
                     <div class="pull-right">
-                        <a class="glow right" href="javascript:void(0);">查看全部>></a>
+                        <a class="glow right" href="get-message.jsp">查看全部>></a>
                     </div>
                 </div>
                 <br>
@@ -185,74 +203,53 @@
                             </thead>
                             <tbody>
                             <!-- row -->
+                            <%
+                                for (int i = startIndex; i < 4; i++) {
+                                    Article article = (Article) list.get(i);
+                            %>
                             <tr class="first">
                                 <td>
-                                    <a href="#">emmmm</a>
+                                    <a href="#">
+                                    <%
+                                        String title = article.getTitle();
+                                        if (title.length() > 8) {
+                                            title = title.substring(0, 8) + "......";
+                                        }
+                                    %>
+                                        <%=title%>
+                                    </a>
                                 </td>
                                 <td>
-                                    瓜皮
+                                    <%
+                                        String content = article.getContent();
+                                        if (content.length() > 40) {
+                                            content = content.substring(0, 40) + "......";
+                                        }
+                                    %>
+                                    <%=content%>
                                 </td>
                                 <td>
-                                    Jan 03, 2017
+                                    <%=new Date(article.getCreateTime().getTime())%>
                                 </td>
                                 <td>
-                                    3
+                                    <%=article.getVer()%>
                                 </td>
                                 <td>
-                                    <span class="label label-success">通过</span>
+                        <%
+                            if (article.getStatus() == 0) {
+                        %><span class="label label-info">审核中
+                        <%
+                            } else if (article.getStatus() == 1) {
+                        %><span class="label ">未通过
+                        <%
+                            } else if (article.getStatus() == 2) {
+                        %><span class="label label-success">通过
+                        <%
+                            }
+                        %></span>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>
-                                    <a href="#">emmmmm</a>
-                                </td>
-                                <td>
-                                    两个瓜皮
-                                </td>
-                                <td>
-                                    Feb 22, 2017
-                                </td>
-                                <td>
-                                    5
-                                </td>
-                                <td>
-                                    <span class="label label-info">审核中</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <a href="#">emmmmmm</a>
-                                </td>
-                                <td>
-                                    三个瓜皮
-                                </td>
-                                <td>
-                                    Mar 03, 2017
-                                </td>
-                                <td>
-                                    4
-                                </td>
-                                <td>
-                                    <span class="label label-success">通过</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <a href="#">emmmmmmmm</a>
-                                </td>
-                                <td>
-                                    四个瓜皮
-                                </td>
-                                <td>
-                                    Jan 03, 2017
-                                </td>
-                                <td>
-                                    8
-                                </td>
-                                <td>
-                                    <span class="label">未通过</span>
-                                </td>
-                            </tr>
+                    <%}%>
                             </tbody>
                         </table>
                     </div>

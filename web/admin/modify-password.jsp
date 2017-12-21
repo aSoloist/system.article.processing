@@ -10,6 +10,7 @@
     <link href="../css/bootstrap/bootstrap-responsive.css" rel="stylesheet"/>
     <link href="../css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet"/>
 
+    <link href="../css/validate.css" type="text/css" rel="stylesheet">
     <!-- global styles -->
     <link rel="stylesheet" type="text/css" href="../css/layout.css"/>
     <link rel="stylesheet" type="text/css" href="../css/elements.css"/>
@@ -33,7 +34,12 @@
 <body>
 
 <%@include file="header.jsp" %>
-
+<%
+    String key = request.getParameter("key");
+    if (key != null && key.equals("1")) {
+        out.print("<script>alert(\"密码修改成功\");</script>");
+    }
+%>
 <!-- sidebar -->
 <div id="sidebar-nav">
     <ul id="dashboard-menu">
@@ -86,6 +92,10 @@
     <div class="container-fluid">
         <div class="settings-wrapper" id="pad-wrapper">
 
+            <div class="alert alert-info" style="margin-left: 29px; width: 1200px">
+                <i class="icon-lightbulb"></i>
+                <span style="font-size: 16px" class="point">提示</span>
+            </div>
             <!-- edit form column -->
             <div class="span7 personal-info">
                 <h5 class="personal-title">修改密码</h5>
@@ -93,18 +103,21 @@
                 <form class="modify-password" method="post" action="${pageContext.request.contextPath}/updatePassword">
                 <div class="field-box">
                     <label>原密码:</label>
-                    <input class="span5 inline-input" name="oldPassword" type="password" value=""/>
+                    <input class="span5 inline-input" name="oldPassword" type="password" reg="^[a-zA-Z0-9_]{6,16}$" tip="密码长度最小为6，最长为16，只能含有字母数字下划线" 
+                           value="" minlength="6" maxlength="16"/>
                 </div>
                 <div class="field-box">
                     <label>新密码:</label>
-                    <input class="span5 inline-input" name="newPasswrod" type="password" value=""/>
+                    <input class="span5 inline-input" id="password" name="password" type="password" reg="^[a-zA-Z0-9_]{6,16}$" tip="密码长度最小为6，最长为16，只能含有字母数字下划线，且两次密码一致"
+                           value="" minlength="6" maxlength="16"/>
                 </div>
                 <div class="field-box">
                     <label>再次输入:</label>
-                    <input class="span5 inline-input" name="rePassword" type="password" value=""/>
+                    <input class="span5 inline-input" id="password2" name="password2" type="password" reg="^[a-zA-Z0-9_]{6,16}$" tip="两次密码必须一致"
+                           value="" minlength="6" maxlength="16"/>
                 </div>
                 <div class="span6 field-box actions">
-                    <input type="submit" class="btn-glow primary" value="保存修改"/>
+                    <input type="submit" id="login" class="btn-glow primary" value="保存修改"/>
                     <span>或</span>
                     <input type="reset" value="取消" class="reset"/>
                 </div>
@@ -119,52 +132,8 @@
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/theme.js"></script>
-<script type="application/javascript">
-    var $form = $('.modify-password');
-    $form.bootstrapValidator({
-        message : '无效的输入值',
-        feedbackIcons : {
-            valid : 'glyphicon glyphicon-ok',
-            invalid : 'glyphicon glyphicon-remove',
-            validating : 'glyphicon glyphicon-refresh'
-        },
-        fields : {
-            oldPassword : {
-                message: '密码验证失败',
-                validators: {
-                    notEmpty: {
-                        message: '密码不能为空'
-                    },
-                    stringLength: {
-                        min: 6,
-                        max: 18,
-                        message: '密码长度必须在6到18位之间'
-                    },
-                    regexp: {
-                        regexp: /^[a-zA-Z0-9_]+$/,
-                        message: '密码只能包含大写、小写、数字和下划线'
-                    }
-                }
-            },
-            newPassword : {
-                message: '密码验证失败',
-                validators: {
-                    notEmpty: {
-                        message: '密码不能为空'
-                    },
-                    stringLength: {
-                        min: 6,
-                        max: 18,
-                        message: '密码长度必须在6到18位之间'
-                    },
-                    regexp: {
-                        regexp: /^[a-zA-Z0-9_]+$/,
-                        message: '密码只能包含大写、小写、数字和下划线'
-                    }
-                }
-            }
-        }
-    })
-</script>
+<script type="text/javascript" src="../js/jquery-1.3.2.min.js"></script>
+<script type="application/javascript" src="../js/easy_validator.pack.js"></script>
+<script type="text/javascript" src="../js/jquery.bgiframe.min.js"></script>
 </body>
 </html>

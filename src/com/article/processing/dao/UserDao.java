@@ -8,9 +8,7 @@ import com.article.processing.model.User;
  */
 public interface UserDao extends BaseDao<User> {
     
-    User getUserByPhoneAndPass(String phone, String password);
-    
-    User getUserByEmailAndPass(String email, String password);
+    User getUserByPhone(String phone);
     
     Boolean isExist(String email, String phone);
     

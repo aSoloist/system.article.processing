@@ -24,20 +24,27 @@ public class UpdatePasswordServlet extends BaseServlet<UserDaoImpl> {
             resp.getWriter().write("请先登录");
             resp.setHeader("refresh", "3;url=../signin.jsp");
         } else {
-            String oldPassword = MD5Util.encrypt(StringUtil.validator(req.getParameter("oldPassword")));
-            if (user.getPassword().equals(oldPassword)) {
-                String password = MD5Util.encrypt(StringUtil.validator(req.getParameter("password")));
-                user.setPassword(password);
-                int result = baseDao.update(user);
-                if (result == 1) {
-                    req.getSession().removeAttribute("user");
-                    req.getSession().setAttribute("user", user);
-                    resp.getWriter().write("success");
+            String oldPassword = req.getParameter("oldPassword");
+            String password = req.getParameter("password");
+            if (oldPassword.length() >= 6 && oldPassword.length() <= 16 
+                    && password.length() <= 16 && password.length() >= 6) {
+                oldPassword = MD5Util.encrypt(StringUtil.validator(req.getParameter("oldPassword")));
+                if (user.getPassword().equals(oldPassword)) {
+                    password = MD5Util.encrypt(StringUtil.validator(req.getParameter("password")));
+                    user.setPassword(password);
+                    int result = baseDao.update(user);
+                    if (result == 1) {
+                        req.getSession().removeAttribute("user");
+                        req.getSession().setAttribute("user", user);
+                        resp.sendRedirect("/admin/modify-password.jsp?key=1");
+                    } else {
+                        throw new RuntimeException("修改失败");
+                    }
                 } else {
-                    resp.getWriter().write("fail");
+                    throw new RuntimeException("密码验证失败");
                 }
             } else {
-                throw new RuntimeException("密码验证失败");
+                throw new RuntimeException("密码长度错误");
             }
         }
     }

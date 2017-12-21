@@ -24,8 +24,7 @@ public class LoginFilter implements Filter {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         if (user == null) {
-            response.getWriter().write("请先登录");
-            response.setHeader("refresh", "3;url=../signin.jsp");
+            throw new RuntimeException("请先登录");
         } else {
             filterChain.doFilter(request, response);
         }

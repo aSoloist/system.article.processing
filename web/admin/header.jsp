@@ -24,49 +24,6 @@
             <li class="hidden-phone">
                 <input class="search" type="text" placeholder=""/>
             </li>
-            <li class="notification-dropdown hidden-phone">
-                <a href="#" class="trigger">
-                    <i class="icon-envelope-alt"></i>
-                </a>
-                <div class="pop-dialog">
-                    <div class="pointer right">
-                        <div class="arrow"></div>
-                        <div class="arrow_border"></div>
-                    </div>
-                    <div class="body">
-                        <a href="#" class="close-icon"><i class="icon-remove-sign"></i></a>
-                        <div class="messages">
-                            <a href="#" class="item">
-                                <img src="../img/admin.jpg" class="display"/>
-                                <div class="name">管理员</div>
-                                <div class="msg">
-                                    你有一条新的消息。
-                                </div>
-                                <span class="time"><i class="icon-time"></i> 13 分钟前</span>
-                            </a>
-                            <a href="#" class="item">
-                                <img src="../img/admin.jpg" class="display"/>
-                                <div class="name">管理员</div>
-                                <div class="msg">
-                                    你有一条新的消息，请注意查收。
-                                </div>
-                                <span class="time"><i class="icon-time"></i> 26 分钟前</span>
-                            </a>
-                            <a href="#" class="item last">
-                                <img src="../img/admin.jpg" class="display"/>
-                                <div class="name">管理员</div>
-                                <div class="msg">
-                                    你有一条新的消息，请注意查收。emmmmm。
-                                </div>
-                                <span class="time"><i class="icon-time"></i> 2 天前</span>
-                            </a>
-                            <div class="footer">
-                                <a href="#" class="logout">查看所有消息</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle hidden-phone" data-toggle="dropdown">我的账户<b class="caret"></b>
                 </a>

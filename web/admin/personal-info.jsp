@@ -60,7 +60,6 @@
             </a>
             <ul class="active submenu">
                 <li><a href="personal-info.jsp" class="active">个人信息</a></li>
-                <li><a href="revise-avatar.jsp">修改头像</a></li>
                 <li><a href="modify-password.jsp">更改密码</a></li>
             </ul>
         </li>
@@ -71,8 +70,8 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="my-manuscript.jsp">我的稿件</a></li>
-                <li><a href="submit-manuscript.jsp">提交稿件</a></li>
+                <li><a href="all-article.jsp">我的稿件</a></li>
+                <li><a href="submit-article.jsp">提交稿件</a></li>
             </ul>
         </li>
         <li>

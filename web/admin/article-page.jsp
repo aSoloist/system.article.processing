@@ -1,9 +1,8 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%--
   Created by IntelliJ IDEA.
-  User: Soloist
-  Date: 2017/12/14
-  Time: 22:24
+  User: LiWenfeng
+  Date: 2017/12/21 0021
+  Time: 21:44
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -69,7 +68,6 @@
             </a>
             <ul class="submenu">
                 <li><a href="personal-info.jsp">个人信息</a></li>
-                <li><a href="revise-avatar.jsp">修改头像</a></li>
                 <li><a href="modify-password.jsp">更改密码</a></li>
             </ul>
         </li>
@@ -80,8 +78,8 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="active submenu">
-                <li><a href="my-manuscript.jsp">我的稿件</a></li>
-                <li><a href="submit-manuscript.jsp" class="active">提交稿件</a></li>
+                <li><a href="all-article.jsp" class="active">我的稿件</a></li>
+                <li><a href="submit-article.jsp">提交稿件</a></li>
             </ul>
         </li>
         <li>

@@ -3,6 +3,7 @@ package com.article.processing.servlet;
 import com.article.processing.dao.impl.ArticleDaoImpl;
 import com.article.processing.model.Article;
 import com.article.processing.model.User;
+import com.article.processing.utils.StringUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,7 +25,7 @@ public class SearchArticleServlet extends BaseServlet<ArticleDaoImpl> {
      */
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user = (User) req.getSession().getAttribute("user");
-        String title = req.getParameter("title");
+        String title = StringUtil.validator(req.getParameter("title"));
         List<Article> list = baseDao.getByTitle(user.getId(), title);
         req.setAttribute("articles", list);
         req.getRequestDispatcher("/admin/my-manuscript.jsp").forward(req, resp);

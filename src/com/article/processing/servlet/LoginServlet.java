@@ -3,6 +3,7 @@ package com.article.processing.servlet;
 import com.article.processing.dao.impl.UserDaoImpl;
 import com.article.processing.model.User;
 import com.article.processing.utils.MD5Util;
+import com.article.processing.utils.StringUtil;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,14 +24,10 @@ public class LoginServlet extends BaseServlet<UserDaoImpl> {
      * @throws IOException
      */
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        String phoneOrEmail = req.getParameter("phoneOrEmail");
-        String password = req.getParameter("password");
-        if (password != null && !"".equals(password)) {
-            password = MD5Util.encrypt(password);
-        } else {
-            resp.getWriter().write("密码不能为空");
-            resp.setHeader("refresh", "3;url=signin.jsp");
-        }
+        String phoneOrEmail = StringUtil.validator(req.getParameter("phoneOrEmail"));
+        String password = StringUtil.validator(req.getParameter("password"));
+        password = MD5Util.encrypt(password);
+        
         User user = null;
         if (phoneOrEmail.matches("^1[0-9]{10}$")) {
             user = baseDao.getUserByPhoneAndPass(phoneOrEmail, password);

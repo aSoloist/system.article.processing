@@ -4,6 +4,6 @@
 <properties>
     <entry key="className">com.mysql.jdbc.Driver</entry>
     <entry key="url">jdbc:mysql://localhost:3306/article</entry>
-    <entry key="username">admin</entry>
-    <entry key="password">123698745</entry>
+    <entry key="username">root</entry>
+    <entry key="password">ly1511</entry>
 </properties>

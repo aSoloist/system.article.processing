@@ -33,21 +33,8 @@ public class RegisterServlet extends BaseServlet<UserDaoImpl> {
      */
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         User user = new User();
-        String email = req.getParameter("email");
-        email = StringUtil.validator(email);
-        if (email != null && !"".equals(email)) {
-            email = email.trim();
-        } else {
-            resp.getWriter().write("邮箱不能为空");
-            resp.setHeader("refresh", "3;url=signup.jsp");
-        }
-        String phone = req.getParameter("phone");
-        if (phone != null && !"".equals(phone)) {
-            phone = phone.trim();
-        } else {
-            resp.getWriter().write("手机号不能为空");
-            resp.setHeader("refresh", "3;url=signup.jsp");
-        }
+        String email = StringUtil.validator(req.getParameter("email"));
+        String phone = StringUtil.validator(req.getParameter("phone"));
         if (baseDao.isIdExist(user.getId())) {
             try {
                 req.getRequestDispatcher("/register").forward(req, resp);
@@ -55,15 +42,15 @@ public class RegisterServlet extends BaseServlet<UserDaoImpl> {
                 e.printStackTrace();
             }
         } else if (baseDao.isExist(email, phone)) {
-            resp.getWriter().write("用户已存在");
+            throw new RuntimeException("用户已存在");
         } else {
-            user.setUsername(req.getParameter("username"));
-            user.setNickname(req.getParameter("nickname"));
-            user.setPassword(MD5Util.encrypt(req.getParameter("password")));
+            user.setUsername(StringUtil.validator(req.getParameter("username")));
+            user.setNickname(StringUtil.validator(req.getParameter("nickname")));
+            user.setPassword(MD5Util.encrypt(StringUtil.validator(req.getParameter("password"))));
             user.setPhone(phone);
             user.setEmail(email);
-            user.setAddress(req.getParameter("address"));
-            user.setUnit(req.getParameter("unit"));
+            user.setAddress(StringUtil.validator(req.getParameter("address")));
+            user.setUnit(StringUtil.validator(req.getParameter("unit")));
             String v = MD5Util.encrypt(email);
             String message = "点击下面链接激活账号，十分钟内有效，否则重新注册账号，链接只能使用一次，请尽快激活！<br/>" 
                     + "<a href=\"" + req.getRequestURL() + "/userVerification?email=" +
@@ -75,10 +62,10 @@ public class RegisterServlet extends BaseServlet<UserDaoImpl> {
                         email + "&username=" + user.getUsername() + "\">重新发送</a>");
                 int result = baseDao.insert(user);
                 if (result != 1) {
-                    resp.getWriter().write("注册失败");
+                    throw new RuntimeException("注册失败");
                 }
             } catch (MessagingException e) {
-                resp.getWriter().write("邮件发送失败");
+                throw new RuntimeException("邮件发送失败");
             }
         }
     }

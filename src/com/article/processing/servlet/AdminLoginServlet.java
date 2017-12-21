@@ -3,6 +3,7 @@ package com.article.processing.servlet;
 import com.article.processing.dao.impl.UserDaoImpl;
 import com.article.processing.model.User;
 import com.article.processing.utils.MD5Util;
+import com.article.processing.utils.StringUtil;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,8 +18,8 @@ public class AdminLoginServlet extends BaseServlet<UserDaoImpl> {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        String phoneOrEmail = req.getParameter("phoneOrEmail");
-        String password = MD5Util.encrypt(req.getParameter("password"));
+        String phoneOrEmail = StringUtil.validator(req.getParameter("phoneOrEmail"));
+        String password = MD5Util.encrypt(StringUtil.validator(req.getParameter("password")));
         User user = null;
         if (phoneOrEmail.matches("^1[0-9]{10}$")) {
             user = baseDao.getUserByPhoneAndPass(phoneOrEmail, password);

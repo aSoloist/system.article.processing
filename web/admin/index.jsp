@@ -162,25 +162,22 @@
                         <table class="table table-hover">
                             <thead>
                             <tr>
-                                <th class="span2">
-                                    稿件ID
-                                </th>
-                                <th class="span3">
-                                    最近提交日期
-                                </th>
                                 <th class="span3">
                                     <span class="line"></span>
                                     标题
                                 </th>
-                                <th class="span3">
+                                <th class="span6">
                                     <span class="line"></span>
                                     内容
                                 </th>
-                                <th class="span3">
+                                <th class="span2">
+                                    最近提交日期
+                                </th>
+                                <th class="span2">
                                     <span class="line"></span>
                                     提交次数
                                 </th>
-                                <th class="span3">
+                                <th class="span2">
                                     <span class="line"></span>
                                     状态
                                 </th>
@@ -190,16 +187,13 @@
                             <!-- row -->
                             <tr class="first">
                                 <td>
-                                    <a href="#">#459</a>
-                                </td>
-                                <td>
-                                    Jan 03, 2017
-                                </td>
-                                <td>
                                     <a href="#">emmmm</a>
                                 </td>
                                 <td>
                                     瓜皮
+                                </td>
+                                <td>
+                                    Jan 03, 2017
                                 </td>
                                 <td>
                                     3
@@ -210,16 +204,13 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <a href="#">#510</a>
-                                </td>
-                                <td>
-                                    Feb 22, 2017
-                                </td>
-                                <td>
                                     <a href="#">emmmmm</a>
                                 </td>
                                 <td>
                                     两个瓜皮
+                                </td>
+                                <td>
+                                    Feb 22, 2017
                                 </td>
                                 <td>
                                     5
@@ -230,16 +221,13 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <a href="#">#590</a>
-                                </td>
-                                <td>
-                                    Mar 03, 2017
-                                </td>
-                                <td>
                                     <a href="#">emmmmmm</a>
                                 </td>
                                 <td>
                                     三个瓜皮
+                                </td>
+                                <td>
+                                    Mar 03, 2017
                                 </td>
                                 <td>
                                     4
@@ -250,16 +238,13 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <a href="#">#618</a>
-                                </td>
-                                <td>
-                                    Jan 03, 2017
-                                </td>
-                                <td>
                                     <a href="#">emmmmmmmm</a>
                                 </td>
                                 <td>
                                     四个瓜皮
+                                </td>
+                                <td>
+                                    Jan 03, 2017
                                 </td>
                                 <td>
                                     8

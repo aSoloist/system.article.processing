@@ -34,7 +34,7 @@ $(function () {
 
     $("a#login").click(function () {
         var mainAccept = $('input#mainAcceptIpt');
-        if (mainAccept !== undefined) {
+        if (mainAccept.length > 0) {
             if (!mainAccept.is(":checked")) {
                 var point = $('span.point');
                 point.empty();

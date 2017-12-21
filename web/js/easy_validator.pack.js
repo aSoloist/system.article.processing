@@ -24,7 +24,7 @@ $(function () {
             $("p#vtip").remove();
         }
         if ($(this).attr("reg") !== undefined) {
-            if ($(this).attr('name') === 'password2' || $(this).attr('name') === 'password') {
+            if ($(this).attr('id') === 'password2' || $(this).attr('id') === 'password') {
                 pass_validate($(this));
             } else {
                 validate($(this));

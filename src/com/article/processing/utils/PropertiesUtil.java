@@ -4,6 +4,7 @@ import com.sun.istack.internal.Nullable;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Properties;
 
 /**
@@ -36,7 +37,8 @@ public class PropertiesUtil {
             if (fileName.endsWith("xml")) {
                 properties.loadFromXML(inputStream);
             } else if (fileName.endsWith("properties")) {
-                properties.load(inputStream);
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
+                properties.load(inputStreamReader);
             } else {
                 System.out.println("路径错误");
             }

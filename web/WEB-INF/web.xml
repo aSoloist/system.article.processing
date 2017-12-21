@@ -65,7 +65,7 @@
     
     <servlet-mapping>
         <servlet-name>saveArticleServlet</servlet-name>
-        <url-pattern>/saveArticle.do</url-pattern>
+        <url-pattern>/saveArticle</url-pattern>
     </servlet-mapping>
     
     <servlet>
@@ -75,7 +75,7 @@
     
     <servlet-mapping>
         <servlet-name>searchArticleServlet</servlet-name>
-        <url-pattern>/searchArticle.do</url-pattern>
+        <url-pattern>/searchArticle</url-pattern>
     </servlet-mapping>
     
     <servlet>

@@ -49,7 +49,7 @@
         错误发生页面是：${pageContext.errorData.requestURI}<br>
         错误信息：${pageContext.exception}<br><br>
         <a href="javascript:" onclick="history.go(-1);" class="btn">返回上一页</a> &nbsp;
-        <a href="javascript:" onclick="window.location.href='admin/index.jsp';" class="btn">返回主页</a>
+        <a href="javascript:" onclick="window.location.href='../admin/index.jsp';" class="btn">返回主页</a>
     </div>
 </div>
 </body>

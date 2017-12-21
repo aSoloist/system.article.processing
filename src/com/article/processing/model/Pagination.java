@@ -12,35 +12,13 @@ public class Pagination<T> implements Serializable {
     
     private Integer totalPage = 0;
     
-    private Integer page;
+    private Integer page = 1;
     
     private Integer count = 0;
     
-    private Integer rows = 10;
+    private Integer rows = 15;
     
     private List<T> data = new ArrayList<>();
-    
-    public Pagination(Integer page) {
-        if (page != null && page >= 1) {
-            this.page = page;
-        } else {
-            this.page = 1;
-        }
-    }
-
-    public Pagination(Integer page, Integer rows) {
-        if (page != null && page >= 1) {
-            this.page = page;
-        } else {
-            this.page = 1;
-        }
-
-        if (rows != null && rows > 0) {
-            this.rows = rows;
-        } else {
-            this.rows = 10;
-        }
-    }
 
     public Integer getPage() {
         this.getTotalPage();

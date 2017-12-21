@@ -45,7 +45,12 @@
 <body>
 
 <%@include file="header.jsp" %>
-
+<%
+    String key = request.getParameter("key");
+    if (key != null && key.equals("1")) {
+        out.print("<script>alert(\"提交成功\");</script>");
+    }
+%>
 <!-- sidebar -->
 <div id="sidebar-nav">
     <ul id="dashboard-menu">
@@ -106,7 +111,7 @@
                     <div class="field-box">
                         <label>内容:</label>
                         <div class="wysi-column">
-                            <textarea id="wysi" class="span10 wysihtml5" rows="20" name="content" title=""></textarea>
+                            <textarea id="wysi" class="span10 wysihtml5" rows="20" name="content" minlength="10" title=""></textarea>
                         </div>
                     </div>
                     <div class="span6 field-box actions text-center">

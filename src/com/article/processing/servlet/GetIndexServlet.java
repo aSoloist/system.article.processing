@@ -23,9 +23,8 @@ public class GetIndexServlet extends BaseServlet<ArticleDaoImpl> {
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute("user");
         List<Article> list = baseDao.getByUser(user.getId());
-        int count = list.size() + 1;
-        Pagination<Article> pagination = new Pagination<>(1, 10);
-        pagination.setCount(count);
+        Pagination<Article> pagination = new Pagination<>();
+        pagination.setCount(list.size());
         pagination.setData(list);
         session.setAttribute("articles", pagination);
         resp.sendRedirect("index.jsp");

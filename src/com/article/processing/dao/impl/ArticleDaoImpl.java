@@ -88,7 +88,7 @@ public class ArticleDaoImpl implements ArticleDao {
      * @return 更新结果
      */
     public int insert(Article model) {
-        String sql = "insert into article (id, title, content, user_id, create_time, article_group, status) values (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "insert into article (id, title, content, user_id, create_time, article_group, status, ver) values (?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement preparedStatement = DBUtil.getPatmt(sql);
         int result = 0;
         try {
@@ -99,6 +99,7 @@ public class ArticleDaoImpl implements ArticleDao {
             preparedStatement.setTimestamp(5, model.getCreateTime());
             preparedStatement.setString(6, model.getGroup());
             preparedStatement.setInt(7, model.getStatus());
+            preparedStatement.setInt(8, model.getVer());
             result = preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

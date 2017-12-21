@@ -52,8 +52,6 @@
 <%@include file="header.jsp" %>
 <%
     Pagination pagination = (Pagination) session.getAttribute("articles");
-    int startIndex = pagination.getStartIdx();
-    List list = pagination.getData();
 %>
 <!-- sidebar -->
 <div id="sidebar-nav">
@@ -146,8 +144,18 @@
                         <tbody>
                         <!-- row -->
                         <%
-                            for (int i = startIndex; i < 4; i++) {
-                                Article article = (Article) list.get(i);
+                            if (pagination != null) {
+                                int pages = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+                                pagination.setPage(pages);
+                                int startIndex = pagination.getStartIdx();
+                                List list = pagination.getData();
+                                int totalPage = pagination.getTotalPage();
+                                int rows = pagination.getRows();
+                                if (pages == totalPage) {
+                                    rows = pagination.getCount() - (totalPage - 1) * rows;
+                                }
+                                for (int i = 0; i < rows; i++) {
+                                    Article article = (Article) list.get(startIndex++);
                         %>
                         <tr class="first">
                             <td>
@@ -199,14 +207,21 @@
             <!-- end orders table -->
             <div class="pagination text-center">
                 <ul>
-                    <li><a href="#">‹</a></li>
-                    <li><a class="active" href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">›</a></li>
+                    <li><a href="all-article.jsp?page=<%=pages == 1 ? 1 : pages - 1%>">‹</a></li>
+                    <%
+                        for (int i = 1; i <= totalPage; i++) {
+                            if (pages == i) {
+                                out.println("<li><a class=\"active\" href=\"all-article.jsp?page=" + i + "\">" + i + "</a></li>");
+                            } else {
+                                out.println("<li><a href=\"all-article.jsp?page=" + i + "\">" + i + "</a></li>");
+                            }
+                        }
+                    %>
+                    <li><a href="all-article.jsp?page=<%=pages == totalPage ? totalPage : pages + 1%>">›</a></li>
                 </ul>
             </div>
+
+            <%}%>
         </div>
     </div>
 </div>

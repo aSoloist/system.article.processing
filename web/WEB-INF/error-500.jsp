@@ -1,17 +1,56 @@
 <%--
   Created by IntelliJ IDEA.
-  User: Soloist
-  Date: 2017/12/21
-  Time: 16:10
+  User: LiWenfeng
+  Date: 2017/12/21 0021
+  Time: 16:01
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=GBK" isErrorPage="true" pageEncoding="UTF-8" %>
+<%response.setStatus(HttpServletResponse.SC_OK);%>
+<%
+    response.setStatus(500);
+
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+
+%>
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>500</title>
+    <title>500 - 系统内部错误</title>
+
+    <script src="<%=basePath %>/js/jquery-1.3.2.min.js"></script>
+    <!-- bootstrap需要引入的js和css文件 -->
+    <link href="<%=basePath %>/css/bootstrap/bootstrap.css" rel="stylesheet">
+    <script src="<%=basePath %>/js/bootstrap.min.js"></script>
+
+    <script language="javascript" type="text/javascript">
+        var i = 5;
+        var intervalid;
+        intervalid = setInterval("fun()", 1000);
+        function fun() {
+            if (i === 0) {
+                window.location.href = "../admin/index.jsp";
+                clearInterval(intervalid);
+            }
+            document.getElementById("mes").innerHTML = i;
+            i--;
+        }
+    </script>
+
 </head>
 <body>
-<h1><%=request.getParameter("message")%></h1>
+<div class="container-fluid pagination-centered">
+    <div class="page-header"><h1>系统内部错误.</h1></div>
+    <div class="brand" style="font-size: 24px">将在 <span id="mes" style="color: red; font-size: 28px">5</span> 秒钟后返回首页！</div><br><br>
+    <div class="errorMessage">
+        系统执行发生错误，信息描述如下：<br><br>
+        错误状态代码是：${pageContext.errorData.statusCode}<br>
+        错误发生页面是：${pageContext.errorData.requestURI}<br>
+        错误信息：${pageContext.exception}<br><br>
+        <a href="javascript:" onclick="history.go(-1);" class="btn">返回上一页</a> &nbsp;
+        <a href="javascript:" onclick="window.location.href='../admin/index.jsp';" class="btn">返回主页</a>
+    </div>
+</div>
 </body>
 </html>

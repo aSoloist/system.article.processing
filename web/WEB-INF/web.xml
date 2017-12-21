@@ -42,5 +42,114 @@
         <filter-name>loginFilter</filter-name>
         <url-pattern>/admin/*</url-pattern>
     </filter-mapping>
+
+    <servlet>
+        <servlet-name>registerServlet</servlet-name>
+        <servlet-class>com.article.processing.servlet.RegisterServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>registerServlet</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>userVerificationServlet</servlet-name>
+        <servlet-class>com.article.processing.servlet.UserVerificationServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>userVerificationServlet</servlet-name>
+        <url-pattern>/register/userVerification</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>resendServlet</servlet-name>
+        <servlet-class>com.article.processing.servlet.ResendServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>resendServlet</servlet-name>
+        <url-pattern>/register/resend</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>saveArticleServlet</servlet-name>
+        <servlet-class>com.article.processing.servlet.SaveArticleServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>saveArticleServlet</servlet-name>
+        <url-pattern>/saveArticle.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>searchArticleServlet</servlet-name>
+        <servlet-class>com.article.processing.servlet.SearchArticleServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>searchArticleServlet</servlet-name>
+        <url-pattern>/searchArticle.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>loginServlet</servlet-name>
+        <servlet-class>com.article.processing.servlet.LoginServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>loginServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>adminLoginServlet</servlet-name>
+        <servlet-class>com.article.processing.servlet.AdminLoginServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>adminLoginServlet</servlet-name>
+        <url-pattern>/admin-login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>updatePasswordServlet</servlet-name>
+        <servlet-class>com.article.processing.servlet.UpdatePasswordServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>updatePasswordServlet</servlet-name>
+        <url-pattern>/updatePassword</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>updateUserServlet</servlet-name>
+        <servlet-class>com.article.processing.servlet.UpdateUserServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>updateUserServlet</servlet-name>
+        <url-pattern>/updateUser</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>exitServlet</servlet-name>
+        <servlet-class>com.article.processing.servlet.ExitServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>exitServlet</servlet-name>
+        <url-pattern>/exit</url-pattern>
+    </servlet-mapping>
     
+    <servlet>
+        <servlet-name>isExistServlet</servlet-name>
+        <servlet-class>com.article.processing.servlet.IsExistServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>isExistServlet</servlet-name>
+        <url-pattern>/isExist</url-pattern>
+    </servlet-mapping>
 </web-app>

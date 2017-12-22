@@ -54,7 +54,7 @@
                 <div class="arrow"></div>
                 <div class="arrow_border"></div>
             </div>
-            <a href="../admin/index.jsp">
+            <a href="../root/index.jsp">
                 <i class="icon-home"></i>
                 <span>主页</span>
             </a>
@@ -77,7 +77,7 @@
             </a>
         </li>
         <li>
-            <a href="all-user.jsp">
+            <a href="announcement.jsp">
                 <i class="icon-envelope"></i>
                 <span>发送公告</span>
             </a>

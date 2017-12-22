@@ -104,7 +104,7 @@
             <div class="table-wrapper orders-table">
                 <div class="row-fluid head">
                     <div class="span12">
-                        <h4>稿件状态</h4>
+                        <h4>待审核稿件</h4>
                     </div>
                 </div>
                 <br>

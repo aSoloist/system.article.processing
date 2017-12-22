@@ -12,7 +12,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>稿件管理系统 - 所有稿件</title>
+    <title>稿件管理系统 - 所有用户</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
@@ -55,24 +55,28 @@
 <!-- sidebar -->
 <div id="sidebar-nav">
     <ul id="dashboard-menu">
-        <li class="active">
+        <li>
             <a href="../root/index.jsp">
                 <i class="icon-home"></i>
                 <span>主页</span>
             </a>
         </li>
-        <li class="active">
+        <li>
             <a class="dropdown-toggle" href="#">
                 <i class="icon-edit"></i>
                 <span>稿件管理</span>
                 <i class="icon-chevron-down"></i>
             </a>
-            <ul class="active submenu">
+            <ul class="submenu">
                 <li><a href="check-pending.jsp">待审核稿件</a></li>
-                <li><a href="all-article.jsp" class="active">所有稿件</a></li>
+                <li><a href="all-article.jsp">所有稿件</a></li>
             </ul>
         </li>
-        <li>
+        <li class="active">
+            <div class="pointer">
+                <div class="arrow"></div>
+                <div class="arrow_border"></div>
+            </div>
             <a href="all-user.jsp">
                 <i class="icon-group"></i>
                 <span>所有用户</span>
@@ -104,7 +108,7 @@
             <div class="table-wrapper orders-table">
                 <div class="row-fluid head">
                     <div class="span12">
-                        <h4>所有稿件</h4>
+                        <h4>稿件状态</h4>
                     </div>
                 </div>
                 <br>

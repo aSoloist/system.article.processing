@@ -108,7 +108,7 @@
             <div class="table-wrapper orders-table">
                 <div class="row-fluid head">
                     <div class="span12">
-                        <h4>稿件状态</h4>
+                        <h4>所有用户</h4>
                     </div>
                 </div>
                 <br>
@@ -120,106 +120,44 @@
                         <tr>
                             <th class="span3">
                                 <span class="line"></span>
-                                标题
+                                用户名
                             </th>
-                            <th class="span6">
+                            <th class="span3">
                                 <span class="line"></span>
-                                内容
+                                姓名
                             </th>
-                            <th class="span2">
-                                最近提交日期
+                            <th class="span4">
+                                邮箱
                             </th>
-                            <th class="span2">
+                            <th class="span4">
                                 <span class="line"></span>
-                                提交次数
-                            </th>
-                            <th class="span2">
-                                <span class="line"></span>
-                                状态
+                                手机号
                             </th>
                         </tr>
                         </thead>
                         <tbody>
                         <!-- row -->
-                        <%
-                            if (pagination != null) {
-                                int pages = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
-                                pagination.setPage(pages);
-                                int startIndex = pagination.getStartIdx();
-                                List list = pagination.getData();
-                                int totalPage = pagination.getTotalPage();
-                                int rows = pagination.getRows();
-                                if (pages == totalPage) {
-                                    rows = pagination.getCount() - (totalPage - 1) * rows;
-                                }
-                                for (int i = 0; i < rows; i++) {
-                                    Article article = (Article) list.get(startIndex++);
-                        %>
                         <tr class="first">
                             <td>
-                                <a href="#">
-                                    <%
-                                        String title = article.getTitle();
-                                        if (title.length() > 8) {
-                                            title = title.substring(0, 8) + "......";
-                                        }
-                                    %>
-                                    <%=title%>
+                                <a href="user-page.jsp">
+                                    123
                                 </a>
                             </td>
                             <td>
-                                <%
-                                    String content = article.getContent();
-                                    if (content.length() > 40) {
-                                        content = content.substring(0, 40) + "......";
-                                    }
-                                %>
-                                <%=content%>
+                                你叫啥？
                             </td>
                             <td>
-                                <%=new Date(article.getCreateTime().getTime())%>
+                                无可奉告
                             </td>
                             <td>
-                                <%=article.getVer()%>
-                            </td>
-                            <td>
-                                <%
-                                    if (article.getStatus() == 0) {
-                                %><span class="label label-info">审核中
-                                    <%
-                            } else if (article.getStatus() == 1) {
-                        %><span class="label ">未通过
-                                        <%
-                            } else if (article.getStatus() == 2) {
-                        %><span class="label label-success">通过
-                        <%
-                            }
-                        %></span>
+                                13700000000
                             </td>
                         </tr>
-                        <%}%>
                         </tbody>
                     </table>
                 </div>
             </div>
             <!-- end orders table -->
-            <div class="pagination text-center">
-                <ul>
-                    <li><a href="all-article.jsp?page=<%=pages == 1 ? 1 : pages - 1%>">‹</a></li>
-                    <%
-                        for (int i = 1; i <= totalPage; i++) {
-                            if (pages == i) {
-                                out.println("<li><a class=\"active\" href=\"all-article.jsp?page=" + i + "\">" + i + "</a></li>");
-                            } else {
-                                out.println("<li><a href=\"all-article.jsp?page=" + i + "\">" + i + "</a></li>");
-                            }
-                        }
-                    %>
-                    <li><a href="all-article.jsp?page=<%=pages == totalPage ? totalPage : pages + 1%>">›</a></li>
-                </ul>
-            </div>
-
-            <%}%>
         </div>
     </div>
 </div>

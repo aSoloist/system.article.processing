@@ -5,10 +5,6 @@
   Time: 19:27
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page import="com.article.processing.model.Article" %>
-<%@ page import="com.article.processing.model.Pagination" %>
-<%@ page import="java.util.Date" %>
-<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -49,9 +45,7 @@
 <body>
 
 <%@include file="header.jsp" %>
-<%
-    Pagination pagination = (Pagination) session.getAttribute("articles");
-%>
+
 <!-- sidebar -->
 <div id="sidebar-nav">
     <ul id="dashboard-menu">
@@ -100,126 +94,54 @@
 
 <!-- main container -->
 <div class="content">
-
+    <div class="span12">
+        <div class="left"><br>
+            <a class="btn-flat white" href="javascript:history.go(-1);">
+                <span class="icon-reply"></span>
+                <span>返回上级</span>
+            </a>
+        </div>
+    </div>
+    <br>
     <div class="container-fluid">
         <div id="pad-wrapper">
+            <!-- edit form column -->
+            <div class="row-fluid header">
+                <h3>用户信息</h3>
+            </div>
 
-            <!-- orders table -->
-            <div class="table-wrapper orders-table">
-                <div class="row-fluid head">
-                    <div class="span12">
-                        <h4>稿件状态</h4>
+            <div class="row-fluid form-wrapper">
+                <!-- left column -->
+                <div class="span9 with-sidebar">
+                    <div class="container">
+                        <div></div>
+                        <div class="span12 field-box">
+                            <label>姓名:</label>
+                            <input class="span9" type="text" value="你叫啥？" readonly/>
+                        </div>
+                        <div class="span12 field-box">
+                            <label>用户名:</label>
+                            <input class="span9" type="text" value="123" readonly/>
+                        </div>
+                        <div class="span12 field-box">
+                            <label>单位:</label>
+                            <input class="span9" type="text" value="无可奉告" readonly/>
+                        </div>
+                        <div class="span12 field-box">
+                            <label>地址:</label>
+                            <input class="span9" type="text" value="无可奉告" readonly/>
+                        </div>
+                        <div class="span12 field-box">
+                            <label>手机号:</label>
+                            <input class="span9" type="text" value="13700000000" readonly/>
+                        </div>
+                        <div class="span12 field-box">
+                            <label>E-mail:</label>
+                            <input class="span9" type="text" value="无可奉告" readonly/>
+                        </div>
                     </div>
                 </div>
-                <br>
-
-                <div class="row-fluid span12">
-
-                    <table class="table table-hover">
-                        <thead>
-                        <tr>
-                            <th class="span3">
-                                <span class="line"></span>
-                                标题
-                            </th>
-                            <th class="span6">
-                                <span class="line"></span>
-                                内容
-                            </th>
-                            <th class="span2">
-                                最近提交日期
-                            </th>
-                            <th class="span2">
-                                <span class="line"></span>
-                                提交次数
-                            </th>
-                            <th class="span2">
-                                <span class="line"></span>
-                                状态
-                            </th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <!-- row -->
-                        <%
-                            if (pagination != null) {
-                                int pages = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
-                                pagination.setPage(pages);
-                                int startIndex = pagination.getStartIdx();
-                                List list = pagination.getData();
-                                int totalPage = pagination.getTotalPage();
-                                int rows = pagination.getRows();
-                                if (pages == totalPage) {
-                                    rows = pagination.getCount() - (totalPage - 1) * rows;
-                                }
-                                for (int i = 0; i < rows; i++) {
-                                    Article article = (Article) list.get(startIndex++);
-                        %>
-                        <tr class="first">
-                            <td>
-                                <a href="#">
-                                    <%
-                                        String title = article.getTitle();
-                                        if (title.length() > 8) {
-                                            title = title.substring(0, 8) + "......";
-                                        }
-                                    %>
-                                    <%=title%>
-                                </a>
-                            </td>
-                            <td>
-                                <%
-                                    String content = article.getContent();
-                                    if (content.length() > 40) {
-                                        content = content.substring(0, 40) + "......";
-                                    }
-                                %>
-                                <%=content%>
-                            </td>
-                            <td>
-                                <%=new Date(article.getCreateTime().getTime())%>
-                            </td>
-                            <td>
-                                <%=article.getVer()%>
-                            </td>
-                            <td>
-                                <%
-                                    if (article.getStatus() == 0) {
-                                %><span class="label label-info">审核中
-                                    <%
-                            } else if (article.getStatus() == 1) {
-                        %><span class="label ">未通过
-                                        <%
-                            } else if (article.getStatus() == 2) {
-                        %><span class="label label-success">通过
-                        <%
-                            }
-                        %></span>
-                            </td>
-                        </tr>
-                        <%}%>
-                        </tbody>
-                    </table>
-                </div>
             </div>
-            <!-- end orders table -->
-            <div class="pagination text-center">
-                <ul>
-                    <li><a href="all-article.jsp?page=<%=pages == 1 ? 1 : pages - 1%>">‹</a></li>
-                    <%
-                        for (int i = 1; i <= totalPage; i++) {
-                            if (pages == i) {
-                                out.println("<li><a class=\"active\" href=\"all-article.jsp?page=" + i + "\">" + i + "</a></li>");
-                            } else {
-                                out.println("<li><a href=\"all-article.jsp?page=" + i + "\">" + i + "</a></li>");
-                            }
-                        }
-                    %>
-                    <li><a href="all-article.jsp?page=<%=pages == totalPage ? totalPage : pages + 1%>">›</a></li>
-                </ul>
-            </div>
-
-            <%}%>
         </div>
     </div>
 </div>

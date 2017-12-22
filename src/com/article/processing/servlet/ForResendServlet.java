@@ -24,7 +24,7 @@ public class ForResendServlet extends HttpServlet {
         if (email.matches("^[A-Za-z0-9\\u4e00-\\u9fa5]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$")) {
             String v = MD5Util.encrypt2(email);
             String message = "您发出了修改密码的请求，点击下面按钮确认是您本人操作，如果不是您本人的操作，请忽略这封邮件！<br/>" +
-                    "<a href=\"" + req.getRequestURL() + "/forPassVerification?email=" +
+                    "<a href=\"" + req.getRequestURL().substring(0, req.getRequestURL().lastIndexOf("/")) + "/forPassVerification?email=" +
                     email + "&v=" + v + "\">点击验证</a>";
             try {
                 MailUtil.sendMail(email, "", "修改密码", message);

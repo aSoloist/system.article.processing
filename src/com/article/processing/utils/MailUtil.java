@@ -32,7 +32,7 @@ public class MailUtil {
 
     static {
         properties.setProperty("mail.smtp.host", HOST);
-        properties.setProperty("mail.smtp.port", PORT);
+        properties.setProperty("mail.smtp.socketFactory.port", PORT);
         properties.setProperty("mail.smtp.socketFactory.class", CLASS);
         properties.setProperty("mail.smtp.socketFactory.fallback", FALLBACK);
         properties.setProperty("mail.smtp.socketFactory.port", PORT);
@@ -73,8 +73,8 @@ public class MailUtil {
         return mimeMessage;
     }
     
-    /*public static void main(String[] args) throws UnsupportedEncodingException, MessagingException {
+    public static void main(String[] args) throws UnsupportedEncodingException, MessagingException {
         sendMail("947721002@qq.com", "测试", "测试", "<a href=\"http://www.baidu.com\">点击</a>");
-    }*/
+    }
 }
 

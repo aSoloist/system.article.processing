@@ -208,7 +208,7 @@
                                 for (int i = startIndex; i < n; i++) {
                                     Article article = (Article) list.get(i);
                             %>
-                            <tr class="first">
+                            <tr>
                                 <td>
                                     <a href="#">
                                         <%

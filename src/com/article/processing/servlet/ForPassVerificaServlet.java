@@ -20,10 +20,10 @@ public class ForPassVerificaServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String email = StringUtil.validator(req.getParameter("email"));
         String v = StringUtil.validator(req.getParameter("v"));
-        email = MD5Util.encrypt2(email);
-        if (email.equals(v)) {
+        String vEmail = MD5Util.encrypt2(email);
+        if (vEmail.equals(v)) {
             req.setAttribute("email", email);
-            req.getRequestDispatcher("../update-password.jsp").forward(req, resp);
+            req.getRequestDispatcher("../change-password.jsp").forward(req, resp);
         } else {
             resp.getWriter().write("验证失败");
         }

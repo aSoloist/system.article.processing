@@ -30,11 +30,13 @@ public class AdminLoginServlet extends BaseServlet<UserDaoImpl> {
         }
         if (user == null) {
             throw new RuntimeException("用户不存在");
+        } else if (user.getStatus() <= 10) {
+            throw new RuntimeException("用户权限不足");
         } else if (!user.getPassword().equals(password)) {
             throw new RuntimeException("密码错误");
         } else {
             req.getSession().setAttribute("user", user);
-            resp.sendRedirect("/admin/getIndex");
+            resp.sendRedirect("/root/getIndex");
         }
     }
 }

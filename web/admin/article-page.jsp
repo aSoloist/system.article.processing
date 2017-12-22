@@ -1,4 +1,7 @@
-<%--
+<%@ page import="java.util.List" %>
+<%@ page import="com.article.processing.model.Pagination" %>
+<%@ page import="com.article.processing.model.Message" %>
+<%@ page import="com.article.processing.model.Article" %><%--
   Created by IntelliJ IDEA.
   User: LiWenfeng
   Date: 2017/12/21 0021
@@ -44,7 +47,10 @@
 <body>
 
 <%@include file="header.jsp" %>
-
+<%
+    String id =request.getParameter("id");
+    List list = ((Pagination) request.getSession().getAttribute("articles")).getData();
+%>
 <!-- sidebar -->
 <div id="sidebar-nav">
     <ul id="dashboard-menu">
@@ -91,7 +97,17 @@
     </ul>
 </div>
 <!-- end sidebar -->
-
+<%
+    if (id != null && list.size() > 0) {
+        Article article = null;
+        for (Object o : list) {
+            if (id.equals(((Article) o).getId())) {
+                article = (Article) o;
+                break;
+            }
+        }
+        if (article != null) {
+%>
 <!-- main container -->
 <div class="content">
     <div class="container-fluid">
@@ -100,23 +116,27 @@
                 <form>
                     <div class="field-box">
                         <label>标题:</label>
-                        <input class="span7 inline-input" type="text" name="title" value="123456789" maxlength="30" readonly="readonly"/>
+                        <input class="span7 inline-input" type="text" name="title" value="<%=article.getTitle()%>" maxlength="30" readonly="readonly"/>
                     </div>
                     <div class="field-box">
                         <label>内容:</label>
                         <div class="wysi-column">
-                            <textarea id="wysi" class="span10 wysihtml5" rows="20" name="content" title="" readonly="readonly">123456789123456789</textarea>
+                            <textarea id="wysi" class="span10 wysihtml5" rows="20" name="content" title="" readonly="readonly"><%=article.getContent()%></textarea>
                         </div>
                     </div>
                     <div class="span6 field-box actions text-center">
-                        <input type="submit" class="btn-glow primary" value="提交"/>
+                        <input type="submit" class="btn-glow primary" value="编辑"/>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+<%
 
+        }
+    }
+%>
 <!-- scripts for this page -->
 <script src="../js/wysihtml5-0.3.0.js"></script>
 <script src="http://code.jquery.com/jquery-latest.js"></script>

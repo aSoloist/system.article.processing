@@ -13,12 +13,29 @@ public class Message {
     private String id = UUID.randomUUID().toString();
     //发送者id
     private String sendId;
+    //消息标题
+    private String title;
     //消息内容
     private String messageContent;
     //创建时间
     private Timestamp createTime = new Timestamp(new Date().getTime());
     //状态
     private int status = 0;
+
+    public Message() {
+    }
+
+    public Message(String content) {
+        this.messageContent = content;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
     public String getId() {
         return id;

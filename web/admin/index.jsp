@@ -2,6 +2,7 @@
 <%@ page import="com.article.processing.model.Pagination" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.util.List" %>
+<%@ page import="com.article.processing.model.Message" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -144,7 +145,10 @@
         <!-- end upper main stats -->
 
         <div id="pad-wrapper">
-
+<%
+    Pagination messages = (Pagination) request.getSession().getAttribute("messages");
+    Message message = messages.getCount() != 0 ? (Message) messages.getData().get(0) : new Message("");
+%>
             <div class="row-fluid chart">
                 <div class="row-fluid head">
                     <div class="span12">
@@ -158,9 +162,7 @@
                     </div>
                 </div>
                 <br>
-                <div class="span12"><h5>电子公告板英文缩写是BBS，是“Bulletin Board
-                    System”的首字母缩写，网络用语，即电子公告板，是Internet上的一种电于信息服务系统。
-                    它提供一块公共电子白板，每个用户都可以在上面书写，可发布信息或提出看法。</h5></div>
+                <div class="span12"><h5><%=message.getMessageContent()%></h5></div>
             </div>
 
             <!-- orders table -->

@@ -1,4 +1,7 @@
-<%--
+<%@ page import="java.util.List" %>
+<%@ page import="com.article.processing.model.Pagination" %>
+<%@ page import="com.article.processing.model.Message" %>
+<%@ page import="java.util.Date" %><%--
   Created by IntelliJ IDEA.
   User: LiWenfeng
   Date: 2017/12/21 0021
@@ -45,7 +48,10 @@
 <body>
 
 <%@include file="header.jsp" %>
-
+<%
+    String id = request.getParameter("id");
+    List list = ((Pagination) request.getSession().getAttribute("messages")).getData();
+%>
 <!-- sidebar -->
 <div id="sidebar-nav">
     <ul id="dashboard-menu">
@@ -106,17 +112,30 @@
                 <span>返回上级</span>
             </a>
         </div>
-    </div><br>
+    </div>
+    <br>
     <div class="container-fluid">
         <div id="pad-wrapper">
+            <%
+                if (id != null && list.size() > 0) {
+                    Message message = null;
+                    for (Object o : list) {
+                        if (id.equals(((Message) o).getId())) {
+                            message = (Message) o;
+                            break;
+                        }
+                    }
+                    if (message != null) {
+            %>
             <div class="table-wrapper orders-table">
                 <div class="row-fluid text-center">
                     <div class="span12">
-                        <h2>点我点我点我</h2>
+                        <h2><%=message.getTitle()%>
+                        </h2>
                     </div>
                     <br><br>
                     <div class="date">
-                        2017-12-21 11:49:56
+                        <%=new Date(message.getCreateTime().getTime())%>
                     </div>
                 </div>
                 <br>
@@ -126,13 +145,17 @@
                     <tr>
                         <th class="span12">
                             <div class="text-center"><br>
-                                <h5>测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本</h5>
+                                <h5><%=message.getMessageContent()%></h5>
                             </div>
                         </th>
                     </tr>
                     </thead>
                 </table>
             </div>
+            <%
+                    }
+                }
+            %>
         </div>
     </div>
 </div>

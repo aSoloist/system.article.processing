@@ -27,6 +27,6 @@ public class GetIndexServlet extends BaseServlet<ArticleDaoImpl> {
         pagination.setCount(list.size());
         pagination.setData(list);
         session.setAttribute("articles", pagination);
-        resp.sendRedirect("index.jsp");
+        resp.sendRedirect("allMessage");
     }
 }

@@ -1,3 +1,8 @@
+<%@ page import="com.article.processing.model.Article" %>
+<%@ page import="com.article.processing.model.Pagination" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.article.processing.model.Message" %>
+<%@ page import="java.util.Date" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -38,7 +43,9 @@
 <body>
 
 <%@include file="header.jsp" %>
-
+<%
+    Pagination messages = (Pagination) request.getSession().getAttribute("messages");
+%>
 <!-- sidebar -->
 <div id="sidebar-nav">
     <ul id="dashboard-menu">
@@ -119,192 +126,64 @@
                         </thead>
                         <tbody>
                         <!-- row -->
-                        <tr class="first">
-                            <td class="time">
-                                Jun 20, 2017
-                            </td>
-                            <td>
-                                <a href="message-page.jsp" class="name">点我点我点我</a>
-                            </td>
-                            <td class="description">
-                                测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本
-                            </td>
-                        </tr>
-                        <!-- row -->
+                        <%
+                            if (messages != null) {
+                                int pages = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+                                messages.setPage(pages);
+                                int startIndex = messages.getStartIdx();
+                                int totalPage = messages.getTotalPage();
+                                List list = messages.getData();
+                                int rows = messages.getRows();
+                                if (pages == totalPage) {
+                                    rows = messages.getCount() - (totalPage - 1) * rows;
+                                }
+                                for (int i = 0; i < rows; i++) {
+                                    Message message = (Message) list.get(startIndex++);
+                        %>
                         <tr>
                             <td class="time">
-                                Jun 20, 2017
+                                <%=new Date(message.getCreateTime().getTime())%>
                             </td>
                             <td>
-                                <a href="#" class="name">一个瓜皮标题</a>
+                                <a href="message-page.jsp?id=<%=message.getId()%>" class="name">
+                                    <%
+                                        String title = message.getTitle();
+                                        if (title.length() > 8) {
+                                            title = title.substring(0, 8) + "......";
+                                        }
+                                    %>
+                                    <%=title%>
+                                </a>
                             </td>
                             <td class="description">
-                                测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本
+                                <%
+                                    String content = message.getMessageContent();
+                                    if (content.length() > 40) {
+                                        content = content.substring(0, 40) + "......";
+                                    }
+                                %>
+                                <%=content%>
                             </td>
                         </tr>
-                        <!-- row -->
-                        <tr>
-                            <td class="time">
-                                Jun 20, 2017
-                            </td>
-                            <td>
-                                <a href="#" class="name">一个瓜皮标题</a>
-                            </td>
-                            <td class="description">
-                                测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本
-                            </td>
-                        </tr>
-                        <!-- row -->
-                        <tr>
-                            <td class="time">
-                                Jun 20, 2017
-                            </td>
-                            <td>
-                                <a href="#" class="name">一个瓜皮标题</a>
-                            </td>
-                            <td class="description">
-                                测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="time">
-                                Jun 20, 2017
-                            </td>
-                            <td>
-                                <a href="#" class="name">一个瓜皮标题</a>
-                            </td>
-                            <td class="description">
-                                测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="time">
-                                Jun 20, 2017
-                            </td>
-                            <td>
-                                <a href="#" class="name">一个瓜皮标题</a>
-                            </td>
-                            <td class="description">
-                                测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本
-                            </td>
-                        </tr>
-                        <!-- row -->
-                        <tr>
-                            <td class="time">
-                                Jun 20, 2017
-                            </td>
-                            <td>
-                                <a href="#" class="name">一个瓜皮标题</a>
-                            </td>
-                            <td class="description">
-                                测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本
-                            </td>
-                        </tr>
-                        <!-- row -->
-                        <tr>
-                            <td class="time">
-                                Jun 20, 2017
-                            </td>
-                            <td>
-                                <a href="#" class="name">一个瓜皮标题</a>
-                            </td>
-                            <td class="description">
-                                测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本
-                            </td>
-                        </tr>
-                        <!-- row -->
-                        <tr>
-                            <td class="time">
-                                Jun 20, 2017
-                            </td>
-                            <td>
-                                <a href="#" class="name">一个瓜皮标题</a>
-                            </td>
-                            <td class="description">
-                                测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="time">
-                                Jun 20, 2017
-                            </td>
-                            <td>
-                                <a href="#" class="name">一个瓜皮标题</a>
-                            </td>
-                            <td class="description">
-                                测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="time">
-                                Jun 20, 2017
-                            </td>
-                            <td>
-                                <a href="#" class="name">一个瓜皮标题</a>
-                            </td>
-                            <td class="description">
-                                测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本
-                            </td>
-                        </tr>
-                        <!-- row -->
-                        <tr>
-                            <td class="time">
-                                Jun 20, 2017
-                            </td>
-                            <td>
-                                <a href="#" class="name">一个瓜皮标题</a>
-                            </td>
-                            <td class="description">
-                                测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本
-                            </td>
-                        </tr>
-                        <!-- row -->
-                        <tr>
-                            <td class="time">
-                                Jun 20, 2017
-                            </td>
-                            <td>
-                                <a href="#" class="name">一个瓜皮标题</a>
-                            </td>
-                            <td class="description">
-                                测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本
-                            </td>
-                        </tr>
-                        <!-- row -->
-                        <tr>
-                            <td class="time">
-                                Jun 20, 2017
-                            </td>
-                            <td>
-                                <a href="#" class="name">一个瓜皮标题</a>
-                            </td>
-                            <td class="description">
-                                测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="time">
-                                Jun 20, 2017
-                            </td>
-                            <td>
-                                <a href="#" class="name">一个瓜皮标题</a>
-                            </td>
-                            <td class="description">
-                                测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本
-                            </td>
-                        </tr>
+                        <%}%>
                         </tbody>
                     </table>
                     <div class="pagination text-center">
                         <ul>
-                            <li><a href="#">‹</a></li>
-                            <li><a class="active" href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">›</a></li>
+                            <li><a href="get-message.jsp?page=<%=pages == 1 ? 1 : pages - 1%>">‹</a></li>
+                            <%
+                                for (int i = 1; i <= totalPage; i++) {
+                                    if (pages == i) {
+                                        out.println("<li><a class=\"active\" href=\"get-message.jsp?page=" + i + "\">" + i + "</a></li>");
+                                    } else {
+                                        out.println("<li><a href=\"get-message.jsp?page=" + i + "\">" + i + "</a></li>");
+                                    }
+                                }
+                            %>
+                            <li><a href="get-message.jsp?page=<%=pages == totalPage ? totalPage : pages + 1%>">›</a></li>
                         </ul>
                     </div>
+                    <%}%>
                 </div>
             </div>
         </div>

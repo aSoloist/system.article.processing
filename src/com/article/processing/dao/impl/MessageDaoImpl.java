@@ -21,6 +21,7 @@ public class MessageDaoImpl implements MessageDao {
         message.setMessageContent(resultSet.getString("message_content"));
         message.setCreateTime(resultSet.getTimestamp("create_time"));
         message.setStatus(resultSet.getInt("status"));
+        message.setTitle(resultSet.getString("title"));
     }
 
     /**
@@ -51,7 +52,7 @@ public class MessageDaoImpl implements MessageDao {
      * @return
      */
     public List<Message> getAll() {
-        String sql = "select * from message where status <> -1";
+        String sql = "select * from message where status <> -1 order by create_time desc";
         PreparedStatement preparedStatement = DBUtil.getPatmt(sql);
         ResultSet resultSet = null;
         List<Message> list = new ArrayList<>();
@@ -102,7 +103,7 @@ public class MessageDaoImpl implements MessageDao {
      * @return
      */
     public int insert(Message model) {
-        String sql = "insert into message (id, send_id, message_content, create_time, status) values (?, ?, ?, ?, ?)";
+        String sql = "insert into message (id, send_id, message_content, create_time, status, title) values (?, ?, ?, ?, ?, ?)";
         PreparedStatement preparedStatement = DBUtil.getPatmt(sql);
         int result = 0;
         try {
@@ -111,6 +112,7 @@ public class MessageDaoImpl implements MessageDao {
             preparedStatement.setString(3, model.getMessageContent());
             preparedStatement.setTimestamp(4, model.getCreateTime());
             preparedStatement.setInt(5, model.getStatus());
+            preparedStatement.setString(6, model.getTitle());
             result = preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -127,7 +129,7 @@ public class MessageDaoImpl implements MessageDao {
      */
     public int update(Message model) {
         String sql = "update message set send_id = ?, message_content = ?, create_time = ?," +
-                " status = ? where id = ?";
+                " status = ?, title = ? where id = ?";
         PreparedStatement preparedStatement = DBUtil.getPatmt(sql);
         int result = 0;
         try {
@@ -135,7 +137,8 @@ public class MessageDaoImpl implements MessageDao {
             preparedStatement.setString(2, model.getMessageContent());
             preparedStatement.setTimestamp(3, model.getCreateTime());
             preparedStatement.setInt(4, model.getStatus());
-            preparedStatement.setString(5, model.getId());
+            preparedStatement.setString(5, model.getTitle());
+            preparedStatement.setString(6, model.getId());
             result = preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

@@ -97,21 +97,19 @@
     <div class="container-fluid">
         <div id="pad-wrapper" class="form-page">
             <div class="row-fluid form-wrapper">
-                <form action="${pageContext.request.contextPath}/saveArticle" method="post">
+                <form>
                     <div class="field-box">
                         <label>标题:</label>
-                        <input class="span7 inline-input" type="text" name="title" value="" maxlength="30"/>
+                        <input class="span7 inline-input" type="text" name="title" value="123456789" maxlength="30" readonly="readonly"/>
                     </div>
                     <div class="field-box">
                         <label>内容:</label>
                         <div class="wysi-column">
-                            <textarea id="wysi" class="span10 wysihtml5" rows="20" name="content" title=""></textarea>
+                            <textarea id="wysi" class="span10 wysihtml5" rows="20" name="content" title="" readonly="readonly">123456789123456789</textarea>
                         </div>
                     </div>
                     <div class="span6 field-box actions text-center">
                         <input type="submit" class="btn-glow primary" value="提交"/>
-                        <span>&nbsp;或</span>
-                        <input type="reset" value="取消" class="reset"/>
                     </div>
                 </form>
             </div>

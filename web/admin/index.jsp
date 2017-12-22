@@ -204,18 +204,19 @@
                             <tbody>
                             <!-- row -->
                             <%
-                                for (int i = startIndex; i < 4; i++) {
+                                int n = list.size() < 4 ? list.size() : 4;
+                                for (int i = startIndex; i < n; i++) {
                                     Article article = (Article) list.get(i);
                             %>
                             <tr class="first">
                                 <td>
                                     <a href="#">
-                                    <%
-                                        String title = article.getTitle();
-                                        if (title.length() > 8) {
-                                            title = title.substring(0, 8) + "......";
-                                        }
-                                    %>
+                                        <%
+                                            String title = article.getTitle();
+                                            if (title.length() > 8) {
+                                                title = title.substring(0, 8) + "......";
+                                            }
+                                        %>
                                         <%=title%>
                                     </a>
                                 </td>
@@ -235,13 +236,13 @@
                                     <%=article.getVer()%>
                                 </td>
                                 <td>
-                        <%
-                            if (article.getStatus() == 0) {
-                        %><span class="label label-info">审核中
-                        <%
+                                    <%
+                                        if (article.getStatus() == 0) {
+                                    %><span class="label label-info">审核中
+                                        <%
                             } else if (article.getStatus() == 1) {
                         %><span class="label ">未通过
-                        <%
+                                            <%
                             } else if (article.getStatus() == 2) {
                         %><span class="label label-success">通过
                         <%
@@ -249,7 +250,7 @@
                         %></span>
                                 </td>
                             </tr>
-                    <%}%>
+                            <%}%>
                             </tbody>
                         </table>
                     </div>

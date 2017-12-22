@@ -55,7 +55,7 @@
 <!-- sidebar -->
 <div id="sidebar-nav">
     <ul id="dashboard-menu">
-        <li class="active">
+        <li>
             <a href="../root/index.jsp">
                 <i class="icon-home"></i>
                 <span>主页</span>

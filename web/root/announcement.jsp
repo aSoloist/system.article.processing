@@ -1,14 +1,14 @@
 <%--
   Created by IntelliJ IDEA.
   User: LiWenfeng
-  Date: 2017/12/22 0022
-  Time: 19:27
+  Date: 2017/12/23 0023
+  Time: 0:32
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>稿件管理系统 - 所有用户</title>
+    <title>稿件管理系统 - 发送公告</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
@@ -66,17 +66,17 @@
                 <li><a href="all-article.jsp">所有稿件</a></li>
             </ul>
         </li>
-        <li class="active">
-            <div class="pointer">
-                <div class="arrow"></div>
-                <div class="arrow_border"></div>
-            </div>
+        <li>
             <a href="all-user.jsp">
                 <i class="icon-group"></i>
                 <span>所有用户</span>
             </a>
         </li>
-        <li>
+        <li class="active">
+            <div class="pointer">
+                <div class="arrow"></div>
+                <div class="arrow_border"></div>
+            </div>
             <a href="announcement.jsp">
                 <i class="icon-envelope"></i>
                 <span>发送公告</span>
@@ -94,53 +94,29 @@
 
 <!-- main container -->
 <div class="content">
-    <div class="span12">
-        <div class="left"><br>
-            <a class="btn-flat white" href="javascript:history.go(-1);">
-                <span class="icon-reply"></span>
-                <span>返回上级</span>
-            </a>
-        </div>
-    </div>
-    <br>
     <div class="container-fluid">
-        <div id="pad-wrapper">
-            <!-- edit form column -->
+        <div id="pad-wrapper" class="form-page">
             <div class="row-fluid header">
-                <h3>用户信息</h3>
+                <h3>发布公告</h3>
             </div>
-
             <div class="row-fluid form-wrapper">
-                <!-- left column -->
-                <div class="span9 with-sidebar">
-                    <div class="container">
-                        <div></div>
-                        <div class="span12 field-box">
-                            <label>姓名:</label>
-                            <input class="span9" type="text" value="你叫啥？" readonly/>
-                        </div>
-                        <div class="span12 field-box">
-                            <label>用户名:</label>
-                            <input class="span9" type="text" value="123" readonly/>
-                        </div>
-                        <div class="span12 field-box">
-                            <label>单位:</label>
-                            <input class="span9" type="text" value="无可奉告" readonly/>
-                        </div>
-                        <div class="span12 field-box">
-                            <label>地址:</label>
-                            <input class="span9" type="text" value="无可奉告" readonly/>
-                        </div>
-                        <div class="span12 field-box">
-                            <label>手机号:</label>
-                            <input class="span9" type="text" value="13700000000" readonly/>
-                        </div>
-                        <div class="span12 field-box">
-                            <label>E-mail:</label>
-                            <input class="span9" type="text" value="无可奉告" readonly/>
-                        </div>
+                <form action="${pageContext.request.contextPath}/" method="post">
+                    <div class="field-box">
+                        <label>标题:</label>
+                        <input class="span7 inline-input" type="text" name="title" value="" minlength="1"
+                               maxlength="30"/>
                     </div>
-                </div>
+                    <div class="field-box">
+                        <label>内容:</label>
+                        <textarea id="wysi" class="span10" rows="10" name="content" minlength="10" title=""></textarea>
+                    </div>
+                    <br>
+                    <div class="span6 field-box actions text-center">
+                        <input type="submit" class="btn-glow primary" value="发布"/>
+                        <span>&nbsp;或</span>
+                        <input type="reset" value="取消" class="reset"/>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

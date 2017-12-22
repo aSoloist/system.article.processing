@@ -44,7 +44,7 @@
 </head>
 <body>
 
-<%@include file="../admin/header.jsp" %>
+<%@include file="header.jsp" %>
 
 <!-- sidebar -->
 <div id="sidebar-nav">
@@ -93,6 +93,7 @@
 <!-- end sidebar -->
 
 <!-- main container -->
+
 <div class="content">
     <div class="container-fluid">
 
@@ -127,79 +128,71 @@
         </div>
         <!-- end upper main stats -->
 
-        <!-- orders table -->
-        <div class="table-wrapper orders-table section">
-            <div class="row-fluid head">
-                <div class="span12">
-                    <h4>未审核稿件</h4>
-                </div>
-            </div>
+        <div id="pad-wrapper">
 
-            <div class="row-fluid filter-block span12">
-                <div class="pull-right">
-                    <a class="glow right" href="../admin/all-article.jsp">查看全部>></a>
+            <!-- orders table -->
+            <div class="table-wrapper orders-table section">
+                <div class="row-fluid head">
+                    <div class="span12">
+                        <h4>稿件状态</h4>
+                    </div>
                 </div>
-            </div>
 
-            <div class="row-fluid">
-                <table class="table table-hover">
-                    <thead>
-                    <tr>
-                        <th class="span3">
-                            <span class="line"></span>
-                            标题
-                        </th>
-                        <th class="span6">
-                            <span class="line"></span>
-                            内容
-                        </th>
-                        <th class="span2">
-                            最近提交日期
-                        </th>
-                        <th class="span2">
-                            <span class="line"></span>
-                            提交次数
-                        </th>
-                        <th class="span2">
-                            <span class="line"></span>
-                            作者
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <!-- row -->
-                    <tr class="first">
-                        <td>
-                            <a href="#">asdaw
-                            </a>
-                        </td>
-                        <td>
-                            <a href="#">asdas
-                            </a>
-                        </td>
-                        <td>
-                            <a href="#">asdas
-                            </a>
-                        </td>
-                        <td>
-                            <a href="#">qwerasd
-                            </a>
-                        </td>
-                        <td>
-                            <a href="#">awdsad
-                            </a>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+                <div class="row-fluid filter-block span12">
+                    <div class="pull-right">
+                        <a class="glow right" href="all-article.jsp">查看全部>></a>
+                    </div>
+
+                    <div class="row-fluid">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th class="span3">
+                                    <span class="line"></span>
+                                    标题
+                                </th>
+                                <th class="span6">
+                                    <span class="line"></span>
+                                    内容
+                                </th>
+                                <th class="span2">
+                                    最近提交日期
+                                </th>
+                                <th class="span2">
+                                    <span class="line"></span>
+                                    提交次数
+                                </th>
+                                <th class="span2">
+                                    <span class="line"></span>
+                                    状态
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <!-- row -->
+                            <tr>
+                                <td>
+                                    <a href="#">45645345
+                                    </a>
+                                </td>
+                                <td>452452
+                                </td>
+                                <td>452542
+                                </td>
+                                <td>452452
+                                </td>
+                                <td>452452
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- end orders table -->
             </div>
         </div>
-        <!-- end orders table -->
     </div>
 </div>
-</div>
-</div>
-
 <!-- scripts -->
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="../js/bootstrap.min.js"></script>

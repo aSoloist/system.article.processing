@@ -25,7 +25,7 @@ public class AdminLoginFilter implements Filter {
         User user = (User) session.getAttribute("user");
         if (user == null) {
             throw new RuntimeException("请先登录");
-        } else if (user.getStatus() >= 100) {
+        } else if (user.getStatus() <= 100) {
             throw new RuntimeException("用户权限不足");
         } else {
             filterChain.doFilter(request, response);

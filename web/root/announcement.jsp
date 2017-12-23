@@ -56,6 +56,12 @@
             </a>
         </li>
         <li>
+            <a href="all-user.jsp">
+                <i class="icon-group"></i>
+                <span>所有用户</span>
+            </a>
+        </li>
+        <li>
             <a class="dropdown-toggle" href="#">
                 <i class="icon-edit"></i>
                 <span>稿件管理</span>
@@ -65,12 +71,6 @@
                 <li><a href="check-pending.jsp">待审核稿件</a></li>
                 <li><a href="all-article.jsp">所有稿件</a></li>
             </ul>
-        </li>
-        <li>
-            <a href="all-user.jsp">
-                <i class="icon-group"></i>
-                <span>所有用户</span>
-            </a>
         </li>
         <li class="active">
             <a class="dropdown-toggle" href="#">

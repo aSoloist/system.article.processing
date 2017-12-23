@@ -248,14 +248,17 @@
                                         if (article.getStatus() == 0) {
                                     %><span class="label label-info">审核中
                                         <%
-                            } else if (article.getStatus() == 1) {
-                        %><span class="label ">未通过
+                                    } else if (article.getStatus() == 1) {
+                                %><span class="label ">退稿
                                             <%
-                            } else if (article.getStatus() == 2) {
-                        %><span class="label label-success">通过
-                        <%
-                            }
-                        %></span>
+                                    } else if (article.getStatus() == 2) {
+                                %><span class="label label-success">录用
+                                                <%
+                                    } else if (article.getStatus() == 3) {
+                                %><span class="label label-info">修改后再审
+                                <%
+                                    }
+                                %></span>
                                 </td>
                             </tr>
                             <%}%>

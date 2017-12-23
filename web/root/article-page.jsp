@@ -128,9 +128,11 @@
                         </div>
                     </div>
                     <div class="span6 field-box actions text-center">
-                        <input type="submit" name="submit" class="btn-glow primary" value="通过"/>
+                        <input type="submit" name="submit" class="btn-glow primary" value="录用"/>
                         <span>或</span>
-                        <input type="submit" name="submit" class="btn-glow inverse" value="未通过"/>
+                        <input type="submit" name="submit" class="btn-glow inverse" value="修改后再审"/>
+                        <span>或</span>
+                        <input type="submit" name="submit" class="btn-glow inverse" value="退稿"/>
                     </div>
                 </form>
             </div>

@@ -29,10 +29,13 @@ public class ArticleStatusServlet extends BaseServlet<ArticleDaoImpl> {
         if (article != null) {
             int result;
             switch (submit) {
-                case "通过":
+                case "退稿":
+                    result = baseDao.updateStatus(id, 1);
+                    break;
+                case "录用":
                     result = baseDao.updateStatus(id, 2);
                     break;
-                case "未通过":
+                case "修改后再审":
                     result = baseDao.updateStatus(id, 1);
                     break;
                 default:

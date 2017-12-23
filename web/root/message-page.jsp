@@ -151,10 +151,6 @@
                     </thead>
                 </table>
             </div>
-            <%
-                    }
-                }
-            %>
         </div>
 
         <div class="span12 field-box actions text-center">
@@ -162,6 +158,10 @@
             <span>或</span>
             <input type="submit" class="btn-glow inverse" value="删除"/>
         </div>
+        <%
+                }
+            }
+        %>
     </div>
 </div>
 

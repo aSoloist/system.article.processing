@@ -48,7 +48,7 @@
 
 <%@include file="header.jsp" %>
 <%
-    String id =request.getParameter("id");
+    String id = request.getParameter("id");
     List list = ((Pagination) request.getSession().getAttribute("articles")).getData();
 %>
 <!-- sidebar -->
@@ -58,6 +58,12 @@
             <a href="../root/index.jsp">
                 <i class="icon-home"></i>
                 <span>主页</span>
+            </a>
+        </li>
+        <li>
+            <a href="all-user.jsp">
+                <i class="icon-group"></i>
+                <span>所有用户</span>
             </a>
         </li>
         <li class="active">
@@ -72,16 +78,15 @@
             </ul>
         </li>
         <li>
-            <a href="all-user.jsp">
-                <i class="icon-group"></i>
-                <span>所有用户</span>
-            </a>
-        </li>
-        <li>
-            <a href="announcement.jsp">
+            <a class="dropdown-toggle" href="#">
                 <i class="icon-envelope"></i>
-                <span>发送公告</span>
+                <span>管理公告</span>
+                <i class="icon-chevron-down"></i>
             </a>
+            <ul class="submenu">
+                <li><a href="announcement.jsp">发布公告</a></li>
+                <li><a href="all-message.jsp">管理公告</a></li>
+            </ul>
         </li>
         <li>
             <a href="${pageContext.request.contextPath}/exit">
@@ -114,12 +119,14 @@
                     %>
                     <div class="field-box">
                         <label>标题:</label>
-                        <input class="span7 inline-input" type="text" name="title" value="<%=article.getTitle()%>" maxlength="30" readonly="readonly"/>
+                        <input class="span7 inline-input" type="text" name="title" value="<%=article.getTitle()%>"
+                               maxlength="30" readonly="readonly"/>
                     </div>
                     <div class="field-box">
                         <label>内容:</label>
                         <div>
-                            <textarea id="wysi" class="span10" rows="20" name="content" title="" readonly="readonly"><%=article.getContent()%></textarea>
+                            <textarea id="wysi" class="span10" rows="20" name="content" title=""
+                                      readonly="readonly"><%=article.getContent()%></textarea>
                         </div>
                     </div>
                     <div class="span6 field-box actions text-center">
@@ -133,7 +140,6 @@
     </div>
 </div>
 <%
-
         }
     }
 %>

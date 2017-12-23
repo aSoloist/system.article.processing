@@ -1,4 +1,3 @@
-<%@ page import="com.article.processing.model.Article" %>
 <%@ page import="com.article.processing.model.Pagination" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.article.processing.model.Message" %>

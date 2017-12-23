@@ -61,6 +61,12 @@
                 <span>主页</span>
             </a>
         </li>
+        <li>
+            <a href="all-user.jsp">
+                <i class="icon-group"></i>
+                <span>所有用户</span>
+            </a>
+        </li>
         <li class="active">
             <a class="dropdown-toggle" href="#">
                 <i class="icon-edit"></i>
@@ -73,16 +79,15 @@
             </ul>
         </li>
         <li>
-            <a href="all-user.jsp">
-                <i class="icon-group"></i>
-                <span>所有用户</span>
-            </a>
-        </li>
-        <li>
-            <a href="announcement.jsp">
+            <a class="dropdown-toggle" href="#">
                 <i class="icon-envelope"></i>
-                <span>发送公告</span>
+                <span>管理公告</span>
+                <i class="icon-chevron-down"></i>
             </a>
+            <ul class="submenu">
+                <li><a href="announcement.jsp">发布公告</a></li>
+                <li><a href="all-message.jsp">管理公告</a></li>
+            </ul>
         </li>
         <li>
             <a href="${pageContext.request.contextPath}/exit">

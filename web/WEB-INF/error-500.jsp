@@ -64,11 +64,25 @@
         错误发生页面是：${pageContext.errorData.requestURI}<br>
         错误信息：<%=errorMessage%><br><br>
         <a href="javascript:" onclick="history.go(-1);" class="btn">返回上一页</a> &nbsp;
-        <%if (user != null) {%>
+        <%
+            if (user != null) {
+                if (user.getStatus() < 100) {
+        %>
         <a href="javascript:" onclick="window.location.href='../admin/index.jsp';" class="btn">返回主页</a>
-        <%} else {%>
+        <%
+                } else {
+        %>
+        <a href="javascript:" onclick="window.location.href='../root/index.jsp';" class="btn">返回主页</a>
+        <%
+                }
+        %>
+        <%
+            } else {
+        %>
         <a href="javascript:" onclick="window.location.href='../signin.jsp';" class="btn">返回登陆</a>
-        <%}%>
+        <%
+            }
+        %>
     </div>
 </div>
 </body>

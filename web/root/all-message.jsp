@@ -173,7 +173,7 @@
                             <td>
                                 <ul class="actions">
                                     <li><a href="#">编辑</a></li>
-                                    <li class="last"><a href="#">删除</a></li>
+                                    <li class="last"><a href="#" onclick="return confirm('确认删除？');">删除</a></li>
                                 </ul>
                             </td>
                         </tr>

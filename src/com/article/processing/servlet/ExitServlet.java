@@ -10,7 +10,7 @@ import java.io.IOException;
 /**
  * Created by Soloist on 2017/12/20 23:21
  */
-@WebServlet("/exit")
+@WebServlet("/admin/exit")
 public class ExitServlet extends HttpServlet {
 
     @Override

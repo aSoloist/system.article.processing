@@ -89,7 +89,7 @@
             </ul>
         </li>
         <li>
-            <a href="${pageContext.request.contextPath}/exit">
+            <a href="${pageContext.request.contextPath}/root/exit">
                 <i class="icon-share-alt"></i>
                 <span>退出帐号</span>
             </a>
@@ -114,9 +114,7 @@
         <div id="pad-wrapper" class="form-page">
             <div class="row-fluid form-wrapper">
                 <form action="${pageContext.request.contextPath}/root/setStatus" method="post">
-                    <%
-                        request.setAttribute("id", article.getId());
-                    %>
+                    <input type="hidden" name="id" value="<%=article.getId()%>">
                     <div class="field-box">
                         <label>标题:</label>
                         <input class="span7 inline-input" type="text" name="title" value="<%=article.getTitle()%>"
@@ -130,9 +128,9 @@
                         </div>
                     </div>
                     <div class="span6 field-box actions text-center">
-                        <input type="submit" class="btn-glow primary" value="通过"/>
+                        <input type="submit" name="submit" class="btn-glow primary" value="通过"/>
                         <span>或</span>
-                        <input type="submit" class="btn-glow inverse" value="未通过"/>
+                        <input type="submit" name="submit" class="btn-glow inverse" value="未通过"/>
                     </div>
                 </form>
             </div>

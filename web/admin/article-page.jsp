@@ -89,7 +89,7 @@
             </ul>
         </li>
         <li>
-            <a href="${pageContext.request.contextPath}/exit">
+            <a href="${pageContext.request.contextPath}/admin/exit">
                 <i class="icon-share-alt"></i>
                 <span>退出帐号</span>
             </a>
@@ -113,15 +113,16 @@
     <div class="container-fluid">
         <div id="pad-wrapper" class="form-page">
             <div class="row-fluid form-wrapper">
-                <form>
+                <form method="post" action="${pageContext.request.contextPath}/admin/updateArticle">
+                    <input type="hidden" name="id" value="<%=article.getId()%>">
                     <div class="field-box">
                         <label>标题:</label>
-                        <input class="span7 inline-input" type="text" name="title" value="<%=article.getTitle()%>" maxlength="30" readonly="readonly"/>
+                        <input class="span7 inline-input" type="text" name="title" value="<%=article.getTitle()%>" maxlength="30"/>
                     </div>
                     <div class="field-box">
                         <label>内容:</label>
                         <div class="wysi-column">
-                            <textarea id="wysi" class="span10 wysihtml5" rows="20" name="content" title="" readonly="readonly"><%=article.getContent()%></textarea>
+                            <textarea id="wysi" class="span10 wysihtml5" rows="20" name="content" title=""><%=article.getContent()%></textarea>
                         </div>
                     </div>
                     <div class="span6 field-box actions text-center">

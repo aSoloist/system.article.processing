@@ -39,7 +39,7 @@
                 </a>
             </li>
             <li class="settings hidden-phone">
-                <a href="${pageContext.request.contextPath}/exit" role="button">
+                <a href="${pageContext.request.contextPath}/root/exit" role="button">
                     <i class="icon-share-alt"></i>
                 </a>
             </li>

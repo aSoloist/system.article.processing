@@ -92,7 +92,7 @@
             </ul>
         </li>
         <li>
-            <a href="${pageContext.request.contextPath}/exit">
+            <a href="${pageContext.request.contextPath}/root/exit">
                 <i class="icon-share-alt"></i>
                 <span>退出帐号</span>
             </a>
@@ -151,10 +151,10 @@
                     </thead>
                 </table>
 
-                <div class="span12 field-box actions text-center">
+                <div class="table text-center">
                     <input type="submit" class="btn-glow primary" value="编辑"/>
                     <span>或</span>
-                    <input type="submit" class="btn-glow inverse" value="删除"/>
+                    <input type="submit" class="btn-glow inverse" onclick="return confirm('确认删除？');" value="删除"/>
                 </div>
             </div>
             <%
@@ -162,8 +162,6 @@
                 }
             %>
         </div>
-
-
     </div>
 </div>
 

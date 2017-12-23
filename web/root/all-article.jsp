@@ -90,7 +90,7 @@
             </ul>
         </li>
         <li>
-            <a href="${pageContext.request.contextPath}/exit">
+            <a href="${pageContext.request.contextPath}/root/exit">
                 <i class="icon-share-alt"></i>
                 <span>退出帐号</span>
             </a>

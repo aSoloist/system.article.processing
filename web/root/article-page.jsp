@@ -125,7 +125,7 @@
                     <div class="field-box">
                         <label>内容:</label>
                         <div>
-                            <textarea id="wysi" class="span10" rows="20" name="content" title=""
+                            <textarea class="span10" rows="20" name="content" title=""
                                       readonly="readonly"><%=article.getContent()%></textarea>
                         </div>
                     </div>

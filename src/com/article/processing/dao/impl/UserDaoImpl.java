@@ -44,7 +44,7 @@ public class UserDaoImpl implements UserDao {
         List<User> list = new ArrayList<>();
         User user;
         try {
-            resultSet = preparedStatement.getResultSet();
+            resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 user = new User();
                 createUser(user, resultSet);
@@ -69,7 +69,7 @@ public class UserDaoImpl implements UserDao {
         List<User> list = new ArrayList<>();
         User user;
         try {
-            resultSet = preparedStatement.getResultSet();
+            resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 user = new User();
                 createUser(user, resultSet);

@@ -151,7 +151,7 @@
                                 <%=new Date(message.getCreateTime().getTime())%>
                             </td>
                             <td>
-                                <a href="all-message.jsp?id=<%=message.getId()%>" class="name">
+                                <a href="message-page.jsp?id=<%=message.getId()%>" class="name">
                                     <%
                                         String title = message.getTitle();
                                         if (title.length() > 8) {

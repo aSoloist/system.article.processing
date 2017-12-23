@@ -36,7 +36,7 @@ public class Pagination<T> implements Serializable {
 
     public Integer getTotalPage() {
         if (this.count < 1) {
-            return 0;
+            return 1;
         } else {
             this.totalPage = this.count / this.rows;
             if (this.count % this.rows > 0) {

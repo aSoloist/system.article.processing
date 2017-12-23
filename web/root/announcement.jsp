@@ -73,14 +73,15 @@
             </a>
         </li>
         <li class="active">
-            <div class="pointer">
-                <div class="arrow"></div>
-                <div class="arrow_border"></div>
-            </div>
-            <a href="announcement.jsp">
+            <a class="dropdown-toggle" href="#">
                 <i class="icon-envelope"></i>
-                <span>发送公告</span>
+                <span>管理公告</span>
+                <i class="icon-chevron-down"></i>
             </a>
+            <ul class="active submenu">
+                <li><a href="announcement.jsp" class="active">发布公告</a></li>
+                <li><a href="all-message.jsp">管理公告</a></li>
+            </ul>
         </li>
         <li>
             <a href="${pageContext.request.contextPath}/exit">

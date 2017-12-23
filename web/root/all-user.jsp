@@ -61,17 +61,6 @@
                 <span>主页</span>
             </a>
         </li>
-        <li>
-            <a class="dropdown-toggle" href="#">
-                <i class="icon-edit"></i>
-                <span>稿件管理</span>
-                <i class="icon-chevron-down"></i>
-            </a>
-            <ul class="submenu">
-                <li><a href="check-pending.jsp">待审核稿件</a></li>
-                <li><a href="all-article.jsp">所有稿件</a></li>
-            </ul>
-        </li>
         <li class="active">
             <div class="pointer">
                 <div class="arrow"></div>
@@ -83,10 +72,26 @@
             </a>
         </li>
         <li>
-            <a href="announcement.jsp">
-                <i class="icon-envelope"></i>
-                <span>发送公告</span>
+            <a class="dropdown-toggle" href="#">
+                <i class="icon-edit"></i>
+                <span>稿件管理</span>
+                <i class="icon-chevron-down"></i>
             </a>
+            <ul class="submenu">
+                <li><a href="check-pending.jsp">待审核稿件</a></li>
+                <li><a href="all-article.jsp">所有稿件</a></li>
+            </ul>
+        </li>
+        <li>
+            <a class="dropdown-toggle" href="#">
+                <i class="icon-envelope"></i>
+                <span>管理公告</span>
+                <i class="icon-chevron-down"></i>
+            </a>
+            <ul class="submenu">
+                <li><a href="announcement.jsp">发布公告</a></li>
+                <li><a href="all-message.jsp">管理公告</a></li>
+            </ul>
         </li>
         <li>
             <a href="${pageContext.request.contextPath}/exit">

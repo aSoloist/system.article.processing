@@ -56,11 +56,7 @@
 <!-- sidebar -->
 <div id="sidebar-nav">
     <ul id="dashboard-menu">
-        <li class="active">
-            <div class="pointer">
-                <div class="arrow"></div>
-                <div class="arrow_border"></div>
-            </div>
+        <li>
             <a href="../root/index.jsp">
                 <i class="icon-home"></i>
                 <span>主页</span>
@@ -83,15 +79,15 @@
                 <li><a href="all-article.jsp">所有稿件</a></li>
             </ul>
         </li>
-        <li>
+        <li class="active">
             <a class="dropdown-toggle" href="#">
                 <i class="icon-envelope"></i>
                 <span>管理公告</span>
                 <i class="icon-chevron-down"></i>
             </a>
-            <ul class="submenu">
+            <ul class="active submenu">
                 <li><a href="announcement.jsp">发布公告</a></li>
-                <li><a href="all-message.jsp">管理公告</a></li>
+                <li><a href="all-message.jsp" class="active">管理公告</a></li>
             </ul>
         </li>
         <li>

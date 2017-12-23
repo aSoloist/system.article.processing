@@ -5,13 +5,6 @@
   Time: 13:37
   To change this template use File | Settings | File Templates.
 --%>
-<%--
-  Created by IntelliJ IDEA.
-  User: LiWenfeng
-  Date: 2017/12/22 0022
-  Time: 19:24
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page import="java.util.List" %>
 <%@ page import="com.article.processing.model.Pagination" %>
 <%@ page import="com.article.processing.model.Message" %>

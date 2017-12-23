@@ -9,6 +9,7 @@
 <%@ page import="com.article.processing.model.Pagination" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.util.List" %>
+<%@ page import="com.article.processing.model.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -50,7 +51,7 @@
 
 <%@include file="header.jsp" %>
 <%
-    Pagination pagination = (Pagination) session.getAttribute("articles");
+    Pagination users = (Pagination) session.getAttribute("users");
 %>
 <!-- sidebar -->
 <div id="sidebar-nav">
@@ -137,24 +138,56 @@
                         </thead>
                         <tbody>
                         <!-- row -->
+                        <%
+                            if (users != null) {
+                                int pages = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+                                users.setPage(pages);
+                                int startIndex = users.getStartIdx();
+                                int totalPage = users.getTotalPage();
+                                List list = users.getData();
+                                int rows = users.getRows();
+                                if (pages == totalPage) {
+                                    rows = users.getCount() - (totalPage - 1) * rows;
+                                }
+                                for (int i = 0; i < rows; i++) {
+                                    User user = (User) list.get(startIndex++);
+                        %>
                         <tr class="first">
                             <td>
-                                <a href="user-page.jsp">
-                                    123
+                                <a href="user-page.jsp?id=<%=user.getId()%>">
+                                    <%=user.getNickname()%>
                                 </a>
                             </td>
                             <td>
-                                你叫啥？
+                                <%=user.getUsername()%>
                             </td>
                             <td>
-                                无可奉告
+                                <%=user.getEmail()%>
                             </td>
                             <td>
-                                13700000000
+                                <%=user.getPhone()%>
                             </td>
                         </tr>
+                        <%}%>
                         </tbody>
                     </table>
+                    <div class="pagination text-center">
+                        <ul>
+                            <li><a href="all-user.jsp?page=<%=pages == 1 ? 1 : pages - 1%>">‹</a></li>
+                            <%
+                                for (int i = 1; i <= totalPage; i++) {
+                                    if (pages == i) {
+                                        out.println("<li><a class=\"active\" href=\"get-message.jsp?page=" + i + "\">" + i + "</a></li>");
+                                    } else {
+                                        out.println("<li><a href=\"get-message.jsp?page=" + i + "\">" + i + "</a></li>");
+                                    }
+                                }
+                            %>
+                            <li><a href="all-user.jsp?page=<%=pages == totalPage ? totalPage : pages + 1%>">›</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <%}%>
                 </div>
             </div>
             <!-- end orders table -->

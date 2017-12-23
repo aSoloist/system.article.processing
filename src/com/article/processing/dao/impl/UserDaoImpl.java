@@ -59,6 +59,31 @@ public class UserDaoImpl implements UserDao {
     }
 
     /**
+     * 获取普通用户
+     * @return
+     */
+    public List<User> getUser() {
+        String sql = "select * from user where status = 10";
+        PreparedStatement preparedStatement = DBUtil.getPatmt(sql);
+        ResultSet resultSet = null;
+        List<User> list = new ArrayList<>();
+        User user;
+        try {
+            resultSet = preparedStatement.getResultSet();
+            while (resultSet.next()) {
+                user = new User();
+                createUser(user, resultSet);
+                list.add(user);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBUtil.closeQueryRes(resultSet);
+        }
+        return list;
+    }
+
+    /**
      * 通过id获取用户
      * @param id
      * @return

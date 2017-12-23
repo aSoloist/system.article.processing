@@ -1,4 +1,7 @@
-<%--
+<%@ page import="com.article.processing.model.Article" %>
+<%@ page import="com.article.processing.model.Pagination" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: LiWenfeng
   Date: 2017/12/22 0022
@@ -45,7 +48,21 @@
 <body>
 
 <%@include file="header.jsp" %>
-
+<%
+    Pagination pagination = (Pagination) session.getAttribute("articles");
+    int startIndex = pagination.getStartIdx();
+    List list = pagination.getData();
+    int unCheck = 0;
+    int accept = 0;
+    for (Object aList : list) {
+        Article article = (Article) aList;
+        if (article.getStatus() == 0) {
+            unCheck++;
+        } else if (article.getStatus() == 2) {
+            accept++;
+        }
+    }
+%>
 <!-- sidebar -->
 <div id="sidebar-nav">
     <ul id="dashboard-menu">
@@ -114,13 +131,13 @@
                 </div>
                 <div class="span3 stat">
                     <div class="data">
-                        <span class="number">篇</span>
+                        <span class="number"><%=unCheck%>篇</span>
                         正在审核的稿件
                     </div>
                 </div>
                 <div class="span3 stat last">
                     <div class="data">
-                        <span class="number">篇</span>
+                        <span class="number"><%=accept%>篇</span>
                         已通过稿件
                     </div>
                 </div>
@@ -170,20 +187,54 @@
                             </thead>
                             <tbody>
                             <!-- row -->
+                            <%
+                                int n = list.size() < 6 ? list.size() : 6;
+                                for (int i = startIndex; i < n; i++) {
+                                    Article article = (Article) list.get(i);
+                            %>
                             <tr>
                                 <td>
-                                    <a href="#">45645345
+                                    <a href="article-page.jsp?id=<%=article.getId()%>">
+                                        <%
+                                            String title = article.getTitle();
+                                            if (title.length() > 8) {
+                                                title = title.substring(0, 8) + "......";
+                                            }
+                                        %>
+                                        <%=title%>
                                     </a>
                                 </td>
-                                <td>452452
+                                <td>
+                                    <%
+                                        String content = article.getContent();
+                                        if (content.length() > 40) {
+                                            content = content.substring(0, 40) + "......";
+                                        }
+                                    %>
+                                    <%=content%>
                                 </td>
-                                <td>452542
+                                <td>
+                                    <%=new Date(article.getCreateTime().getTime())%>
                                 </td>
-                                <td>452452
+                                <td>
+                                    <%=article.getVer()%>
                                 </td>
-                                <td>452452
+                                <td>
+                                    <%
+                                        if (article.getStatus() == 0) {
+                                    %><span class="label label-info">审核中
+                                        <%
+                            } else if (article.getStatus() == 1) {
+                        %><span class="label ">未通过
+                                            <%
+                            } else if (article.getStatus() == 2) {
+                        %><span class="label label-success">通过
+                        <%
+                            }
+                        %></span>
                                 </td>
                             </tr>
+                            <%}%>
                             </tbody>
                         </table>
                     </div>

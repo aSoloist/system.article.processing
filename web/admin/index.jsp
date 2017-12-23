@@ -212,7 +212,7 @@
                             %>
                             <tr>
                                 <td>
-                                    <a href="#">
+                                    <a href="article-page.jsp?id=<%=article.getId()%>">
                                         <%
                                             String title = article.getTitle();
                                             if (title.length() > 8) {

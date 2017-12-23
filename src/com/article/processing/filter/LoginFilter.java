@@ -25,6 +25,8 @@ public class LoginFilter implements Filter {
         User user = (User) session.getAttribute("user");
         if (user == null) {
             throw new RuntimeException("请先登录");
+        } else if (user.getStatus() < 10) {
+            throw new RuntimeException("请先验证账号");
         } else {
             filterChain.doFilter(request, response);
         }

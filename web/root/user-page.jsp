@@ -1,3 +1,6 @@
+<%@ page import="com.article.processing.model.Pagination" %>
+<%@ page import="com.article.processing.model.User" %>
+<%@ page import="java.util.List" %>
 <%--
   Created by IntelliJ IDEA.
   User: LiWenfeng
@@ -45,7 +48,19 @@
 <body>
 
 <%@include file="header.jsp" %>
-
+<%
+    String id = request.getParameter("id");
+    List list = ((Pagination) request.getSession().getAttribute("users")).getData();
+    if (id != null && list.size() > 0) {
+        User user = null;
+        for (Object o : list) {
+            if (id.equals(((User) o).getId())) {
+                user = (User) o;
+                break;
+            }
+        }
+        if (user != null) {
+%>
 <!-- sidebar -->
 <div id="sidebar-nav">
     <ul id="dashboard-menu">
@@ -117,27 +132,27 @@
                         <div></div>
                         <div class="span12 field-box">
                             <label>姓名:</label>
-                            <input class="span9" type="text" value="你叫啥？" readonly/>
+                            <input class="span9" type="text" value="<%=user.getUsername()%>" readonly/>
                         </div>
                         <div class="span12 field-box">
                             <label>用户名:</label>
-                            <input class="span9" type="text" value="123" readonly/>
+                            <input class="span9" type="text" value="<%=user.getNickname()%>" readonly/>
                         </div>
                         <div class="span12 field-box">
                             <label>单位:</label>
-                            <input class="span9" type="text" value="无可奉告" readonly/>
+                            <input class="span9" type="text" value="<%=user.getUnit()%>" readonly/>
                         </div>
                         <div class="span12 field-box">
                             <label>地址:</label>
-                            <input class="span9" type="text" value="无可奉告" readonly/>
+                            <input class="span9" type="text" value="<%=user.getAddress()%>" readonly/>
                         </div>
                         <div class="span12 field-box">
                             <label>手机号:</label>
-                            <input class="span9" type="text" value="13700000000" readonly/>
+                            <input class="span9" type="text" value="<%=user.getPhone()%>" readonly/>
                         </div>
                         <div class="span12 field-box">
                             <label>E-mail:</label>
-                            <input class="span9" type="text" value="无可奉告" readonly/>
+                            <input class="span9" type="text" value="<%=user.getEmail()%>" readonly/>
                         </div>
                     </div>
                 </div>
@@ -145,7 +160,10 @@
         </div>
     </div>
 </div>
-
+<%
+        }
+    }
+%>
 <!-- scripts -->
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="../js/bootstrap.min.js"></script>

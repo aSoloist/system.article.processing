@@ -108,7 +108,10 @@
     <div class="container-fluid">
         <div id="pad-wrapper" class="form-page">
             <div class="row-fluid form-wrapper">
-                <form>
+                <form action="${pageContext.request.contextPath}/root/setStatus" method="post">
+                    <%
+                        request.setAttribute("id", article.getId());
+                    %>
                     <div class="field-box">
                         <label>标题:</label>
                         <input class="span7 inline-input" type="text" name="title" value="<%=article.getTitle()%>" maxlength="30" readonly="readonly"/>

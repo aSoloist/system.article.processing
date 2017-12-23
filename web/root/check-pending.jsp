@@ -150,10 +150,13 @@
                                 }
                                 for (int i = 0; i < rows; i++) {
                                     Article article = (Article) list.get(startIndex++);
+                                    if (article.getStatus() != 0) {
+                                        continue;
+                                    } else {
                         %>
                         <tr class="first">
                             <td>
-                                <a href="#">
+                                <a href="article-page.jsp?id=<%=article.getId()%>">
                                     <%
                                         String title = article.getTitle();
                                         if (title.length() > 8) {
@@ -179,21 +182,13 @@
                                 <%=article.getVer()%>
                             </td>
                             <td>
-                                <%
-                                    if (article.getStatus() == 0) {
-                                %><span class="label label-info">审核中
-                                    <%
-                            } else if (article.getStatus() == 1) {
-                        %><span class="label ">未通过
-                                        <%
-                            } else if (article.getStatus() == 2) {
-                        %><span class="label label-success">通过
-                        <%
-                            }
-                        %></span>
+                                <span class="label label-info">审核中</span>
                             </td>
                         </tr>
-                        <%}%>
+                        <%
+                                }
+                            }
+                        %>
                         </tbody>
                     </table>
                 </div>

@@ -151,15 +151,16 @@
                     </thead>
                 </table>
             </div>
-            <div class="span6 field-box actions text-center">
-                <input type="submit" class="btn-glow primary" value="编辑"/>
-                <span>或</span>
-                <input type="submit" class="btn-glow inverse" value="删除"/>
-            </div>
             <%
                     }
                 }
             %>
+        </div>
+
+        <div class="span12 field-box actions text-center">
+            <input type="submit" class="btn-glow primary" value="编辑"/>
+            <span>或</span>
+            <input type="submit" class="btn-glow inverse" value="删除"/>
         </div>
     </div>
 </div>

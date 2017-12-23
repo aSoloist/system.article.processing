@@ -36,7 +36,7 @@ public class ArticleStatusServlet extends BaseServlet<ArticleDaoImpl> {
                     result = baseDao.updateStatus(id, 2);
                     break;
                 case "修改后再审":
-                    result = baseDao.updateStatus(id, 1);
+                    result = baseDao.updateStatus(id, 3);
                     break;
                 default:
                     throw new RuntimeException("稿件状态错误");

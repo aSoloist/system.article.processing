@@ -1,5 +1,6 @@
 <%@ page import="com.article.processing.model.Article" %>
 <%@ page import="com.article.processing.model.Pagination" %>
+<%@ page import="com.article.processing.model.User" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
@@ -52,6 +53,8 @@
     Pagination pagination = (Pagination) session.getAttribute("articles");
     int startIndex = pagination.getStartIdx();
     List list = pagination.getData();
+    Pagination users = (Pagination) session.getAttribute("users");
+    List list1 = users.getData();
     int unCheck = 0;
     int accept = 0;
     for (Object aList : list) {
@@ -178,6 +181,9 @@
                                     内容
                                 </th>
                                 <th class="span2">
+                                    作者
+                                </th>
+                                <th class="span2">
                                     最近提交日期
                                 </th>
                                 <th class="span2">
@@ -217,6 +223,19 @@
                                         }
                                     %>
                                     <%=content%>
+                                </td>
+                                <td>
+                                    <%
+                                        User user = null;
+                                        for (Object o : list1) {
+                                            if (article.getUserId().equals(((User) o).getId())) {
+                                                user = (User) o;
+                                            }
+                                        }
+                                        if (user != null) {
+                                    %>
+                                    <a href="user-page.jsp?id=<%=user.getId()%>"><%=user.getNickname()%></a>
+                                    <%}%>
                                 </td>
                                 <td>
                                     <%=new Date(article.getCreateTime().getTime())%>

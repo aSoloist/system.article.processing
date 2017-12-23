@@ -33,9 +33,19 @@
 
         function fun() {
             if (i === 0) {
-                <%if (user != null) {%>
+                <%
+                if (user != null) {
+                    if (user.getStatus() < 100) {
+                %>
                 window.location.href = "../admin/index.jsp";
-                <%} else {%>
+                <%
+                    } else {
+                %>
+                window.location.href = "../root/index.jsp";
+                <%
+                    }
+                } else {
+                %>
                 window.location.href = "../signin.jsp";
                 <%}%>
                 clearInterval(intervalid);
@@ -70,14 +80,14 @@
         %>
         <a href="javascript:" onclick="window.location.href='../admin/index.jsp';" class="btn">返回主页</a>
         <%
-                } else {
+        } else {
         %>
         <a href="javascript:" onclick="window.location.href='../root/index.jsp';" class="btn">返回主页</a>
         <%
-                }
+            }
         %>
         <%
-            } else {
+        } else {
         %>
         <a href="javascript:" onclick="window.location.href='../signin.jsp';" class="btn">返回登陆</a>
         <%

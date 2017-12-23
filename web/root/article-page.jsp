@@ -48,7 +48,7 @@
 
 <%@include file="header.jsp" %>
 <%
-    String id =request.getParameter("id");
+    String id = request.getParameter("id");
     List list = ((Pagination) request.getSession().getAttribute("articles")).getData();
 %>
 <!-- sidebar -->
@@ -111,12 +111,14 @@
                 <form>
                     <div class="field-box">
                         <label>标题:</label>
-                        <input class="span7 inline-input" type="text" name="title" value="<%=article.getTitle()%>" maxlength="30" readonly="readonly"/>
+                        <input class="span7 inline-input" type="text" name="title" value="<%=article.getTitle()%>"
+                               maxlength="30" readonly="readonly"/>
                     </div>
                     <div class="field-box">
                         <label>内容:</label>
                         <div>
-                            <textarea id="wysi" class="span10" rows="20" name="content" title="" readonly="readonly"><%=article.getContent()%></textarea>
+                            <textarea id="wysi" class="span10" rows="20" name="content" title=""
+                                      readonly="readonly"><%=article.getContent()%></textarea>
                         </div>
                     </div>
                     <div class="span6 field-box actions text-center">
@@ -130,7 +132,6 @@
     </div>
 </div>
 <%
-
         }
     }
 %>

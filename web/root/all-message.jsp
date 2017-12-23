@@ -1,3 +1,10 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: LiWenfeng
+  Date: 2017/12/22 0022
+  Time: 19:24
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page import="com.article.processing.model.Pagination" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.article.processing.model.Message" %>
@@ -5,7 +12,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>稿件管理系统 - 主页</title>
+    <title>稿件管理系统 - 管理公告</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
@@ -45,35 +52,25 @@
 <%
     Pagination messages = (Pagination) request.getSession().getAttribute("messages");
 %>
+
 <!-- sidebar -->
 <div id="sidebar-nav">
     <ul id="dashboard-menu">
-        <li>
-            <a href="index.jsp">
-                <i class="icon-home"></i>
-                <span>主页</span>
-            </a>
-        </li>
         <li class="active">
             <div class="pointer">
                 <div class="arrow"></div>
                 <div class="arrow_border"></div>
             </div>
-            <a href="get-message.jsp">
-                <i class="icon-comment"></i>
-                <span>消息</span>
+            <a href="../root/index.jsp">
+                <i class="icon-home"></i>
+                <span>主页</span>
             </a>
         </li>
         <li>
-            <a class="dropdown-toggle" href="#">
+            <a href="all-user.jsp">
                 <i class="icon-group"></i>
-                <span>用户中心</span>
-                <i class="icon-chevron-down"></i>
+                <span>所有用户</span>
             </a>
-            <ul class="submenu">
-                <li><a href="personal-info.jsp">个人信息</a></li>
-                <li><a href="modify-password.jsp">更改密码</a></li>
-            </ul>
         </li>
         <li>
             <a class="dropdown-toggle" href="#">
@@ -82,8 +79,19 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="all-article.jsp">我的稿件</a></li>
-                <li><a href="submit-article.jsp">提交稿件</a></li>
+                <li><a href="check-pending.jsp">待审核稿件</a></li>
+                <li><a href="all-article.jsp">所有稿件</a></li>
+            </ul>
+        </li>
+        <li>
+            <a class="dropdown-toggle" href="#">
+                <i class="icon-envelope"></i>
+                <span>管理公告</span>
+                <i class="icon-chevron-down"></i>
+            </a>
+            <ul class="submenu">
+                <li><a href="announcement.jsp">发布公告</a></li>
+                <li><a href="all-message.jsp">管理公告</a></li>
             </ul>
         </li>
         <li>
@@ -121,6 +129,9 @@
                             <th class="span12">
                                 <span class="line"></span>内容
                             </th>
+                            <th class="span2">
+                                <span class="line"></span>管理
+                            </th>
                         </tr>
                         </thead>
                         <tbody>
@@ -144,7 +155,7 @@
                                 <%=new Date(message.getCreateTime().getTime())%>
                             </td>
                             <td>
-                                <a href="message-page.jsp?id=<%=message.getId()%>" class="name">
+                                <a href="all-message.jsp?id=<%=message.getId()%>" class="name">
                                     <%
                                         String title = message.getTitle();
                                         if (title.length() > 8) {
@@ -163,13 +174,19 @@
                                 %>
                                 <%=content%>
                             </td>
+                            <td>
+                                <ul class="actions">
+                                    <li><a href="#">编辑</a></li>
+                                    <li class="last"><a href="#">删除</a></li>
+                                </ul>
+                            </td>
                         </tr>
                         <%}%>
                         </tbody>
                     </table>
                     <div class="pagination text-center">
                         <ul>
-                            <li><a href="get-message.jsp?page=<%=pages == 1 ? 1 : pages - 1%>">‹</a></li>
+                            <li><a href="all-message.jsp?page=<%=pages == 1 ? 1 : pages - 1%>">‹</a></li>
                             <%
                                 for (int i = 1; i <= totalPage; i++) {
                                     if (pages == i) {
@@ -179,7 +196,8 @@
                                     }
                                 }
                             %>
-                            <li><a href="get-message.jsp?page=<%=pages == totalPage ? totalPage : pages + 1%>">›</a></li>
+                            <li><a href="all-message.jsp?page=<%=pages == totalPage ? totalPage : pages + 1%>">›</a>
+                            </li>
                         </ul>
                     </div>
                     <%}%>

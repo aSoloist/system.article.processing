@@ -37,7 +37,7 @@ public class UserVerificationServlet extends BaseServlet<UserDaoImpl> {
                             user.setStatus(10);
                             resp.getWriter().write("激活成功");
                             req.getSession().setAttribute("user", user);
-                            resp.setHeader("refresh", "3;url=/admin/index.jsp");
+                            resp.setHeader("refresh", "3;url=/admin/getIndex");
                         }
                     } else {
                         throw new RuntimeException("验证码错误");

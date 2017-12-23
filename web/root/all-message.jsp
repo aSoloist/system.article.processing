@@ -91,7 +91,7 @@
             </ul>
         </li>
         <li>
-            <a href="${pageContext.request.contextPath}/exit">
+            <a href="${pageContext.request.contextPath}/root/exit">
                 <i class="icon-share-alt"></i>
                 <span>退出帐号</span>
             </a>
@@ -172,8 +172,9 @@
                             </td>
                             <td>
                                 <ul class="actions">
-                                    <li><a href="#">编辑</a></li>
-                                    <li class="last"><a href="#" onclick="return confirm('确认删除？');">删除</a></li>
+                                    <li><a href="announcement.jsp?id=<%=message.getId()%>">编辑</a></li>
+                                    <li class="last"><a href="${pageContext.request.contextPath}/root/deleteMessage?id=<%=message.getId()%>" 
+                                                        onclick="return confirm('确认删除？');">删除</a></li>
                                 </ul>
                             </td>
                         </tr>

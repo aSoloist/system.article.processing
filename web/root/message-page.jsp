@@ -152,9 +152,13 @@
                 </table>
 
                 <div class="table text-center">
-                    <input type="submit" class="btn-glow primary" value="编辑"/>
+                    <a href="announcement.jsp?id=<%=message.getId()%>">
+                        <input type="button" class="btn-glow primary" value="编辑"/>
+                    </a>
                     <span>或</span>
-                    <input type="submit" class="btn-glow inverse" onclick="return confirm('确认删除？');" value="删除"/>
+                    <a href="${pageContext.request.contextPath}/root/deleteMessage?id=<%=message.getId()%>">
+                        <input type="button" class="btn-glow inverse" onclick="return confirm('确认删除？');" value="删除"/>
+                    </a>
                 </div>
             </div>
             <%

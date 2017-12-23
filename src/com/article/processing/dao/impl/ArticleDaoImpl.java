@@ -37,7 +37,8 @@ public class ArticleDaoImpl implements ArticleDao {
      */
     public List<Article> getAll() {
         String sql = "SELECT * FROM article a where status <> -1 and id = " +
-                "(select id from article where a.article_group = article_group order by create_time desc limit 1)";
+                "(select id from article where a.article_group = article_group order by create_time desc limit 1)" +
+                " order by create_time desc";
         PreparedStatement preparedStatement = DBUtil.getPatmt(sql);
         List<Article> list = new ArrayList<>();
         Article article;

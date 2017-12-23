@@ -1,4 +1,6 @@
-<%--
+<%@ page import="com.article.processing.model.Pagination" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.article.processing.model.Message" %><%--
   Created by IntelliJ IDEA.
   User: LiWenfeng
   Date: 2017/12/23 0023
@@ -92,7 +94,32 @@
     </ul>
 </div>
 <!-- end sidebar -->
-
+<%
+    String id = request.getParameter("id");
+    Pagination messages = (Pagination) request.getSession().getAttribute("messages");
+    List list = messages.getData();
+    Message message = null;
+    if (id != null && !id.equals("")) {
+        
+        for (Object o : list) {
+            if (((Message) o).getId().equals(id)) {
+                message = (Message) o;
+                break;
+            }
+        }
+        if (message == null) {
+            message = new Message();
+            message.setId("");
+            message.setTitle("");
+            message.setMessageContent("");
+        }
+    } else {
+        message = new Message();
+        message.setId("");
+        message.setTitle("");
+        message.setMessageContent("");
+    }
+%>
 <!-- main container -->
 <div class="content">
     <div class="container-fluid">
@@ -101,15 +128,18 @@
                 <h3>发布公告</h3>
             </div>
             <div class="row-fluid form-wrapper">
-                <form action="${pageContext.request.contextPath}/" method="post">
+                <form action="${pageContext.request.contextPath}/root/saveMessage" method="post">
+                    <input type="hidden" name="id" value="<%=message.getId()%>">
                     <div class="field-box">
                         <label>标题:</label>
-                        <input class="span7 inline-input" type="text" name="title" value="" minlength="1"
+                        <input class="span7 inline-input" type="text" name="title" value="<%=message.getTitle()%>"
+                               minlength="1"
                                maxlength="30"/>
                     </div>
                     <div class="field-box">
                         <label>内容:</label>
-                        <textarea id="wysi" class="span10" rows="10" name="content" minlength="10" title=""></textarea>
+                        <textarea id="wysi" class="span10" rows="10" name="content" minlength="10"
+                                  title=""><%=message.getMessageContent()%></textarea>
                     </div>
                     <br>
                     <div class="span6 field-box actions text-center">

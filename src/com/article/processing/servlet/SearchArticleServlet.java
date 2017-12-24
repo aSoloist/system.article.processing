@@ -28,6 +28,6 @@ public class SearchArticleServlet extends BaseServlet<ArticleDaoImpl> {
         String title = StringUtil.validator(req.getParameter("title"));
         List<Article> list = baseDao.getByTitle(user.getId(), title);
         req.setAttribute("articles", list);
-        req.getRequestDispatcher("/admin/all-article.jsp").forward(req, resp);
+        req.getRequestDispatcher("/admin/allArticle.jsp").forward(req, resp);
     }
 }

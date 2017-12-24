@@ -7,13 +7,13 @@
 --%>
 <%@ page import="com.article.processing.model.Article" %>
 <%@ page import="com.article.processing.model.Pagination" %>
+<%@ page import="com.article.processing.model.User" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.article.processing.model.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>稿件管理系统 - 所有用户</title>
+    <title>稿件管理系统 - 所有稿件</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
@@ -51,7 +51,9 @@
 
 <%@include file="header.jsp" %>
 <%
+    Pagination pagination = (Pagination) session.getAttribute("articles");
     Pagination users = (Pagination) session.getAttribute("users");
+    List list1 = users.getData();
 %>
 <!-- sidebar -->
 <div id="sidebar-nav">
@@ -62,25 +64,21 @@
                 <span>主页</span>
             </a>
         </li>
-        <li class="active">
-            <div class="pointer">
-                <div class="arrow"></div>
-                <div class="arrow_border"></div>
-            </div>
-            <a href="all-user.jsp">
+        <li>
+            <a href="allUser.jsp">
                 <i class="icon-group"></i>
                 <span>所有用户</span>
             </a>
         </li>
-        <li>
+        <li class="active">
             <a class="dropdown-toggle" href="#">
                 <i class="icon-edit"></i>
                 <span>稿件管理</span>
                 <i class="icon-chevron-down"></i>
             </a>
-            <ul class="submenu">
-                <li><a href="check-pending.jsp">待审核稿件</a></li>
-                <li><a href="all-article.jsp">所有稿件</a></li>
+            <ul class="active submenu">
+                <li><a href="checkPending.jsp">待审核稿件</a></li>
+                <li><a href="allArticle.jsp" class="active">所有稿件</a></li>
             </ul>
         </li>
         <li>
@@ -91,7 +89,7 @@
             </a>
             <ul class="submenu">
                 <li><a href="announcement.jsp">发布公告</a></li>
-                <li><a href="all-message.jsp">管理公告</a></li>
+                <li><a href="allMessage.jsp">管理公告</a></li>
             </ul>
         </li>
         <li>
@@ -114,7 +112,7 @@
             <div class="table-wrapper orders-table">
                 <div class="row-fluid head">
                     <div class="span12">
-                        <h4>所有用户</h4>
+                        <h4>所有稿件</h4>
                     </div>
                 </div>
                 <br>
@@ -126,76 +124,126 @@
                         <tr>
                             <th class="span3">
                                 <span class="line"></span>
-                                用户名
+                                标题
                             </th>
-                            <th class="span3">
+                            <th class="span6">
                                 <span class="line"></span>
-                                姓名
+                                内容
                             </th>
-                            <th class="span4">
-                                邮箱
+                            <th class="span2">
+                                作者
                             </th>
-                            <th class="span4">
+                            <th class="span2">
+                                最近提交日期
+                            </th>
+                            <th class="span2">
                                 <span class="line"></span>
-                                手机号
+                                提交次数
+                            </th>
+                            <th class="span2">
+                                <span class="line"></span>
+                                状态
                             </th>
                         </tr>
                         </thead>
                         <tbody>
                         <!-- row -->
                         <%
-                            if (users != null) {
+                            if (pagination != null) {
                                 int pages = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
-                                users.setPage(pages);
-                                int startIndex = users.getStartIdx();
-                                int totalPage = users.getTotalPage();
-                                List list = users.getData();
-                                int rows = users.getRows();
+                                pagination.setPage(pages);
+                                int startIndex = pagination.getStartIdx();
+                                List list = pagination.getData();
+                                int totalPage = pagination.getTotalPage();
+                                int rows = pagination.getRows();
                                 if (pages == totalPage) {
-                                    rows = users.getCount() - (totalPage - 1) * rows;
+                                    rows = pagination.getCount() - (totalPage - 1) * rows;
                                 }
                                 for (int i = 0; i < rows; i++) {
-                                    User user = (User) list.get(startIndex++);
+                                    Article article = (Article) list.get(startIndex++);
                         %>
                         <tr class="first">
                             <td>
-                                <a href="user-page.jsp?id=<%=user.getId()%>">
-                                    <%=user.getNickname()%>
+                                <a href="articlePage.jsp?id=<%=article.getId()%>">
+                                    <%
+                                        String title = article.getTitle();
+                                        if (title.length() > 8) {
+                                            title = title.substring(0, 8) + "......";
+                                        }
+                                    %>
+                                    <%=title%>
                                 </a>
                             </td>
                             <td>
-                                <%=user.getUsername()%>
+                                <%
+                                    String content = article.getContent();
+                                    if (content.length() > 40) {
+                                        content = content.substring(0, 40) + "......";
+                                    }
+                                %>
+                                <%=content%>
                             </td>
                             <td>
-                                <%=user.getEmail()%>
+                                <%
+                                    User user = null;
+                                    for (Object o : list1) {
+                                        if (article.getUserId().equals(((User) o).getId())) {
+                                            user = (User) o;
+                                        }
+                                    }
+                                    if (user != null) {
+                                %>
+                                <a href="userPage.jsp?id=<%=user.getId()%>"><%=user.getNickname()%>
+                                </a>
+                                <%}%>
                             </td>
                             <td>
-                                <%=user.getPhone()%>
+                                <%=new Date(article.getCreateTime().getTime())%>
+                            </td>
+                            <td>
+                                <%=article.getVer()%>
+                            </td>
+                            <td>
+                                <%
+                                    if (article.getStatus() == 0) {
+                                %><span class="label label-info">审核中
+                                <%
+                                    } else if (article.getStatus() == 1) {
+                                %><span class="label ">退稿
+                                <%
+                                    } else if (article.getStatus() == 2) {
+                                %><span class="label label-success">录用
+                                <%
+                                    } else if (article.getStatus() == 3) {
+                                %><span class="label label-info">修改后再审
+                                <%
+                                    }
+                                %></span>
                             </td>
                         </tr>
                         <%}%>
                         </tbody>
                     </table>
-                    <div class="pagination text-center">
-                        <ul>
-                            <li><a href="all-user.jsp?page=<%=pages == 1 ? 1 : pages - 1%>">‹</a></li>
-                            <%
-                                for (int i = 1; i <= totalPage; i++) {
-                                    if (pages == i) {
-                                        out.println("<li><a class=\"active\" href=\"get-message.jsp?page=" + i + "\">" + i + "</a></li>");
-                                    } else {
-                                        out.println("<li><a href=\"get-message.jsp?page=" + i + "\">" + i + "</a></li>");
-                                    }
-                                }
-                            %>
-                            <li><a href="all-user.jsp?page=<%=pages == totalPage ? totalPage : pages + 1%>">›</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <%}%>
                 </div>
             </div>
             <!-- end orders table -->
+            <div class="pagination text-center">
+                <ul>
+                    <li><a href="allArticle.jsp?page=<%=pages == 1 ? 1 : pages - 1%>">‹</a></li>
+                    <%
+                        for (int i = 1; i <= totalPage; i++) {
+                            if (pages == i) {
+                                out.println("<li><a class=\"active\" href=\"allArticle.jsp?page=" + i + "\">" + i + "</a></li>");
+                            } else {
+                                out.println("<li><a href=\"allArticle.jsp?page=" + i + "\">" + i + "</a></li>");
+                            }
+                        }
+                    %>
+                    <li><a href="allArticle.jsp?page=<%=pages == totalPage ? totalPage : pages + 1%>">›</a></li>
+                </ul>
+            </div>
+
+            <%}%>
         </div>
     </div>
 </div>

@@ -41,7 +41,7 @@ public class UpdateUserServlet extends BaseServlet<UserDaoImpl> {
                 if (reuslt == 1) {
                     req.getSession().removeAttribute("user");
                     req.getSession().setAttribute("user", user);
-                    resp.sendRedirect("/admin/personal-info.jsp?key=1");
+                    resp.sendRedirect("/admin/personalInfo.jsp?key=1");
                 } else {
                     throw new RuntimeException("保存失败");
                 }
@@ -50,7 +50,7 @@ public class UpdateUserServlet extends BaseServlet<UserDaoImpl> {
             }
         } else {
             resp.getWriter().write("请先登陆");
-            resp.setHeader("refresh", "3;url=../signin.jsp");
+            resp.setHeader("refresh", "3;url=../signIn.jsp");
         }
     }
 }

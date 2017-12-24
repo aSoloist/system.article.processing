@@ -1,17 +1,15 @@
-<%@ page import="java.util.List" %>
-<%@ page import="com.article.processing.model.Pagination" %>
-<%@ page import="com.article.processing.model.Message" %>
-<%@ page import="com.article.processing.model.Article" %><%--
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%--
   Created by IntelliJ IDEA.
-  User: LiWenfeng
-  Date: 2017/12/21 0021
-  Time: 21:44
+  User: Soloist
+  Date: 2017/12/14
+  Time: 22:24
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>稿件管理系统 - 所有稿件</title>
+    <title>稿件管理系统 - 提交稿件</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
@@ -48,23 +46,36 @@
 
 <%@include file="header.jsp" %>
 <%
-    String id = request.getParameter("id");
-    List list = ((Pagination) request.getSession().getAttribute("articles")).getData();
+    String key = request.getParameter("key");
+    if (key != null && key.equals("1")) {
+        out.print("<script>alert(\"提交成功\");</script>");
+    }
 %>
 <!-- sidebar -->
 <div id="sidebar-nav">
     <ul id="dashboard-menu">
         <li>
-            <a href="../root/index.jsp">
+            <a href="index.jsp">
                 <i class="icon-home"></i>
                 <span>主页</span>
             </a>
         </li>
         <li>
-            <a href="all-user.jsp">
-                <i class="icon-group"></i>
-                <span>所有用户</span>
+            <a href="getMessage.jsp">
+                <i class="icon-comment"></i>
+                <span>消息</span>
             </a>
+        </li>
+        <li>
+            <a class="dropdown-toggle" href="#">
+                <i class="icon-group"></i>
+                <span>用户中心</span>
+                <i class="icon-chevron-down"></i>
+            </a>
+            <ul class="submenu">
+                <li><a href="personalInfo.jsp">个人信息</a></li>
+                <li><a href="modifyPassword.jsp">更改密码</a></li>
+            </ul>
         </li>
         <li class="active">
             <a class="dropdown-toggle" href="#">
@@ -73,23 +84,12 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="active submenu">
-                <li><a href="check-pending.jsp">待审核稿件</a></li>
-                <li><a href="all-article.jsp" class="active">所有稿件</a></li>
+                <li><a href="allArticle.jsp">我的稿件</a></li>
+                <li><a href="submitArticle.jsp" class="active">提交稿件</a></li>
             </ul>
         </li>
         <li>
-            <a class="dropdown-toggle" href="#">
-                <i class="icon-envelope"></i>
-                <span>管理公告</span>
-                <i class="icon-chevron-down"></i>
-            </a>
-            <ul class="submenu">
-                <li><a href="announcement.jsp">发布公告</a></li>
-                <li><a href="all-message.jsp">管理公告</a></li>
-            </ul>
-        </li>
-        <li>
-            <a href="${pageContext.request.contextPath}/root/exit">
+            <a href="${pageContext.request.contextPath}/admin/exit">
                 <i class="icon-share-alt"></i>
                 <span>退出帐号</span>
             </a>
@@ -97,59 +97,58 @@
     </ul>
 </div>
 <!-- end sidebar -->
-<%
-    if (id != null && list.size() > 0) {
-        Article article = null;
-        for (Object o : list) {
-            if (id.equals(((Article) o).getId())) {
-                article = (Article) o;
-                break;
-            }
-        }
-        if (article != null) {
-%>
+
 <!-- main container -->
 <div class="content">
     <div class="container-fluid">
         <div id="pad-wrapper" class="form-page">
             <div class="row-fluid form-wrapper">
-                <form action="${pageContext.request.contextPath}/root/setStatus" method="post">
-                    <input type="hidden" name="id" value="<%=article.getId()%>">
+                <form action="${pageContext.request.contextPath}/saveArticle" method="post">
                     <div class="field-box">
                         <label>标题:</label>
-                        <input class="span7 inline-input" type="text" name="title" value="<%=article.getTitle()%>"
-                               maxlength="30" readonly="readonly"/>
+                        <input class="span7 inline-input" type="text" name="title" value="" minlength="1" maxlength="30"/>
                     </div>
                     <div class="field-box">
                         <label>内容:</label>
-                        <div>
-                            <textarea class="span10" rows="20" name="content" title=""
-                                      readonly="readonly"><%=article.getContent()%></textarea>
+                        <div class="wysi-column">
+                            <textarea id="wysi" class="span10 wysihtml5" rows="20" name="content" minlength="10" title=""></textarea>
                         </div>
                     </div>
                     <div class="span6 field-box actions text-center">
-                        <input type="submit" name="submit" class="btn-glow primary" value="录用"/>
-                        <span>或</span>
-                        <input type="submit" name="submit" class="btn-glow inverse" value="修改后再审"/>
-                        <span>或</span>
-                        <input type="submit" name="submit" class="btn-glow inverse" value="退稿"/>
+                        <input type="submit" class="btn-glow primary" value="提交"/>
+                        <span>&nbsp;或</span>
+                        <input type="reset" value="取消" class="reset"/>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
-<%
-        }
-    }
-%>
+
 <!-- scripts for this page -->
+<script src="../js/wysihtml5-0.3.0.js"></script>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="../js/bootstrap.min.js"></script>
+<script src="../js/bootstrap-wysihtml5-0.0.2.js"></script>
+<script src="../js/bootstrap.datepicker.js"></script>
 <script src="../js/jquery.uniform.min.js"></script>
 <script src="../js/select2.min.js"></script>
 <script src="../js/theme.js"></script>
 
+<!-- call this page plugins -->
+<script type="text/javascript">
+    $(function () {
+
+        // wysihtml5 plugin on textarea
+        $(".wysihtml5").wysihtml5({
+            "font-styles": false
+        });
+
+        $(window).bind('beforeunload', function(){
+            return '';
+        });
+    });
+</script>
 
 </body>
 </html>

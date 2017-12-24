@@ -39,7 +39,7 @@ public class SaveMessageServlet extends BaseServlet<MessageDaoImpl> {
                     messages.setData(list);
                     req.getSession().removeAttribute("messages");
                     req.getSession().setAttribute("messages", messages);
-                    resp.sendRedirect("all-message.jsp");
+                    resp.sendRedirect("allMessage.jsp");
                 } else {
                     throw new RuntimeException("发布失败");
                 }
@@ -59,7 +59,7 @@ public class SaveMessageServlet extends BaseServlet<MessageDaoImpl> {
                 messages.setData(list);
                 req.getSession().removeAttribute("messages");
                 req.getSession().setAttribute("messages", messages);
-                resp.sendRedirect("all-message.jsp");
+                resp.sendRedirect("allMessage.jsp");
             } else {
                 throw new RuntimeException("发布失败");
             }

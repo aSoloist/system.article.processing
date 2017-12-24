@@ -2,17 +2,18 @@
   Created by IntelliJ IDEA.
   User: LiWenfeng
   Date: 2017/12/22 0022
-  Time: 19:24
+  Time: 19:27
   To change this template use File | Settings | File Templates.
 --%>
+<%@ page import="com.article.processing.model.Article" %>
 <%@ page import="com.article.processing.model.Pagination" %>
-<%@ page import="java.util.List" %>
-<%@ page import="com.article.processing.model.Message" %>
 <%@ page import="java.util.Date" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.article.processing.model.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>稿件管理系统 - 管理公告</title>
+    <title>稿件管理系统 - 所有用户</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
@@ -50,9 +51,8 @@
 
 <%@include file="header.jsp" %>
 <%
-    Pagination messages = (Pagination) request.getSession().getAttribute("messages");
+    Pagination users = (Pagination) session.getAttribute("users");
 %>
-
 <!-- sidebar -->
 <div id="sidebar-nav">
     <ul id="dashboard-menu">
@@ -62,8 +62,12 @@
                 <span>主页</span>
             </a>
         </li>
-        <li>
-            <a href="all-user.jsp">
+        <li class="active">
+            <div class="pointer">
+                <div class="arrow"></div>
+                <div class="arrow_border"></div>
+            </div>
+            <a href="allUser.jsp">
                 <i class="icon-group"></i>
                 <span>所有用户</span>
             </a>
@@ -75,19 +79,19 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="check-pending.jsp">待审核稿件</a></li>
-                <li><a href="all-article.jsp">所有稿件</a></li>
+                <li><a href="checkPending.jsp">待审核稿件</a></li>
+                <li><a href="allArticle.jsp">所有稿件</a></li>
             </ul>
         </li>
-        <li class="active">
+        <li>
             <a class="dropdown-toggle" href="#">
                 <i class="icon-envelope"></i>
                 <span>管理公告</span>
                 <i class="icon-chevron-down"></i>
             </a>
-            <ul class="active submenu">
+            <ul class="submenu">
                 <li><a href="announcement.jsp">发布公告</a></li>
-                <li><a href="all-message.jsp" class="active">管理公告</a></li>
+                <li><a href="allMessage.jsp">管理公告</a></li>
             </ul>
         </li>
         <li>
@@ -102,80 +106,71 @@
 
 <!-- main container -->
 <div class="content">
+
     <div class="container-fluid">
         <div id="pad-wrapper">
+
+            <!-- orders table -->
             <div class="table-wrapper orders-table">
                 <div class="row-fluid head">
                     <div class="span12">
-                        <h4>消息</h4>
+                        <h4>所有用户</h4>
                     </div>
                 </div>
                 <br>
 
                 <div class="row-fluid span12">
+
                     <table class="table table-hover">
                         <thead>
                         <tr>
-                            <th class="span2">
-                                <span class="line"></span>时间
+                            <th class="span3">
+                                <span class="line"></span>
+                                用户名
                             </th>
                             <th class="span3">
-                                <span class="line"></span>标题
+                                <span class="line"></span>
+                                姓名
                             </th>
-                            <th class="span12">
-                                <span class="line"></span>内容
+                            <th class="span4">
+                                邮箱
                             </th>
-                            <th class="span2">
-                                <span class="line"></span>管理
+                            <th class="span4">
+                                <span class="line"></span>
+                                手机号
                             </th>
                         </tr>
                         </thead>
                         <tbody>
                         <!-- row -->
                         <%
-                            if (messages != null) {
+                            if (users != null) {
                                 int pages = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
-                                messages.setPage(pages);
-                                int startIndex = messages.getStartIdx();
-                                int totalPage = messages.getTotalPage();
-                                List list = messages.getData();
-                                int rows = messages.getRows();
+                                users.setPage(pages);
+                                int startIndex = users.getStartIdx();
+                                int totalPage = users.getTotalPage();
+                                List list = users.getData();
+                                int rows = users.getRows();
                                 if (pages == totalPage) {
-                                    rows = messages.getCount() - (totalPage - 1) * rows;
+                                    rows = users.getCount() - (totalPage - 1) * rows;
                                 }
                                 for (int i = 0; i < rows; i++) {
-                                    Message message = (Message) list.get(startIndex++);
+                                    User user = (User) list.get(startIndex++);
                         %>
-                        <tr>
-                            <td class="time">
-                                <%=new Date(message.getCreateTime().getTime())%>
-                            </td>
+                        <tr class="first">
                             <td>
-                                <a href="message-page.jsp?id=<%=message.getId()%>" class="name">
-                                    <%
-                                        String title = message.getTitle();
-                                        if (title.length() > 8) {
-                                            title = title.substring(0, 8) + "......";
-                                        }
-                                    %>
-                                    <%=title%>
+                                <a href="userPage.jsp?id=<%=user.getId()%>">
+                                    <%=user.getNickname()%>
                                 </a>
                             </td>
-                            <td class="description">
-                                <%
-                                    String content = message.getMessageContent();
-                                    if (content.length() > 40) {
-                                        content = content.substring(0, 40) + "......";
-                                    }
-                                %>
-                                <%=content%>
+                            <td>
+                                <%=user.getUsername()%>
                             </td>
                             <td>
-                                <ul class="actions">
-                                    <li><a href="announcement.jsp?id=<%=message.getId()%>">编辑</a></li>
-                                    <li class="last"><a href="${pageContext.request.contextPath}/root/deleteMessage?id=<%=message.getId()%>" 
-                                                        onclick="return confirm('确认删除？');">删除</a></li>
-                                </ul>
+                                <%=user.getEmail()%>
+                            </td>
+                            <td>
+                                <%=user.getPhone()%>
                             </td>
                         </tr>
                         <%}%>
@@ -183,23 +178,24 @@
                     </table>
                     <div class="pagination text-center">
                         <ul>
-                            <li><a href="all-message.jsp?page=<%=pages == 1 ? 1 : pages - 1%>">‹</a></li>
+                            <li><a href="allUser.jsp?page=<%=pages == 1 ? 1 : pages - 1%>">‹</a></li>
                             <%
                                 for (int i = 1; i <= totalPage; i++) {
                                     if (pages == i) {
-                                        out.println("<li><a class=\"active\" href=\"get-message.jsp?page=" + i + "\">" + i + "</a></li>");
+                                        out.println("<li><a class=\"active\" href=\"getMessage.jsp?page=" + i + "\">" + i + "</a></li>");
                                     } else {
-                                        out.println("<li><a href=\"get-message.jsp?page=" + i + "\">" + i + "</a></li>");
+                                        out.println("<li><a href=\"getMessage.jsp?page=" + i + "\">" + i + "</a></li>");
                                     }
                                 }
                             %>
-                            <li><a href="all-message.jsp?page=<%=pages == totalPage ? totalPage : pages + 1%>">›</a>
+                            <li><a href="allUser.jsp?page=<%=pages == totalPage ? totalPage : pages + 1%>">›</a>
                             </li>
                         </ul>
                     </div>
                     <%}%>
                 </div>
             </div>
+            <!-- end orders table -->
         </div>
     </div>
 </div>

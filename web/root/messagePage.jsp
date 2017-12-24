@@ -1,17 +1,18 @@
-<%@ page import="com.article.processing.model.Pagination" %>
-<%@ page import="com.article.processing.model.User" %>
-<%@ page import="java.util.List" %>
 <%--
   Created by IntelliJ IDEA.
   User: LiWenfeng
-  Date: 2017/12/22 0022
-  Time: 19:27
+  Date: 2017/12/23 0023
+  Time: 13:37
   To change this template use File | Settings | File Templates.
 --%>
+<%@ page import="java.util.List" %>
+<%@ page import="com.article.processing.model.Pagination" %>
+<%@ page import="com.article.processing.model.Message" %>
+<%@ page import="java.util.Date" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>稿件管理系统 - 所有用户</title>
+    <title>稿件管理系统 - 管理公告</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
@@ -50,17 +51,9 @@
 <%@include file="header.jsp" %>
 <%
     String id = request.getParameter("id");
-    List list = ((Pagination) request.getSession().getAttribute("users")).getData();
-    if (id != null && list.size() > 0) {
-        User user = null;
-        for (Object o : list) {
-            if (id.equals(((User) o).getId())) {
-                user = (User) o;
-                break;
-            }
-        }
-        if (user != null) {
+    List list = ((Pagination) request.getSession().getAttribute("messages")).getData();
 %>
+
 <!-- sidebar -->
 <div id="sidebar-nav">
     <ul id="dashboard-menu">
@@ -70,12 +63,8 @@
                 <span>主页</span>
             </a>
         </li>
-        <li class="active">
-            <div class="pointer">
-                <div class="arrow"></div>
-                <div class="arrow_border"></div>
-            </div>
-            <a href="all-user.jsp">
+        <li>
+            <a href="allUser.jsp">
                 <i class="icon-group"></i>
                 <span>所有用户</span>
             </a>
@@ -87,19 +76,19 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="check-pending.jsp">待审核稿件</a></li>
-                <li><a href="all-article.jsp">所有稿件</a></li>
+                <li><a href="checkPending.jsp">待审核稿件</a></li>
+                <li><a href="allArticle.jsp">所有稿件</a></li>
             </ul>
         </li>
-        <li>
+        <li class="active">
             <a class="dropdown-toggle" href="#">
                 <i class="icon-envelope"></i>
                 <span>管理公告</span>
                 <i class="icon-chevron-down"></i>
             </a>
-            <ul class="submenu">
+            <ul class="active submenu">
                 <li><a href="announcement.jsp">发布公告</a></li>
-                <li><a href="all-message.jsp">管理公告</a></li>
+                <li><a href="allMessage.jsp" class="active">管理公告</a></li>
             </ul>
         </li>
         <li>
@@ -125,50 +114,61 @@
     <br>
     <div class="container-fluid">
         <div id="pad-wrapper">
-            <!-- edit form column -->
-            <div class="row-fluid header">
-                <h3>用户信息</h3>
-            </div>
-
-            <div class="row-fluid form-wrapper">
-                <!-- left column -->
-                <div class="span9 with-sidebar">
-                    <div class="container">
-                        <div></div>
-                        <div class="span12 field-box">
-                            <label>姓名:</label>
-                            <input class="span9" type="text" value="<%=user.getUsername()%>" readonly/>
-                        </div>
-                        <div class="span12 field-box">
-                            <label>用户名:</label>
-                            <input class="span9" type="text" value="<%=user.getNickname()%>" readonly/>
-                        </div>
-                        <div class="span12 field-box">
-                            <label>单位:</label>
-                            <input class="span9" type="text" value="<%=user.getUnit()%>" readonly/>
-                        </div>
-                        <div class="span12 field-box">
-                            <label>地址:</label>
-                            <input class="span9" type="text" value="<%=user.getAddress()%>" readonly/>
-                        </div>
-                        <div class="span12 field-box">
-                            <label>手机号:</label>
-                            <input class="span9" type="text" value="<%=user.getPhone()%>" readonly/>
-                        </div>
-                        <div class="span12 field-box">
-                            <label>E-mail:</label>
-                            <input class="span9" type="text" value="<%=user.getEmail()%>" readonly/>
-                        </div>
+            <%
+                if (id != null && list.size() > 0) {
+                    Message message = null;
+                    for (Object o : list) {
+                        if (id.equals(((Message) o).getId())) {
+                            message = (Message) o;
+                            break;
+                        }
+                    }
+                    if (message != null) {
+            %>
+            <div class="table-wrapper orders-table">
+                <div class="row-fluid text-center">
+                    <div class="span12">
+                        <h2><%=message.getTitle()%>
+                        </h2>
+                    </div>
+                    <br><br>
+                    <div class="date">
+                        <%=new Date(message.getCreateTime().getTime())%>
                     </div>
                 </div>
+                <br>
+
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th class="span12">
+                            <div class="text-center"><br>
+                                <h5><%=message.getMessageContent()%>
+                                </h5>
+                            </div>
+                        </th>
+                    </tr>
+                    </thead>
+                </table>
+
+                <div class="table text-center">
+                    <a href="announcement.jsp?id=<%=message.getId()%>">
+                        <input type="button" class="btn-glow primary" value="编辑"/>
+                    </a>
+                    <span>或</span>
+                    <a href="${pageContext.request.contextPath}/root/deleteMessage?id=<%=message.getId()%>">
+                        <input type="button" class="btn-glow inverse" onclick="return confirm('确认删除？');" value="删除"/>
+                    </a>
+                </div>
             </div>
+            <%
+                    }
+                }
+            %>
         </div>
     </div>
 </div>
-<%
-        }
-    }
-%>
+
 <!-- scripts -->
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="../js/bootstrap.min.js"></script>

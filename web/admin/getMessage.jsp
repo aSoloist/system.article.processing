@@ -59,7 +59,7 @@
                 <div class="arrow"></div>
                 <div class="arrow_border"></div>
             </div>
-            <a href="get-message.jsp">
+            <a href="getMessage.jsp">
                 <i class="icon-comment"></i>
                 <span>消息</span>
             </a>
@@ -71,8 +71,8 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="personal-info.jsp">个人信息</a></li>
-                <li><a href="modify-password.jsp">更改密码</a></li>
+                <li><a href="personalInfo.jsp">个人信息</a></li>
+                <li><a href="modifyPassword.jsp">更改密码</a></li>
             </ul>
         </li>
         <li>
@@ -82,8 +82,8 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="all-article.jsp">我的稿件</a></li>
-                <li><a href="submit-article.jsp">提交稿件</a></li>
+                <li><a href="allArticle.jsp">我的稿件</a></li>
+                <li><a href="submitArticle.jsp">提交稿件</a></li>
             </ul>
         </li>
         <li>
@@ -144,7 +144,7 @@
                                 <%=new Date(message.getCreateTime().getTime())%>
                             </td>
                             <td>
-                                <a href="message-page.jsp?id=<%=message.getId()%>" class="name">
+                                <a href="messagePage.jsp?id=<%=message.getId()%>" class="name">
                                     <%
                                         String title = message.getTitle();
                                         if (title.length() > 8) {
@@ -169,17 +169,17 @@
                     </table>
                     <div class="pagination text-center">
                         <ul>
-                            <li><a href="get-message.jsp?page=<%=pages == 1 ? 1 : pages - 1%>">‹</a></li>
+                            <li><a href="getMessage.jsp?page=<%=pages == 1 ? 1 : pages - 1%>">‹</a></li>
                             <%
                                 for (int i = 1; i <= totalPage; i++) {
                                     if (pages == i) {
-                                        out.println("<li><a class=\"active\" href=\"get-message.jsp?page=" + i + "\">" + i + "</a></li>");
+                                        out.println("<li><a class=\"active\" href=\"getMessage.jsp?page=" + i + "\">" + i + "</a></li>");
                                     } else {
-                                        out.println("<li><a href=\"get-message.jsp?page=" + i + "\">" + i + "</a></li>");
+                                        out.println("<li><a href=\"getMessage.jsp?page=" + i + "\">" + i + "</a></li>");
                                     }
                                 }
                             %>
-                            <li><a href="get-message.jsp?page=<%=pages == totalPage ? totalPage : pages + 1%>">›</a></li>
+                            <li><a href="getMessage.jsp?page=<%=pages == totalPage ? totalPage : pages + 1%>">›</a></li>
                         </ul>
                     </div>
                     <%}%>

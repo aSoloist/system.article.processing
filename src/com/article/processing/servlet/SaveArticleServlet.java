@@ -52,7 +52,7 @@ public class SaveArticleServlet extends BaseServlet<ArticleDaoImpl> {
                     pagination.setCount(list.size());
                     req.getSession().removeAttribute("articles");
                     req.getSession().setAttribute("articles", pagination);
-                    resp.sendRedirect("/admin/submit-article.jsp?key=1");
+                    resp.sendRedirect("/admin/submitArticle.jsp?key=1");
                 } else {
                     throw new RuntimeException("提交失败");
                 }

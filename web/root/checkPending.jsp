@@ -65,7 +65,7 @@
             </a>
         </li>
         <li>
-            <a href="all-user.jsp">
+            <a href="allUser.jsp">
                 <i class="icon-group"></i>
                 <span>所有用户</span>
             </a>
@@ -77,8 +77,8 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="active submenu">
-                <li><a href="check-pending.jsp" class="active">待审核稿件</a></li>
-                <li><a href="all-article.jsp">所有稿件</a></li>
+                <li><a href="checkPending.jsp" class="active">待审核稿件</a></li>
+                <li><a href="allArticle.jsp">所有稿件</a></li>
             </ul>
         </li>
         <li>
@@ -89,7 +89,7 @@
             </a>
             <ul class="submenu">
                 <li><a href="announcement.jsp">发布公告</a></li>
-                <li><a href="all-message.jsp">管理公告</a></li>
+                <li><a href="allMessage.jsp">管理公告</a></li>
             </ul>
         </li>
         <li>
@@ -167,7 +167,7 @@
                         %>
                         <tr class="first">
                             <td>
-                                <a href="article-page.jsp?id=<%=article.getId()%>">
+                                <a href="articlePage.jsp?id=<%=article.getId()%>">
                                     <%
                                         String title = article.getTitle();
                                         if (title.length() > 8) {
@@ -196,7 +196,7 @@
                                     }
                                     if (user != null) {
                                 %>
-                                <a href="user-page.jsp?id=<%=user.getId()%>"><%=user.getNickname()%></a>
+                                <a href="userPage.jsp?id=<%=user.getId()%>"><%=user.getNickname()%></a>
                                 <%}%>
                             </td>
                             <td>
@@ -220,17 +220,17 @@
             <!-- end orders table -->
             <div class="pagination text-center">
                 <ul>
-                    <li><a href="all-article.jsp?page=<%=pages == 1 ? 1 : pages - 1%>">‹</a></li>
+                    <li><a href="allArticle.jsp?page=<%=pages == 1 ? 1 : pages - 1%>">‹</a></li>
                     <%
                         for (int i = 1; i <= totalPage; i++) {
                             if (pages == i) {
-                                out.println("<li><a class=\"active\" href=\"all-article.jsp?page=" + i + "\">" + i + "</a></li>");
+                                out.println("<li><a class=\"active\" href=\"allArticle.jsp?page=" + i + "\">" + i + "</a></li>");
                             } else {
-                                out.println("<li><a href=\"all-article.jsp?page=" + i + "\">" + i + "</a></li>");
+                                out.println("<li><a href=\"allArticle.jsp?page=" + i + "\">" + i + "</a></li>");
                             }
                         }
                     %>
-                    <li><a href="all-article.jsp?page=<%=pages == totalPage ? totalPage : pages + 1%>">›</a></li>
+                    <li><a href="allArticle.jsp?page=<%=pages == totalPage ? totalPage : pages + 1%>">›</a></li>
                 </ul>
             </div>
 

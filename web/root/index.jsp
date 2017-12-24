@@ -80,7 +80,7 @@
             </a>
         </li>
         <li>
-            <a href="all-user.jsp">
+            <a href="allUser.jsp">
                 <i class="icon-group"></i>
                 <span>所有用户</span>
             </a>
@@ -92,8 +92,8 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="check-pending.jsp">待审核稿件</a></li>
-                <li><a href="all-article.jsp">所有稿件</a></li>
+                <li><a href="checkPending.jsp">待审核稿件</a></li>
+                <li><a href="allArticle.jsp">所有稿件</a></li>
             </ul>
         </li>
         <li>
@@ -104,7 +104,7 @@
             </a>
             <ul class="submenu">
                 <li><a href="announcement.jsp">发布公告</a></li>
-                <li><a href="all-message.jsp">管理公告</a></li>
+                <li><a href="allMessage.jsp">管理公告</a></li>
             </ul>
         </li>
         <li>
@@ -165,7 +165,7 @@
 
                 <div class="row-fluid filter-block span12">
                     <div class="pull-right">
-                        <a class="glow right" href="all-article.jsp">查看全部>></a>
+                        <a class="glow right" href="allArticle.jsp">查看全部>></a>
                     </div>
 
                     <div class="row-fluid">
@@ -205,7 +205,7 @@
                             %>
                             <tr>
                                 <td>
-                                    <a href="article-page.jsp?id=<%=article.getId()%>">
+                                    <a href="articlePage.jsp?id=<%=article.getId()%>">
                                         <%
                                             String title = article.getTitle();
                                             if (title.length() > 8) {
@@ -234,7 +234,7 @@
                                         }
                                         if (user != null) {
                                     %>
-                                    <a href="user-page.jsp?id=<%=user.getId()%>"><%=user.getNickname()%></a>
+                                    <a href="userPage.jsp?id=<%=user.getId()%>"><%=user.getNickname()%></a>
                                     <%}%>
                                 </td>
                                 <td>

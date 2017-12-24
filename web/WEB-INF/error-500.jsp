@@ -46,7 +46,7 @@
                     }
                 } else {
                 %>
-                window.location.href = "../signin.jsp";
+                window.location.href = "../signIn.jsp";
                 <%}%>
                 clearInterval(intervalid);
             }
@@ -89,7 +89,7 @@
         <%
         } else {
         %>
-        <a href="javascript:" onclick="window.location.href='../signin.jsp';" class="btn">返回登陆</a>
+        <a href="javascript:" onclick="window.location.href='../signIn.jsp';" class="btn">返回登陆</a>
         <%
             }
         %>

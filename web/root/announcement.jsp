@@ -58,7 +58,7 @@
             </a>
         </li>
         <li>
-            <a href="all-user.jsp">
+            <a href="allUser.jsp">
                 <i class="icon-group"></i>
                 <span>所有用户</span>
             </a>
@@ -70,8 +70,8 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="check-pending.jsp">待审核稿件</a></li>
-                <li><a href="all-article.jsp">所有稿件</a></li>
+                <li><a href="checkPending.jsp">待审核稿件</a></li>
+                <li><a href="allArticle.jsp">所有稿件</a></li>
             </ul>
         </li>
         <li class="active">
@@ -82,7 +82,7 @@
             </a>
             <ul class="active submenu">
                 <li><a href="announcement.jsp" class="active">发布公告</a></li>
-                <li><a href="all-message.jsp">管理公告</a></li>
+                <li><a href="allMessage.jsp">管理公告</a></li>
             </ul>
         </li>
         <li>

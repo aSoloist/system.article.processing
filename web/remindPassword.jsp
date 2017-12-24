@@ -51,7 +51,7 @@
     </div>
 
     <div class="span4 no-account">
-        <a href="signin.jsp">返回登录</a>
+        <a href="signIn.jsp">返回登录</a>
     </div>
 
 </div>

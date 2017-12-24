@@ -30,7 +30,7 @@ public class DeleteMessageServlet extends BaseServlet<MessageDaoImpl> {
                 messages.setData(list);
                 req.getSession().removeAttribute("messages");
                 req.getSession().setAttribute("messages", messages);
-                resp.sendRedirect("all-message.jsp");
+                resp.sendRedirect("allMessage.jsp");
             } else {
                 throw new RuntimeException("删除失败");
             }

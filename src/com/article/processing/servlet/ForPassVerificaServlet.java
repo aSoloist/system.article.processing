@@ -23,7 +23,7 @@ public class ForPassVerificaServlet extends HttpServlet {
         String vEmail = MD5Util.encrypt2(email);
         if (vEmail.equals(v)) {
             req.setAttribute("email", email);
-            req.getRequestDispatcher("../change-password.jsp").forward(req, resp);
+            req.getRequestDispatcher("../changePassword.jsp").forward(req, resp);
         } else {
             resp.getWriter().write("验证失败");
         }

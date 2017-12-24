@@ -34,7 +34,7 @@
 <body>
 
 <div class="header">
-    <a href="signin.jsp">
+    <a href="signIn.jsp">
         <img src="img/logo.png" class="logo" />
     </a>
 </div>
@@ -113,7 +113,7 @@
 
     <div class="span4 already">
         <p>已有帐号？</p>
-        <a href="signin.jsp">直接登录</a>
+        <a href="signIn.jsp">直接登录</a>
     </div>
 </div>
 

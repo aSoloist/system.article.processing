@@ -41,7 +41,7 @@ public class UpdateArticleServlet extends BaseServlet<ArticleDaoImpl> {
                 articles.setCount(list.size());
                 req.getSession().removeAttribute("articles");
                 req.getSession().setAttribute("articles", articles);
-                resp.sendRedirect("all-article.jsp");
+                resp.sendRedirect("allArticle.jsp");
             } else {
                 throw new RuntimeException("修改失败");
             }

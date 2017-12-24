@@ -28,7 +28,7 @@
                 <a href="#" class="dropdown-toggle hidden-phone" data-toggle="dropdown">我的账户<b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a href="personal-info.jsp">个人信息</a></li>
+                    <li><a href="personalInfo.jsp">个人信息</a></li>
                     <li><a href="javascript:void(0);">账户设置</a></li>
                     <li><a href="javascript:void(0);">我的钱包</a></li>
                 </ul>

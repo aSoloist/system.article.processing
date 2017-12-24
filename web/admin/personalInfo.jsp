@@ -52,7 +52,7 @@
             </a>
         </li>
         <li>
-            <a href="get-message.jsp">
+            <a href="getMessage.jsp">
                 <i class="icon-comment"></i>
                 <span>消息</span>
             </a>
@@ -64,8 +64,8 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="active submenu">
-                <li><a href="personal-info.jsp" class="active">个人信息</a></li>
-                <li><a href="modify-password.jsp">更改密码</a></li>
+                <li><a href="personalInfo.jsp" class="active">个人信息</a></li>
+                <li><a href="modifyPassword.jsp">更改密码</a></li>
             </ul>
         </li>
         <li>
@@ -75,8 +75,8 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="all-article.jsp">我的稿件</a></li>
-                <li><a href="submit-article.jsp">提交稿件</a></li>
+                <li><a href="allArticle.jsp">我的稿件</a></li>
+                <li><a href="submitArticle.jsp">提交稿件</a></li>
             </ul>
         </li>
         <li>

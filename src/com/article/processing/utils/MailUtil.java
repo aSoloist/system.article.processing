@@ -1,5 +1,7 @@
 package com.article.processing.utils;
 
+import com.sun.istack.internal.Nullable;
+
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
@@ -48,7 +50,7 @@ public class MailUtil {
      * @param subject  邮件标题
      * @param message  邮件内容
      */
-    public static void sendMail(String email, String username, String subject, String message) throws UnsupportedEncodingException, MessagingException {
+    public static void sendMail(@Nullable String email, String username, String subject, String message) throws UnsupportedEncodingException, MessagingException {
         MimeMessage mimeMessage = createMessage(email, username, subject, message);
         Transport transport = session.getTransport();
         transport.connect(FROM, PASSWORD);

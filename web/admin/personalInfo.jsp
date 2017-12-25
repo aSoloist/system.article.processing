@@ -143,7 +143,7 @@
 <!-- end main container -->
 
 <!-- scripts -->
-<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="../js/jquery-latest.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/theme.js"></script>
 <script type="text/javascript" src="../js/jquery-1.3.2.min.js"></script>

@@ -127,7 +127,7 @@
 
 <!-- scripts for this page -->
 <script src="../js/wysihtml5-0.3.0.js"></script>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="../js/jquery-latest.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/bootstrap-wysihtml5-0.0.2.js"></script>
 <script src="../js/bootstrap.datepicker.js"></script>

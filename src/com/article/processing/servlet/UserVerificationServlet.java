@@ -29,9 +29,9 @@ public class UserVerificationServlet extends BaseServlet<UserDaoImpl> {
                 long now = new Date().getTime();
                 long before = user.getCreateTime().getTime();
                 if ((now - before) < 60 * 10 * 1000) {
-                    String eccrypt = MD5Util.encrypt(email);
+                    String encrypt = MD5Util.encrypt(email);
                     //验证激活码
-                    if (eccrypt.equals(v)) {
+                    if (encrypt.equals(v)) {
                         int result = baseDao.updateStatus(user.getId(), 10);
                         if (result == 1) {
                             user.setStatus(10);
@@ -43,6 +43,7 @@ public class UserVerificationServlet extends BaseServlet<UserDaoImpl> {
                         throw new RuntimeException("验证码错误");
                     }
                 } else {
+                    baseDao.delete(user.getId());
                     throw new RuntimeException("验证码已过期");
                 }
             } else {

@@ -15,7 +15,7 @@
     </error-page>
 
     <welcome-file-list>
-        <welcome-file>signin.jsp</welcome-file>
+        <welcome-file>signIn.jsp</welcome-file>
     </welcome-file-list>
 
     <filter>

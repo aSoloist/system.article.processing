@@ -57,7 +57,7 @@ public class RegisterServlet extends BaseServlet<UserDaoImpl> {
                     email + "&v=" + v + "\">点击验证</a>";
             try {
                 MailUtil.sendMail(email, user.getUsername(), "用户验证", message);
-                resp.getWriter().write("已发送验证邮件，请注意查收<br/>" +
+                resp.getWriter().write("已发送验证邮件，十分钟内有效，请注意查收<br/>" +
                         "未收到邮件，<a href=\"" + req.getRequestURL() + "/resend?email=" +
                         email + "&username=" + user.getUsername() + "\">重新发送</a>");
                 int result = baseDao.insert(user);

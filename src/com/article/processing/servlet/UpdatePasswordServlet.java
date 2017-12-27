@@ -22,7 +22,7 @@ public class UpdatePasswordServlet extends BaseServlet<UserDaoImpl> {
         User user = (User) req.getSession().getAttribute("user");
         if (user == null) {
             resp.getWriter().write("请先登录");
-            resp.setHeader("refresh", "3;url=../signin.jsp");
+            resp.setHeader("refresh", "3;url=../signIn.jsp");
         } else {
             String oldPassword = req.getParameter("oldPassword");
             String password = req.getParameter("password");
@@ -36,7 +36,7 @@ public class UpdatePasswordServlet extends BaseServlet<UserDaoImpl> {
                     if (result == 1) {
                         req.getSession().removeAttribute("user");
                         req.getSession().setAttribute("user", user);
-                        resp.sendRedirect("/admin/modify-password.jsp?key=1");
+                        resp.sendRedirect("/admin/modifyPassword.jsp?key=1");
                     } else {
                         throw new RuntimeException("修改失败");
                     }

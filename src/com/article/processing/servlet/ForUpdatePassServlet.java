@@ -30,7 +30,7 @@ public class ForUpdatePassServlet extends BaseServlet<UserDaoImpl> {
                 int result = baseDao.update(user);
                 if (result == 1) {
                     resp.getWriter().write("修改成功");
-                    resp.setHeader("refresh", "3;url=signin.jsp");
+                    resp.setHeader("refresh", "3;url=signIn.jsp");
                 } else {
                     throw new RuntimeException("修改失败");
                 }

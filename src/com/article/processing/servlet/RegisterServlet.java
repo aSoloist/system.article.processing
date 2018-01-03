@@ -35,8 +35,8 @@ public class RegisterServlet extends BaseServlet<UserDaoImpl> {
         User user = new User();
         String email = StringUtil.validator(req.getParameter("email"));
         String phone = StringUtil.validator(req.getParameter("phone"));
-        if (email.matches("^[A-Za-z0-9\\u4e00-\\u9fa5]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$") || 
-                phone.matches("^1[0-9]{10}$")) {
+        if (!email.matches("^[A-Za-z0-9\\u4e00-\\u9fa5]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$") && 
+                !phone.matches("^1[0-9]{10}$")) {
             throw new RuntimeException("邮箱或手机号格式错误");
         }
         if (baseDao.isIdExist(user.getId())) {

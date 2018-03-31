@@ -13,7 +13,10 @@ import java.util.Properties;
 public class PropertiesUtil {
     private static Properties properties;
 
-    PropertiesUtil(String path) {
+    private PropertiesUtil() {
+    }
+
+    public static void setPath(@Nullable String path) {
         try {
             FileInputStream inputStream = new FileInputStream(path);
             properties = new Properties();
@@ -28,9 +31,11 @@ public class PropertiesUtil {
             System.out.println("配置文件加载失败");
         }
     }
-    
+
     public static void load(@Nullable String fileName) {
         String path = PropertiesUtil.class.getResource("/").getPath() + PropertiesUtil.class.getPackage().getName().replaceAll("\\.", "/") + "/";
+        //String path = System.getProperty("user.dir") + "\\src\\" + PropertiesUtil.class.getPackage().getName().replaceAll("\\.", "\\\\") + "\\";
+        System.out.println("文件路径：" + path);
         try {
             FileInputStream inputStream = new FileInputStream(path + fileName);
             properties = new Properties();
@@ -40,13 +45,13 @@ public class PropertiesUtil {
                 InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
                 properties.load(inputStreamReader);
             } else {
-                System.out.println("路径错误");
+                System.out.println("文件名错误");
             }
         } catch (IOException e) {
             System.out.println("配置文件加载失败");
         }
     }
-    
+
     public static String get(String key) {
         return properties.getProperty(key);
     }

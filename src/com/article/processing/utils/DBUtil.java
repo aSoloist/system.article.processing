@@ -1,62 +1,81 @@
 package com.article.processing.utils;
 
+import com.mchange.v2.c3p0.ComboPooledDataSource;
+
+import java.beans.PropertyVetoException;
 import java.sql.*;
 
 /**
- * Created by hasee on 2017/6/8.
+ * Created by Soloist on 2017/6/8.
  */
 public class DBUtil {
+    private static ComboPooledDataSource comboPooledDataSource;
 
-    private static Connection conn = null;
-    private static PreparedStatement ps = null;
+    private DBUtil() {
+    }
 
-    public static void main(String[] args) {
-        getConn();
+    static {
+        PropertiesUtil.load("c3p0-conf.properties");
+        comboPooledDataSource = new ComboPooledDataSource();
+        try {
+            comboPooledDataSource.setDriverClass(PropertiesUtil.get("driverClass"));
+            comboPooledDataSource.setJdbcUrl(PropertiesUtil.get("url"));
+            comboPooledDataSource.setUser(PropertiesUtil.get("username"));
+            comboPooledDataSource.setPassword(PropertiesUtil.get("password"));
+            comboPooledDataSource.setMinPoolSize(Integer.parseInt(PropertiesUtil.get("c3p0.minPoolSize")));
+            comboPooledDataSource.setMaxPoolSize(Integer.parseInt(PropertiesUtil.get("c3p0.maxPoolSize")));
+            comboPooledDataSource.setAcquireIncrement(Integer.parseInt(PropertiesUtil.get("c3p0.acquireIncrement")));
+            comboPooledDataSource.setAcquireRetryAttempts(Integer.parseInt(PropertiesUtil.get("c3p0.acquireRetryAttempts")));
+            comboPooledDataSource.setAcquireRetryDelay(Integer.parseInt(PropertiesUtil.get("c3p0.acquireRetryDelay")));
+            comboPooledDataSource.setAutoCommitOnClose(Boolean.parseBoolean(PropertiesUtil.get("c3p0.autoCommitOnClose")));
+            comboPooledDataSource.setCheckoutTimeout(Integer.parseInt(PropertiesUtil.get("c3p0.checkoutTimeout")));
+            comboPooledDataSource.setIdleConnectionTestPeriod(Integer.parseInt(PropertiesUtil.get("c3p0.idleConnectionTestPeriod")));
+            comboPooledDataSource.setMaxIdleTime(Integer.parseInt(PropertiesUtil.get("c3p0.maxIdleTime")));
+            comboPooledDataSource.setTestConnectionOnCheckin(Boolean.parseBoolean(PropertiesUtil.get("c3p0.testConnectionOnCheckin")));
+            comboPooledDataSource.setMaxStatements(Integer.parseInt(PropertiesUtil.get("c3p0.maxStatements")));
+        } catch (PropertyVetoException e) {
+            e.printStackTrace();
+        }
     }
 
     private static Connection getConn() {
+        Connection connection = null;
         try {
-            PropertiesUtil.load("conf.xml");
-            Class.forName(PropertiesUtil.get("className"));
-            conn = DriverManager.getConnection(PropertiesUtil.get("url"), PropertiesUtil.get("username"), PropertiesUtil.get("password"));
-        } catch (ClassNotFoundException e) {
-            System.out.println("数据库驱动加载失败");
-            e.printStackTrace();
+            connection = comboPooledDataSource.getConnection();
         } catch (SQLException e) {
-            System.out.println("获取连接失败");
+            e.printStackTrace();
         }
 
-        return conn;
+        return connection;
     }
 
     /**
      * 获取sql语句
+     *
      * @param sql
      * @return
      */
-    public static PreparedStatement getPatmt(String sql){
-        conn = getConn();
+    public static PreparedStatement getPreparedStatement(String sql) {
+        PreparedStatement preparedStatement = null;
         try {
-            ps = conn.prepareStatement(sql);
+            preparedStatement = getConn().prepareStatement(sql);
         } catch (SQLException e) {
             System.out.println("SQL语句错误");
         }
 
-        return ps;
+        return preparedStatement;
     }
 
     /**
      * 关闭更新
+     *
      * @param ps
      */
-    public static void closeUpdateRes (PreparedStatement ps){
-        if (ps != null){
+    public static void closeUpdateRes(PreparedStatement ps) {
+        if (ps != null) {
             try {
-                conn = ps.getConnection();
+                ps.getConnection().close();
                 ps.close();
-                if (conn != null){
-                    conn.close();
-                }
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -65,19 +84,18 @@ public class DBUtil {
 
     /**
      * 关闭查询
+     *
      * @param rs
      */
-    public static void closeQueryRes (ResultSet rs){
+    public static void closeQueryRes(ResultSet rs) {
         if (rs != null) {
             try {
                 Statement stmt = rs.getStatement();
                 if (stmt != null) {
-                    conn = stmt.getConnection();
+                    stmt.getConnection().close();
                     stmt.close();
-                    if (conn != null) {
-                        conn.close();
-                    }
                 }
+                rs.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }

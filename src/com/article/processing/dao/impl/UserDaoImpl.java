@@ -39,7 +39,7 @@ public class UserDaoImpl implements UserDao {
      */
     public List<User> getAll() {
         String sql = "select * from user where status <> -1";
-        PreparedStatement preparedStatement = DBUtil.getPatmt(sql);
+        PreparedStatement preparedStatement = DBUtil.getPreparedStatement(sql);
         ResultSet resultSet = null;
         List<User> list = new ArrayList<>();
         User user;
@@ -64,7 +64,7 @@ public class UserDaoImpl implements UserDao {
      */
     public List<User> getUser() {
         String sql = "select * from user where status = 10";
-        PreparedStatement preparedStatement = DBUtil.getPatmt(sql);
+        PreparedStatement preparedStatement = DBUtil.getPreparedStatement(sql);
         ResultSet resultSet = null;
         List<User> list = new ArrayList<>();
         User user;
@@ -90,7 +90,7 @@ public class UserDaoImpl implements UserDao {
      */
     public User getById(String id) {
         String sql = "select * from user where id = ? and status <> -1";
-        PreparedStatement preparedStatement = DBUtil.getPatmt(sql);
+        PreparedStatement preparedStatement = DBUtil.getPreparedStatement(sql);
         ResultSet resultSet = null;
         User user = null;
         try {
@@ -115,7 +115,7 @@ public class UserDaoImpl implements UserDao {
      */
     public int insert(User model) {
         String sql = "insert into user (id, nickname, password, username, unit, address, phone, email, status, create_time) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        PreparedStatement preparedStatement = DBUtil.getPatmt(sql);
+        PreparedStatement preparedStatement = DBUtil.getPreparedStatement(sql);
         int result = 0;
         try {
             preparedStatement.setString(1, model.getId());
@@ -144,7 +144,7 @@ public class UserDaoImpl implements UserDao {
      */
     public int update(User model) {
         String sql = "update user set nickname = ?, password = ?, username = ?, unit = ?, address = ?, phone = ?, email = ? where id = ?";
-        PreparedStatement preparedStatement = DBUtil.getPatmt(sql);
+        PreparedStatement preparedStatement = DBUtil.getPreparedStatement(sql);
         int result = 0;
         try {
             preparedStatement.setString(1, model.getNickname());
@@ -175,7 +175,7 @@ public class UserDaoImpl implements UserDao {
 
     public User getUserByPhone(String phone) {
         String sql = "select * from user where phone = ? and status <> -1";
-        PreparedStatement preparedStatement = DBUtil.getPatmt(sql);
+        PreparedStatement preparedStatement = DBUtil.getPreparedStatement(sql);
         ResultSet resultSet = null;
         User user = null;
         try {
@@ -201,7 +201,7 @@ public class UserDaoImpl implements UserDao {
      */
     public int updateStatus(String id, int status) {
         String sql = "update user set status = ? where id = ?";
-        PreparedStatement preparedStatement = DBUtil.getPatmt(sql);
+        PreparedStatement preparedStatement = DBUtil.getPreparedStatement(sql);
         int result = 0;
         try {
             preparedStatement.setInt(1, status);
@@ -241,7 +241,7 @@ public class UserDaoImpl implements UserDao {
      */
     public User getUserByEmail(String email) {
         String sql = "select * from user where email = ? and status <> -1";
-        PreparedStatement preparedStatement = DBUtil.getPatmt(sql);
+        PreparedStatement preparedStatement = DBUtil.getPreparedStatement(sql);
         ResultSet resultSet = null;
         User user = null;
         try {

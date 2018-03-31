@@ -30,7 +30,7 @@ public class MessageDaoImpl implements MessageDao {
      */
     public Message getNew() {
         String sql = "select * from message where status <> -1 order by create_time limit 1";
-        PreparedStatement preparedStatement = DBUtil.getPatmt(sql);
+        PreparedStatement preparedStatement = DBUtil.getPreparedStatement(sql);
         ResultSet resultSet = null;
         Message message = null;
         try {
@@ -53,7 +53,7 @@ public class MessageDaoImpl implements MessageDao {
      */
     public List<Message> getAll() {
         String sql = "select * from message where status <> -1 order by create_time desc";
-        PreparedStatement preparedStatement = DBUtil.getPatmt(sql);
+        PreparedStatement preparedStatement = DBUtil.getPreparedStatement(sql);
         ResultSet resultSet = null;
         List<Message> list = new ArrayList<>();
         Message message;
@@ -79,7 +79,7 @@ public class MessageDaoImpl implements MessageDao {
      */
     public Message getById(String id) {
         String sql = "select * from message where id = ? and status <> -1";
-        PreparedStatement preparedStatement = DBUtil.getPatmt(sql);
+        PreparedStatement preparedStatement = DBUtil.getPreparedStatement(sql);
         ResultSet resultSet = null;
         Message message = null;
         try {
@@ -104,7 +104,7 @@ public class MessageDaoImpl implements MessageDao {
      */
     public int insert(Message model) {
         String sql = "insert into message (id, send_id, message_content, create_time, status, title) values (?, ?, ?, ?, ?, ?)";
-        PreparedStatement preparedStatement = DBUtil.getPatmt(sql);
+        PreparedStatement preparedStatement = DBUtil.getPreparedStatement(sql);
         int result = 0;
         try {
             preparedStatement.setString(1, model.getId());
@@ -130,7 +130,7 @@ public class MessageDaoImpl implements MessageDao {
     public int update(Message model) {
         String sql = "update message set send_id = ?, message_content = ?, create_time = ?," +
                 " status = ?, title = ? where id = ?";
-        PreparedStatement preparedStatement = DBUtil.getPatmt(sql);
+        PreparedStatement preparedStatement = DBUtil.getPreparedStatement(sql);
         int result = 0;
         try {
             preparedStatement.setString(1, model.getSendId());
@@ -165,7 +165,7 @@ public class MessageDaoImpl implements MessageDao {
      */
     public int updateStatus(String id, int status) {
         String sql = "update message set status = ? where id = ?";
-        PreparedStatement preparedStatement = DBUtil.getPatmt(sql);
+        PreparedStatement preparedStatement = DBUtil.getPreparedStatement(sql);
         int result = 0;
         try {
             preparedStatement.setInt(1, status);
